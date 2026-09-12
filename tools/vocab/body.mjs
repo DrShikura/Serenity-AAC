@@ -35,7 +35,7 @@ export const boards = [
     w('doctor', '🩺', { color: 'people' }),
     w('nurse', '🧑‍⚕️', { color: 'people' }),
     w('dentist', '🦷', { color: 'people' }),
-    w('rest', '🛌', { color: 'verb' }),
+    w('rest', '🛌', { color: 'verb', past: 'rested', ing: 'resting' }),
     w('sleep', '😴', { color: 'verb', past: 'slept', ing: 'sleeping' }),
 
     p('my tummy hurts', '🫄', 'my tummy hurts', { color: 'urgent' }),
@@ -61,7 +61,7 @@ export const boards = [
 
   board('body_hygiene', 'Washing & Care', '🪥', 'noun', 8, 2, [
     w('wash', '🧼', { color: 'verb', past: 'washed', ing: 'washing' }),
-    w('brush teeth', '🪥', { color: 'verb' }),
+    w('brush teeth', '🪥', { color: 'verb', past: 'brushed teeth', ing: 'brushing teeth' }),
     w('bath', '🛁'), w('shower', '🚿'),
     w('soap', '🧼'), w('towel', '🧻', { plural: 'towels' }),
     w('toilet paper', '🧻'), w('hair brush', '💇'),

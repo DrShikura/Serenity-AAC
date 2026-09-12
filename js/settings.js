@@ -54,9 +54,16 @@ export function openSettings(sheet, scrim, { settings, onChange, onEdit, onClose
       <div class="row"><label>Go back to Home after picking a word
         <small class="hint">Keeps her core words in view. Turn off to stay on one page.</small></label>
         ${toggle('autoHome', s.autoHome)}</div>
-      <div class="row"><label>Show word endings (-s, -ing, -ed)
-        <small class="hint">Turn on when she starts building longer sentences.</small></label>
+      <div class="row"><label>Show the tense strip and word endings
+        <small class="hint">The tense she picks stays picked, and every doing-word she taps
+          arrives already in it — "play" becomes "played", "go" becomes "went". Turn this off
+          to go back to plain words.</small></label>
         ${toggle('showGrammar', s.showGrammar)}</div>
+      <div class="row"><label>Tense to start in</label>
+        <div class="seg" id="seg-tense">${[
+          ['past', 'did (before)'], ['present', 'now'],
+          ['continuous', '-ing (happening)'], ['future', 'will (later)'],
+        ].map(([v, n]) => `<button data-v="${v}" class="${s.tenseMode === v ? 'is-on' : ''}">${n}</button>`).join('')}</div></div>
       <div class="row"><label>Close up gaps from hidden buttons
         <small class="hint">Off is usually better — buttons stay exactly where she learned them.</small></label>
         ${toggle('collapseHidden', s.collapseHidden)}</div>
@@ -104,6 +111,9 @@ export function openSettings(sheet, scrim, { settings, onChange, onEdit, onClose
     });
     sheet.querySelector('#seg-size').addEventListener('click', (e) => {
       const v = e.target.dataset?.v; if (v) set({ size: v });
+    });
+    sheet.querySelector('#seg-tense')?.addEventListener('click', (e) => {
+      const v = e.target.dataset?.v; if (v) set({ tenseMode: v });
     });
 
     const voice = sheet.querySelector('#voice');

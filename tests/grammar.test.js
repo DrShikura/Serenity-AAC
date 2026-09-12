@@ -93,3 +93,50 @@ test('switching between endings goes through the base word', () => {
   assert.equal(applyGrammar(applyGrammar(play, 'ing'), 'past').speak, 'played');
   assert.equal(applyGrammar(applyGrammar(play, 'will'), 'plural').speak, 'plays');
 });
+
+import { conjugate, helperFor } from '../js/grammar.js';
+
+const verb = (label, forms = {}) =>
+  ({ label, speak: label, grammar: { pos: 'verb', ...forms } });
+
+test('sticky tense conjugates a verb as it is tapped', () => {
+  const play = verb('play');
+  assert.equal(conjugate(play, 'present').speak, 'play');
+  assert.equal(conjugate(play, 'past').speak, 'played');
+  assert.equal(conjugate(play, 'continuous').speak, 'playing');
+  assert.equal(conjugate(play, 'future').speak, 'will play');
+});
+
+test('tense respects irregular forms from the vocabulary data', () => {
+  const go = verb('go', { past: 'went', ing: 'going' });
+  assert.equal(conjugate(go, 'past').speak, 'went');
+  assert.equal(conjugate(go, 'continuous').speak, 'going');
+
+  const eat = verb('eat', { past: 'ate', ing: 'eating' });
+  assert.equal(conjugate(eat, 'past').speak, 'ate');
+});
+
+test('tense never touches a word that is not a verb', () => {
+  const apple = { label: 'apple', speak: 'apple', grammar: { pos: 'noun' } };
+  assert.equal(conjugate(apple, 'past').speak, 'apple');
+  assert.equal(conjugate(apple, 'continuous').speak, 'apple');
+
+  const bare = { label: 'apple', speak: 'apple' };   // no grammar block at all
+  assert.equal(conjugate(bare, 'past').speak, 'apple');
+});
+
+test('tense is still undoable through the ordinary base mechanism', () => {
+  const play = verb('play');
+  const past = conjugate(play, 'past');
+  assert.equal(applyGrammar(past, 'ing').speak, 'playing', 'rebuilds from "play"');
+});
+
+test('helper verbs agree with the subject', () => {
+  assert.equal(helperFor('continuous', 'I'), 'am');
+  assert.equal(helperFor('continuous', 'you'), 'are');
+  assert.equal(helperFor('continuous', 'she'), 'is');
+  assert.equal(helperFor('past', 'I'), 'was');
+  assert.equal(helperFor('past', 'they'), 'were');
+  assert.equal(helperFor('future', 'I'), 'will');
+  assert.equal(helperFor('present', 'I'), null);
+});

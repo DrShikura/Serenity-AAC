@@ -34,8 +34,14 @@
       <button class="ctl ctl--clear" id="btn-clear" type="button" title="Start again">
         <span class="ctl__glyph" aria-hidden="true">✕</span><span>clear</span>
       </button>
+      <button class="ctl ctl--abc" id="btn-keyboard" type="button" title="Spell it yourself">
+        <span class="ctl__glyph" aria-hidden="true">🔤</span><span>spell</span>
+      </button>
       <button class="ctl" id="btn-history" type="button" title="Things I said before">
         <span class="ctl__glyph" aria-hidden="true">🕘</span><span>before</span>
+      </button>
+      <button class="ctl" id="btn-hush" type="button" title="Stop talking">
+        <span class="ctl__glyph" aria-hidden="true">🤫</span><span>hush</span>
       </button>
       <button class="ctl" id="btn-settings" type="button" title="Settings. Grown-ups: press and hold.">
         <span class="ctl__glyph" aria-hidden="true">⚙</span><span>setup</span>
@@ -48,7 +54,10 @@
     <div class="board" id="board" role="group"></div>
   </div>
 
-  <div class="grammar-bar" id="grammar-bar" hidden role="group" aria-label="Word endings"></div>
+  <div class="grammar-bar" id="grammar-bar" hidden>
+    <div class="tense-strip" id="tense-strip" role="radiogroup" aria-label="When is it happening"></div>
+    <div class="ending-strip" id="ending-strip" role="group" aria-label="Word endings"></div>
+  </div>
 
   <nav class="navbar" id="navbar" aria-label="Go to another page"></nav>
 </div>

@@ -12,7 +12,7 @@ vocabulary, the sentence model and the language rules all carry over unchanged.
 | `assets/icons/*.svg` | Standard SVG files. Godot 4 imports SVG natively and rasterises at whatever scale you ask for. |
 | `assets/fonts/*.woff2` | Convert once to TTF/OTF for Godot's font importer, or substitute any rounded face. |
 | `js/output.js` | The sentence model. ~10 small pure functions — a direct transcription to GDScript. |
-| `js/grammar.js` | The morphology rules. Pure string functions plus two lookup tables. |
+| `js/grammar.js` | The morphology rules and the tense engine (`conjugate`, `helperFor`). Pure string functions plus two lookup tables. |
 | `js/vocabulary.js` | Indexing, the user-overlay merge, prediction word list, validation. Pure. |
 
 **Nothing in those three JS modules touches the DOM, the network, or browser
@@ -43,7 +43,8 @@ word) and will catch a transcription slip immediately.
   "home": "home",          // board id the app opens on
   "core": "core",          // the always-visible rail
   "colors": [...],         // swatch names buttons may use
-  "grammarBar": [ { "id", "label", "hint", "op" } ],
+  "tenses": [ { "id", "label", "hint", "tense", "glyph" } ],   // sticky tense modes
+  "grammarBar": [ { "id", "label", "hint", "op" } ],           // one-off endings
   "boards": [
     {
       "id": "food",
@@ -94,19 +95,28 @@ soundboard. If the Godot port drops them, it will be worse than this one:
 4. **Clear and backspace are undoable.** See `undoStack` in `js/output.js`.
 5. **Grammar endings rebuild from the base word** rather than stacking, so no
    sequence of taps can produce nonsense like "don't wanting".
-6. **Recorded audio beats synthetic speech** whenever a button has a recording.
-7. **The user overlay is separate from the shipped vocabulary**, merged by
+6. **Tense is a sticky mode, not a per-word edit.** The selected tense is
+   applied by `conjugate()` at the moment a button is turned into a token, and
+   only to buttons whose `grammar.pos` is `"verb"`. Conjugating a noun, or
+   making her re-select the tense for every verb, both break it.
+7. **Recorded audio beats synthetic speech** whenever a button has a recording
+   — except for a conjugated verb, where the recording no longer matches the
+   word and synthesis takes over.
+8. **The user overlay is separate from the shipped vocabulary**, merged by
    button id at load. Shipping new words must never erase a family's edits.
-8. **Auto-return to Home after a fringe word** (toggleable), so core stays
+9. **Auto-return to Home after a fringe word** (toggleable), so core stays
    one tap away.
-9. **Regulation and repair vocabulary is first-class** — "I need a break",
-   "too loud", "that's not what I meant". Do not cut this board for space.
+10. **Regulation and repair vocabulary is first-class** — "I need a break",
+    "too loud", "that's not what I meant". Do not cut this board for space.
+11. **The keyboard is reachable in one tap from every screen**, not buried in
+    a folder. Choosing to spell instead of tap is always hers to make.
 
 ## Suggested order
 
 1. Load and index `vocabulary.json`; render one board in a `GridContainer`.
 2. Port `output.js` and its tests; wire the output bar.
-3. Port `grammar.js` and its tests.
+3. Port `grammar.js` and its tests, including `conjugate()` and the sticky
+   tense strip — `pos: "verb"` is the only gate on conjugation.
 4. Add TTS.
 5. Add the core rail and navigation.
 6. Add settings and persistence.

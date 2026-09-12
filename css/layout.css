@@ -69,7 +69,7 @@ body::before {
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(3, minmax(56px, 78px));
+  grid-template-columns: repeat(4, minmax(54px, 74px));
   grid-template-rows: repeat(2, 1fr);
   gap: 6px;
 }
@@ -106,19 +106,38 @@ body::before {
 /* ── Bottom: navigation and the optional grammar row ────────────────────── */
 
 .navbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 6px;
   align-items: stretch;
   min-height: 62px;
 }
-.navbar .spacer { flex: 1 1 auto; }
-
-.grammar-bar {
+/* The shortcuts scroll when there are more than fit; the pin does not, so it
+   is always in the same place. */
+.navbar__scroll {
   display: flex;
   gap: 6px;
-  min-height: 52px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.navbar__scroll::-webkit-scrollbar { display: none; }
+
+.grammar-bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  min-height: 56px;
 }
 .grammar-bar[hidden] { display: none; }
+
+/* Tense sits apart from the endings, and stays lit, because it is a mode she
+   is in rather than a one-off edit she makes. */
+.tense-strip { display: flex; gap: 6px; }
+.ending-strip { display: flex; gap: 6px; min-width: 0; }
+
+@media (max-width: 900px) {
+  .grammar-bar { grid-template-columns: minmax(0, 1fr); grid-auto-rows: minmax(46px, auto); }
+}
 
 /* ── Size presets. Only the rail width and font scale change; the grid
       itself is always the board's own declared cols x rows. ───────────── */
@@ -147,7 +166,7 @@ body::before {
 @media (max-width: 760px) {
   :root { --gap: 5px; --radius: 13px; }
   .topbar { min-height: 74px; }
-  .controls { grid-template-columns: repeat(3, minmax(46px, 60px)); }
+  .controls { grid-template-columns: repeat(4, minmax(42px, 54px)); }
   [data-size="m"] { --label: 12px; --glyph: 24px; }
   [data-size="l"] { --label: 14px; --glyph: 30px; }
   [data-size="xl"]{ --label: 16px; --glyph: 34px; }

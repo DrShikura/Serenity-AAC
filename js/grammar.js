@@ -124,3 +124,42 @@ export function applyGrammar(token, op) {
       return token;
   }
 }
+
+/**
+ * Put a token into a tense.
+ *
+ * This is the sticky-tense path: she chooses "before / now / happening /
+ * later" once, and every doing-word she taps arrives already conjugated,
+ * instead of her having to remember an ending after each verb. Only words
+ * marked `pos: 'verb'` are touched — a tense must never mangle a noun.
+ *
+ * Irregular forms in the vocabulary data win over the regular rules, so
+ * "go" in the past tense is "went", not "goed".
+ */
+export function conjugate(token, tense) {
+  if (!token || tense === 'present') return token;
+  if ((token.grammar?.pos ?? null) !== 'verb') return token;
+  switch (tense) {
+    case 'past':       return applyGrammar(token, 'past');
+    case 'continuous': return applyGrammar(token, 'ing');
+    case 'future':     return applyGrammar(token, 'will');
+    default:           return token;
+  }
+}
+
+/**
+ * The helper verb a tense wants in front of it, for the sentence starter
+ * shown alongside the tense strip. `I` + continuous needs "am playing", not
+ * "playing"; "he" needs "is".
+ */
+export function helperFor(tense, subject = 'I') {
+  const s = String(subject).toLowerCase();
+  if (tense === 'continuous') {
+    if (s === 'i') return 'am';
+    if (['you', 'we', 'they'].includes(s)) return 'are';
+    return 'is';
+  }
+  if (tense === 'past') return ['i', 'he', 'she', 'it'].includes(s) ? 'was' : 'were';
+  if (tense === 'future') return 'will';
+  return null;
+}

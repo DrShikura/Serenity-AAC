@@ -189,9 +189,11 @@
 .ctl:disabled { opacity: .35; cursor: default; box-shadow: none; }
 .ctl--speak { background: var(--crayon-green); font-size: 12px; }
 .ctl--clear { background: var(--crayon-red); }
+.ctl--abc { background: var(--crayon-blue); }
 
 .nav {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 7px;
   padding: 0 14px;
@@ -211,6 +213,36 @@
 .nav__glyph { font-size: 22px; }
 .nav.is-current { background: var(--crayon-yellow); }
 .nav--pin.is-on { background: var(--crayon-green); }
+
+/* Tense buttons. Wider than the endings, and the chosen one stays pressed in
+   so the mode she is in is never a guess. */
+.tense {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 12px 16px 12px 14px;
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
+  cursor: pointer;
+}
+.tense small { font-size: 10px; font-weight: 700; opacity: .75; }
+.tense .tense__glyph { font-size: 15px; line-height: 1; }
+.tense:active { transform: translateY(4px); box-shadow: none; }
+.tense:focus-visible { outline: 4px solid var(--ink); outline-offset: 2px; }
+.tense[aria-checked="true"] {
+  background: var(--crayon-purple);
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(51, 37, 26, .3), inset 0 0 0 3px rgba(255, 255, 255, .5);
+}
 
 .gram {
   flex: 1 1 0;
@@ -409,6 +441,13 @@
   border-radius: 12px;
   cursor: pointer;
 }
+/* What she has typed so far, shown as the first thing on the row. */
+.kb__typed {
+  min-width: 130px;
+  background: var(--crayon-green) !important;
+  font-size: 20px !important;
+}
+.kb__typed:disabled { background: var(--paper-deep) !important; color: var(--ink-soft); cursor: default; }
 .kb__keys { display: grid; gap: 6px; align-content: stretch; min-height: 0; }
 .kb__row { display: flex; gap: 6px; justify-content: center; }
 .kb__row button {
@@ -425,5 +464,7 @@
   cursor: pointer;
 }
 .kb__row button:active { transform: translateY(3px); box-shadow: none; }
-.kb__row button.wide { flex: 3 1 0; background: var(--crayon-green); }
+.kb__row button.wide { flex: 3 1 0; background: var(--crayon-yellow); }
 .kb__row button.util { background: var(--crayon-blue); }
+.kb__row button.go { background: var(--crayon-green); }
+.kb__row button.is-on { background: var(--crayon-purple); transform: translateY(3px); box-shadow: none; }

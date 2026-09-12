@@ -13,6 +13,7 @@ import { boards as playBoards } from './vocab/play.mjs';
 import { boards as bodyBoards } from './vocab/body.mjs';
 import { boards as worldBoards } from './vocab/world.mjs';
 import { boards as thingBoards } from './vocab/things.mjs';
+import { boards as learnBoards } from './vocab/learn.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -30,18 +31,29 @@ const boards = [
   ...bodyBoards,
   ...worldBoards,
   ...thingBoards,
+  ...learnBoards,
   keyboard,
 ];
 
 const vocab = compile([core, ...boards], { corePage: 'core' });
 
-// Grammar endings. Hidden behind a settings toggle by default; the bar grows
-// with her rather than cluttering the board now.
+// Tense. These are *sticky*: picking one sets the tense every doing-word is
+// put into as she taps it, so she chooses "when" once and then just talks —
+// rather than having to remember an ending after every single verb.
+vocab.tenses = [
+  { id: 'tense.past', label: 'did', hint: 'before', tense: 'past', glyph: '⏪' },
+  { id: 'tense.present', label: 'now', hint: 'right now', tense: 'present', glyph: '▶' },
+  { id: 'tense.continuous', label: '-ing', hint: 'happening', tense: 'continuous', glyph: '🔄' },
+  { id: 'tense.future', label: 'will', hint: 'later', tense: 'future', glyph: '⏩' },
+];
+
+// Endings, applied by hand to the last word in the bar. Each one rebuilds from
+// that word's original form, so they replace each other instead of stacking.
 vocab.grammarBar = [
   { id: 'gram.plural', label: '-s', hint: 'more than one', op: 'plural' },
-  { id: 'gram.ing', label: '-ing', hint: 'doing it now', op: 'ing' },
-  { id: 'gram.past', label: '-ed', hint: 'already happened', op: 'past' },
-  { id: 'gram.will', label: 'will', hint: 'going to happen', op: 'will' },
+  { id: 'gram.past', label: '-ed', hint: 'before', op: 'past' },
+  { id: 'gram.ing', label: '-ing', hint: 'happening', op: 'ing' },
+  { id: 'gram.will', label: 'will', hint: 'later', op: 'will' },
   { id: 'gram.possessive', label: "'s", hint: 'belongs to', op: 'possessive' },
   { id: 'gram.negate', label: "don't", hint: 'make it a no', op: 'negate' },
   { id: 'gram.a', label: 'a', hint: 'a thing', op: 'article_a' },

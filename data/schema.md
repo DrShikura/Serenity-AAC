@@ -17,7 +17,8 @@ app's own Edit mode — those changes live in a separate overlay on the device.
 | `home` | string | Board id the app opens on. |
 | `core` | string | Board id of the always-visible core rail. |
 | `colors` | string[] | Swatch names a button's `color` may use. |
-| `grammarBar` | object[] | The optional word-endings row (see below). |
+| `tenses` | object[] | The sticky tense strip (see below). |
+| `grammarBar` | object[] | The one-off word-endings row (see below). |
 | `boards` | object[] | Every board in the app. |
 
 ## Board
@@ -66,6 +67,18 @@ transfers to whatever device she meets at school.
 | `question` | question words | purple |
 | `negation` | no, not, don't | red |
 | `urgent` | bathroom, pain, "I need a break" | red, with a halo outline |
+
+## Tenses
+
+`{ id, label, hint, tense, glyph }`, where `tense` is `past`, `present`,
+`continuous` or `future`. Picking one sets a **mode**: from then on, every
+button with `grammar.pos === "verb"` is conjugated into that tense at the
+moment it is added to the sentence. Buttons without `pos: "verb"` are never
+touched, which is what keeps helper verbs (`am`, `was`, `will`) and nouns safe.
+
+`pos: "verb"` is inferred automatically at build time for any button that
+declares a `past` or `ing` form — see `tools/dsl.mjs`. Give a verb those forms
+and it becomes conjugable; leave them off and it does not.
 
 ## Grammar bar
 

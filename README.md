@@ -7,9 +7,13 @@ buttons; tap them to build a sentence; the tablet says it out loud.
 It runs entirely in a browser, works with **no internet at all**, and needs no
 account, no subscription, and no app store.
 
-- **1,068 buttons** across **46 pages** — food, toys, the bathroom, feelings,
-  people, places, describing words, questions, school, the car, and a spelling
-  keyboard for when she is ready for it.
+- **1,160 buttons** across **48 pages** — food, toys, the bathroom, feelings,
+  people, places, describing words, questions, school, the car, flags and
+  countries, and the small words that hold a sentence together.
+- **Past, present and future** — pick a tense once and every doing-word she taps
+  arrives already in it. "go" becomes "went", "eat" becomes "will eat".
+- **A real keyboard**, one tap from every screen, with capitals, punctuation,
+  numbers and word prediction — so she can always choose to spell it herself.
 - **Always-visible core words** — `I · you · my · it · want · need · like ·
   have · go · stop · more · not` never move, on any page.
 - **Your own voice** — record yourself saying any button, and your voice plays
@@ -58,11 +62,51 @@ open `http://THAT-ADDRESS:8080` on the tablet while both are on the same wifi.
 | Taps a folder (wavy underline) | Opens a page with more words |
 | Taps the bar at the top | Says the whole sentence |
 | Taps one word in the bar | Says just that word |
+| **spell** | Opens the keyboard from anywhere; tap again to go back |
+| **hush** | Stops talking mid-sentence |
 | Taps the ✕ on a word | Removes that word |
 | **back** | Removes the last word |
 | **undo** | Puts back whatever was just removed — including a whole cleared sentence |
 | **before** | Sentences she has said before; one tap says them again |
 | **Stay here** (📌) | Stops the app jumping back to Home after each word |
+
+### Past, present and future
+
+Along the bottom sit four tense buttons — **did** (before), **now**,
+**-ing** (happening), and **will** (later). Whichever one is lit stays lit, and
+from then on every doing-word she taps comes out in that tense automatically:
+
+| She picks | She taps | The bar says |
+|---|---|---|
+| did | `I` `go` | I **went** |
+| will | `I` `eat` | I **will eat** |
+| -ing | `I` `am` `play` | I am **playing** |
+
+Irregular verbs are handled properly — "go" becomes "went", not "goed". Words
+that are not doing-words are never touched, so "bread" stays "bread" no matter
+which tense is lit.
+
+To the right of the tenses are **endings** she can apply by hand to the last
+word: `-s`, `-ed`, `-ing`, `will`, `'s`, `don't`, `a`, `the`. Each one rebuilds
+from the original word rather than piling up, so tapping `-ing` and then
+`don't` gives "don't want" — never "don't wanting". She cannot build nonsense
+by exploring.
+
+The helper words that make tenses work — **am, is, are, was, were, will, do,
+did, has, had, can, could, should, would** — plus joining words (and, but,
+because, so, if) and prepositions (in, on, under, with, to, from) live on the
+**Building Words** page in the bottom bar.
+
+### Spelling
+
+The blue **spell** key in the top corner opens the keyboard from any page.
+It has capitals (`⇧ caps`), an apostrophe, a `123` layer with numbers and
+punctuation, and suggestions drawn from the app's own 1,160-word vocabulary —
+type `fla` and it offers *flag*, *flat*. What she has typed shows on a green
+key; tapping it (or `space`, or `✓ add`) drops it into the sentence.
+
+Each letter is spoken as she types it, which doubles as phonics practice.
+Turn that off with *Say each word as she taps it* if it gets in the way.
 
 ### Two things worth knowing
 
@@ -90,8 +134,8 @@ Inside you can change:
   and no animation, for when the bright version is too much), and Dark.
 - **Button size** and whether the words show under the pictures.
 - **Voice** — which voice, how fast, how high, how loud. Press *Try the voice*.
-- **Word endings** (`-s`, `-ing`, `-ed`, `will`, `don't`) — off by default.
-  Turn this on when she starts building longer sentences.
+- **The tense strip and word endings** — on by default, plus which tense the
+  app starts in. Turn the whole strip off to go back to plain words.
 - **Hold-to-press** — makes her hold a button briefly before it counts. Useful
   if she triggers buttons by accident.
 - **Go back to Home after picking a word** — on by default, so her core words
@@ -138,6 +182,7 @@ npm run build     # regenerates data/vocabulary.json and the hand-drawn symbols
 | `data/vocabulary.json` | Every board and button. Plain data, no code. |
 | `tools/vocab/*.mjs` | Where the vocabulary is actually authored — edit here, then `npm run build` |
 | `tools/build-icons.mjs` | The 37 hand-drawn crayon symbols |
+| `js/grammar.js` | Plurals, tenses, irregular verbs, subject agreement |
 | `js/output.js`, `js/grammar.js`, `js/vocabulary.js` | The whole communication model. No DOM. |
 | `js/render.js`, `js/speech.js`, `js/storage.js` | The browser-specific layer |
 | `docs/PORTING.md` | Notes for the Godot port |

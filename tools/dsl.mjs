@@ -75,9 +75,15 @@ export function compile(boards, { corePage } = {}) {
       };
       if (btn.grammar) out.grammar = btn.grammar;
       if (btn.plural || btn.past || btn.ing || btn.pos) {
+        // Anything carrying a past or -ing form is a doing word, and the sticky
+        // tense strip only ever touches words marked as such. Inferring it here
+        // keeps the authoring files from repeating `pos: 'verb'` 200 times —
+        // and keeps helper verbs like "am" and "was", which have no such forms,
+        // safely out of reach of conjugation.
+        const pos = btn.pos || (btn.past || btn.ing ? 'verb' : null);
         out.grammar = {
           ...(out.grammar || {}),
-          ...(btn.pos ? { pos: btn.pos } : {}),
+          ...(pos ? { pos } : {}),
           ...(btn.plural ? { plural: btn.plural } : {}),
           ...(btn.past ? { past: btn.past } : {}),
           ...(btn.ing ? { ing: btn.ing } : {}),

@@ -142,5 +142,9 @@ export const boards = [
     p('my name is', '🏷️', 'my name is'),
     p('nice to meet you', '🤝', 'nice to meet you'),
     p('see you later', '👋', 'see you later'),
+    f('Building words', '🧩', 'build'),
+    f('Letters', '🔤', 'keyboard'),
+    f('Flags', '🌍', 'world', { color: 'noun' }),
+    f('Time words', '⏰', 'time', { color: 'describe' }),
   ]),
 ];

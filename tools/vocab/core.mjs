@@ -37,7 +37,7 @@ export const home = board('home', 'Home', 'svg:home', 'noun', 8, 5, [
   w('hungry', '😋', { color: 'describe' }),
   w('thirsty', '🥤', { color: 'describe' }),
   w('tired', '😴', { color: 'describe' }),
-  w('wait', 'svg:wait', { color: 'verb' }),
+  w('wait', 'svg:wait', { color: 'verb', past: 'waited', ing: 'waiting' }),
 
   f('Food', '🍎', 'food'),
   f('Play', '🧸', 'play'),

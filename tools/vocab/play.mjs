@@ -90,7 +90,7 @@ export const boards = [
     w('color', '🖍️', { color: 'verb', past: 'colored', ing: 'coloring' }),
     w('paint', '🎨', { color: 'verb', past: 'painted', ing: 'painting' }),
     w('cut', '✂️', { color: 'verb', past: 'cut', ing: 'cutting' }),
-    w('glue', '🩹', { color: 'verb' }), w('sticker', '⭐', { plural: 'stickers' }),
+    w('glue', '🩹', { color: 'verb', past: 'glued', ing: 'gluing' }), w('sticker', '⭐', { plural: 'stickers' }),
     w('crayon', '🖍️', { plural: 'crayons' }), w('marker', '🖊️', { plural: 'markers' }),
     w('paper', '📄'), w('scissors', '✂️'), w('paint brush', '🖌️'), w('play dough', '🟡'),
     p('I made this', '🖼️', 'I made this', { color: 'social' }),
@@ -123,7 +123,7 @@ export const boards = [
   ]),
 
   board('play_pretend', 'Pretend', '🦸', 'noun', 8, 2, [
-    w('pretend', '🎭', { color: 'verb' }), w('superhero', '🦸'), w('princess', '👸'), w('pirate', '🏴‍☠️'),
+    w('pretend', '🎭', { color: 'verb', past: 'pretended', ing: 'pretending' }), w('superhero', '🦸'), w('princess', '👸'), w('pirate', '🏴‍☠️'),
     w('doctor', '🩺'), w('teacher', '🧑‍🏫'), w('chef', '👨‍🍳'), w('astronaut', '👨‍🚀'),
     w('dragon', '🐉'), w('monster', '👹'), w('fairy', '🧚'), w('animal', '🐾'),
     w('castle', '🏰'), w('rocket', '🚀'), w('magic', '✨'), w('costume', '🎭'),

@@ -6,6 +6,7 @@ import {
   createUtterance, tokenFromButton, tokenFromText, append, backspace, removeAt,
   clear, undo, canUndo, applyGrammarToLast, toSpeech, toText, isEmpty,
 } from './output.js';
+import { conjugate } from './grammar.js';
 import { renderBoard, renderCore, renderOutput, sparkleAt } from './render.js';
 import { renderKeyboard } from './keyboard.js';
 import { initSpeech, speak, speakButton, stopSpeaking, defaultVoice, playRecording } from './speech.js';
@@ -101,25 +102,27 @@ function drawOutput() {
   el('btn-undo').disabled = !canUndo(app.get().utterance);
 }
 
-/** Pinned shortcuts along the bottom. These never reorder. */
-const PINNED = ['home', 'food', 'play', 'feelings', 'regulate', 'actions', 'social', 'keyboard'];
+/** Pinned shortcuts along the bottom. These never reorder.
+ *  The keyboard is not here — it has its own key in the top controls, one tap
+ *  from every screen. */
+const PINNED = ['home', 'food', 'play', 'feelings', 'regulate', 'actions', 'social', 'build', 'school'];
 
 function drawNav(board) {
   const { vocab, trail, pinned } = app.get();
   dom.navbar.replaceChildren();
 
-  dom.navbar.append(navButton('🏠', 'Home', () => go(vocab.home, true), board.id === vocab.home));
-  if (trail.length) dom.navbar.append(navButton('←', 'Back', goBack));
+  const scroller = document.createElement('div');
+  scroller.className = 'navbar__scroll';
+
+  scroller.append(navButton('🏠', 'Home', () => go(vocab.home, true), board.id === vocab.home));
+  if (trail.length) scroller.append(navButton('←', 'Back', goBack));
 
   for (const id of PINNED) {
     const target = vocab.boardsById.get(id);
     if (!target || target.id === vocab.home) continue;
-    dom.navbar.append(navButton(iconMarkup(target.icon), target.title, () => go(id, true), board.id === id));
+    scroller.append(navButton(iconMarkup(target.icon), target.title, () => go(id, true), board.id === id));
   }
-
-  const spacer = document.createElement('span');
-  spacer.className = 'spacer';
-  dom.navbar.append(spacer);
+  dom.navbar.append(scroller);
 
   const pin = navButton('📌', pinned ? 'Staying here' : 'Stay here', () => {
     app.set({ pinned: !app.get().pinned });
@@ -152,19 +155,60 @@ function drawGrammar() {
   const { settings, vocab } = app.get();
   dom.grammar.hidden = !settings.showGrammar;
   if (!settings.showGrammar) return;
-  dom.grammar.replaceChildren();
+  drawTenses();
+  drawEndings();
+}
+
+/**
+ * The tense strip. Picking a tense is a *mode*, not an edit: from then on
+ * every doing-word she taps arrives already conjugated. That is the whole
+ * point — she decides "when" once and then just talks, instead of having to
+ * remember an ending after every single verb.
+ */
+function drawTenses() {
+  const { settings, vocab } = app.get();
+  const strip = el('tense-strip');
+  strip.replaceChildren();
+  for (const item of vocab.tenses || []) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tense';
+    b.setAttribute('role', 'radio');
+    b.dataset.tense = item.tense;
+    b.setAttribute('aria-checked', settings.tenseMode === item.tense ? 'true' : 'false');
+    b.setAttribute('aria-label', `${item.label} — ${item.hint}`);
+    b.innerHTML =
+      `<span class="tense__glyph" aria-hidden="true">${item.glyph}</span>` +
+      `${item.label}<small>${item.hint}</small>`;
+    b.addEventListener('click', () => {
+      const settings = { ...app.get().settings, tenseMode: item.tense };
+      app.set({ settings });
+      saveSettings(settings);
+      drawTenses();
+      // Say the mode out loud so the change is never silent.
+      speak(item.hint, settings);
+    });
+    strip.append(b);
+  }
+}
+
+function drawEndings() {
+  const { vocab } = app.get();
+  const strip = el('ending-strip');
+  strip.replaceChildren();
   for (const item of vocab.grammarBar || []) {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'gram';
     b.innerHTML = `${item.label}<small>${item.hint}</small>`;
+    b.setAttribute('aria-label', `${item.label} — ${item.hint}`);
     b.addEventListener('click', () => {
       const next = applyGrammarToLast(app.get().utterance, item.op);
       update(next);
       const last = next.tokens[next.tokens.length - 1];
       if (last) speakIfWanted(last.speak);
     });
-    dom.grammar.append(b);
+    strip.append(b);
   }
 }
 
@@ -218,8 +262,16 @@ function onKeyActivate(keyEl, event) {
       runAction(button.action);
       break;
     default: {
-      addToken(tokenFromButton(button));
-      if (settings.speakOnTap) speakButton(button, settings);
+      // Doing-words arrive in whatever tense she has selected. Everything else
+      // passes through untouched — a tense must never mangle a noun.
+      const token = settings.showGrammar
+        ? conjugate(tokenFromButton(button), settings.tenseMode)
+        : tokenFromButton(button);
+      addToken(token);
+      if (settings.speakOnTap) {
+        if (token.speak === button.speak) speakButton(button, settings);
+        else speak(token.speak, settings);   // conjugated: no recording matches it
+      }
       // Fringe words live on category pages; bouncing back Home keeps the
       // core words she needs for the *next* word permanently one tap away.
       const onCore = app.get().vocab.boardsById.get(vocab.core).buttons.some((b) => b?.id === button.id);
@@ -340,6 +392,15 @@ function wireControls() {
     stopSpeaking();
     update(clear(app.get().utterance));
   });
+
+  // Spelling is one tap from anywhere, never buried in a folder.
+  el('btn-keyboard').addEventListener('click', () => {
+    const vocab = app.get().vocab;
+    if (app.get().boardId === 'keyboard') go(vocab.home, true);
+    else go('keyboard', true);
+  });
+
+  el('btn-hush').addEventListener('click', stopSpeaking);
 
   el('btn-history').addEventListener('click', () => openHistory(dom.sheet, dom.scrim, {
     onSpeak: (entry) => speak(entry.speech, app.get().settings),

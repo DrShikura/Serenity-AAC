@@ -425,7 +425,12 @@
           },
           "color": "verb",
           "target": null,
-          "action": null
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "waited",
+            "ing": "waiting"
+          }
         },
         {
           "id": "home.food",
@@ -4972,6 +4977,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "drew",
             "ing": "drawing"
           }
@@ -4989,6 +4995,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "colored",
             "ing": "coloring"
           }
@@ -5006,6 +5013,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "painted",
             "ing": "painting"
           }
@@ -5023,6 +5031,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "cut",
             "ing": "cutting"
           }
@@ -5038,7 +5047,12 @@
           },
           "color": "verb",
           "target": null,
-          "action": null
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "glued",
+            "ing": "gluing"
+          }
         },
         {
           "id": "play_art.sticker",
@@ -5244,6 +5258,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "sang",
             "ing": "singing"
           }
@@ -5261,6 +5276,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "danced",
             "ing": "dancing"
           }
@@ -5554,6 +5570,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "won"
           }
         },
@@ -5570,6 +5587,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "lost"
           }
         },
@@ -5675,7 +5693,12 @@
           },
           "color": "verb",
           "target": null,
-          "action": null
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "pretended",
+            "ing": "pretending"
+          }
         },
         {
           "id": "play_pretend.superhero",
@@ -5927,6 +5950,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "read",
             "ing": "reading"
           }
@@ -6285,6 +6309,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "hurt",
             "ing": "hurting"
           }
@@ -6524,7 +6549,12 @@
           },
           "color": "verb",
           "target": null,
-          "action": null
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "rested",
+            "ing": "resting"
+          }
         },
         {
           "id": "body.sleep",
@@ -6539,6 +6569,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "slept",
             "ing": "sleeping"
           }
@@ -7022,6 +7053,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "washed",
             "ing": "washing"
           }
@@ -7037,7 +7069,12 @@
           },
           "color": "verb",
           "target": null,
-          "action": null
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "brushed teeth",
+            "ing": "brushing teeth"
+          }
         },
         {
           "id": "body_hygiene.bath",
@@ -8787,6 +8824,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "went",
             "ing": "going"
           }
@@ -8804,6 +8842,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "came",
             "ing": "coming"
           }
@@ -8821,6 +8860,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "stayed",
             "ing": "staying"
           }
@@ -8838,6 +8878,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "left",
             "ing": "leaving"
           }
@@ -9077,6 +9118,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "went",
             "ing": "going"
           }
@@ -9094,6 +9136,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "stopped",
             "ing": "stopping"
           }
@@ -9111,6 +9154,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "got",
             "ing": "getting"
           }
@@ -9128,6 +9172,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "gave",
             "ing": "giving"
           }
@@ -9145,6 +9190,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "put",
             "ing": "putting"
           }
@@ -9162,6 +9208,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "took",
             "ing": "taking"
           }
@@ -9179,6 +9226,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "made",
             "ing": "making"
           }
@@ -9196,6 +9244,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "did",
             "ing": "doing"
           }
@@ -9213,6 +9262,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "played",
             "ing": "playing"
           }
@@ -9230,6 +9280,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "ate",
             "ing": "eating"
           }
@@ -9247,6 +9298,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "drank",
             "ing": "drinking"
           }
@@ -9264,6 +9316,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "slept",
             "ing": "sleeping"
           }
@@ -9281,6 +9334,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "looked",
             "ing": "looking"
           }
@@ -9298,6 +9352,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "saw",
             "ing": "seeing"
           }
@@ -9315,6 +9370,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "heard",
             "ing": "hearing"
           }
@@ -9332,6 +9388,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "said",
             "ing": "saying"
           }
@@ -9349,6 +9406,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "opened",
             "ing": "opening"
           }
@@ -9366,6 +9424,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "closed",
             "ing": "closing"
           }
@@ -9383,6 +9442,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "turned on",
             "ing": "turning on"
           }
@@ -9400,6 +9460,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "turned off",
             "ing": "turning off"
           }
@@ -9417,6 +9478,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "washed",
             "ing": "washing"
           }
@@ -9434,6 +9496,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "read",
             "ing": "reading"
           }
@@ -9451,6 +9514,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "watched",
             "ing": "watching"
           }
@@ -9468,6 +9532,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "waited",
             "ing": "waiting"
           }
@@ -9485,6 +9550,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "sat",
             "ing": "sitting"
           }
@@ -9502,6 +9568,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "stood",
             "ing": "standing"
           }
@@ -9519,6 +9586,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "walked",
             "ing": "walking"
           }
@@ -9536,6 +9604,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "ran",
             "ing": "running"
           }
@@ -9553,6 +9622,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "jumped",
             "ing": "jumping"
           }
@@ -9570,6 +9640,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "hugged",
             "ing": "hugging"
           }
@@ -9587,6 +9658,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "held",
             "ing": "holding"
           }
@@ -9604,6 +9676,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "helped",
             "ing": "helping"
           }
@@ -9621,6 +9694,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "found",
             "ing": "finding"
           }
@@ -9638,6 +9712,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "fixed",
             "ing": "fixing"
           }
@@ -9655,6 +9730,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "pushed",
             "ing": "pushing"
           }
@@ -9672,6 +9748,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "pulled",
             "ing": "pulling"
           }
@@ -9689,6 +9766,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "shared",
             "ing": "sharing"
           }
@@ -9706,6 +9784,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "tried",
             "ing": "trying"
           }
@@ -9723,6 +9802,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "thought",
             "ing": "thinking"
           }
@@ -9740,6 +9820,7 @@
           "target": null,
           "action": null,
           "grammar": {
+            "pos": "verb",
             "past": "felt",
             "ing": "feeling"
           }
@@ -11728,10 +11809,58 @@
           "target": null,
           "action": null
         },
-        null,
-        null,
-        null,
-        null
+        {
+          "id": "social.building_words",
+          "label": "Building words",
+          "speak": "Building words",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧩"
+          },
+          "color": "social",
+          "target": "build",
+          "action": null
+        },
+        {
+          "id": "social.letters",
+          "label": "Letters",
+          "speak": "Letters",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔤"
+          },
+          "color": "social",
+          "target": "keyboard",
+          "action": null
+        },
+        {
+          "id": "social.flags",
+          "label": "Flags",
+          "speak": "Flags",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌍"
+          },
+          "color": "noun",
+          "target": "world",
+          "action": null
+        },
+        {
+          "id": "social.time_words",
+          "label": "Time words",
+          "speak": "Time words",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏰"
+          },
+          "color": "describe",
+          "target": "time",
+          "action": null
+        }
       ]
     },
     {
@@ -14175,7 +14304,7 @@
       "icon": "✏️",
       "color": "noun",
       "cols": 8,
-      "rows": 4,
+      "rows": 5,
       "buttons": [
         {
           "id": "school.teacher",
@@ -14603,6 +14732,110 @@
           },
           "color": "urgent",
           "target": null,
+          "action": null
+        },
+        {
+          "id": "school.letters",
+          "label": "Letters",
+          "speak": "Letters",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔤"
+          },
+          "color": "social",
+          "target": "keyboard",
+          "action": null
+        },
+        {
+          "id": "school.numbers",
+          "label": "Numbers",
+          "speak": "Numbers",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔢"
+          },
+          "color": "describe",
+          "target": "numbers",
+          "action": null
+        },
+        {
+          "id": "school.flags",
+          "label": "Flags",
+          "speak": "Flags",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌍"
+          },
+          "color": "noun",
+          "target": "world",
+          "action": null
+        },
+        {
+          "id": "school.building_words",
+          "label": "Building words",
+          "speak": "Building words",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧩"
+          },
+          "color": "social",
+          "target": "build",
+          "action": null
+        },
+        {
+          "id": "school.colors",
+          "label": "Colors",
+          "speak": "Colors",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌈"
+          },
+          "color": "describe",
+          "target": "describe_colors",
+          "action": null
+        },
+        {
+          "id": "school.shapes",
+          "label": "Shapes",
+          "speak": "Shapes",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔷"
+          },
+          "color": "describe",
+          "target": "describe_shapes",
+          "action": null
+        },
+        {
+          "id": "school.opposites",
+          "label": "Opposites",
+          "speak": "Opposites",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "↔️"
+          },
+          "color": "describe",
+          "target": "describe_opposites",
+          "action": null
+        },
+        {
+          "id": "school.time",
+          "label": "Time",
+          "speak": "Time",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏰"
+          },
+          "color": "describe",
+          "target": "time",
           "action": null
         }
       ]
@@ -15252,6 +15485,1084 @@
       ]
     },
     {
+      "id": "build",
+      "title": "Building Words",
+      "icon": "🧩",
+      "color": "social",
+      "cols": 8,
+      "rows": 5,
+      "buttons": [
+        {
+          "id": "build.am",
+          "label": "am",
+          "speak": "am",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🙋"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.is",
+          "label": "is",
+          "speak": "is",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👉"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.are",
+          "label": "are",
+          "speak": "are",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👥"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.was",
+          "label": "was",
+          "speak": "was",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏪"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.were",
+          "label": "were",
+          "speak": "were",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏪"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.will",
+          "label": "will",
+          "speak": "will",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏩"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.do",
+          "label": "do",
+          "speak": "do",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "✅"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.did",
+          "label": "did",
+          "speak": "did",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏪"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.does",
+          "label": "does",
+          "speak": "does",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "✅"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.have",
+          "label": "have",
+          "speak": "have",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫴"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.has",
+          "label": "has",
+          "speak": "has",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫴"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.had",
+          "label": "had",
+          "speak": "had",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⏪"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.can",
+          "label": "can",
+          "speak": "can",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "💪"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.could",
+          "label": "could",
+          "speak": "could",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤔"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.should",
+          "label": "should",
+          "speak": "should",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "☝️"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.would",
+          "label": "would",
+          "speak": "would",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤔"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.a",
+          "label": "a",
+          "speak": "a",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "1️⃣"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.an",
+          "label": "an",
+          "speak": "an",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "1️⃣"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.the",
+          "label": "the",
+          "speak": "the",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👉"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.and",
+          "label": "and",
+          "speak": "and",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "➕"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.but",
+          "label": "but",
+          "speak": "but",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "↔️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.or",
+          "label": "or",
+          "speak": "or",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔀"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.because",
+          "label": "because",
+          "speak": "because",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "➡️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.so",
+          "label": "so",
+          "speak": "so",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "➡️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.in",
+          "label": "in",
+          "speak": "in",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📥"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.on",
+          "label": "on",
+          "speak": "on",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬆️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.under",
+          "label": "under",
+          "speak": "under",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬇️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.with",
+          "label": "with",
+          "speak": "with",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤝"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.to",
+          "label": "to",
+          "speak": "to",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "➡️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.from",
+          "label": "from",
+          "speak": "from",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬅️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.for",
+          "label": "for",
+          "speak": "for",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🎁"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.at",
+          "label": "at",
+          "speak": "at",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📍"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.my",
+          "label": "my",
+          "speak": "my",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤲"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.your",
+          "label": "your",
+          "speak": "your",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫵"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.his",
+          "label": "his",
+          "speak": "his",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👦"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.her",
+          "label": "her",
+          "speak": "her",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👧"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.their",
+          "label": "their",
+          "speak": "their",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👬"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.our",
+          "label": "our",
+          "speak": "our",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👨‍👩‍👧"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.if",
+          "label": "if",
+          "speak": "if",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤔"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "build.than",
+          "label": "than",
+          "speak": "than",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⚖️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "title": "Flags & Countries",
+      "icon": "🌍",
+      "color": "noun",
+      "cols": 8,
+      "rows": 5,
+      "buttons": [
+        {
+          "id": "world.united_states",
+          "label": "United States",
+          "speak": "United States",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇺🇸"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.canada",
+          "label": "Canada",
+          "speak": "Canada",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇨🇦"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.mexico",
+          "label": "Mexico",
+          "speak": "Mexico",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇲🇽"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.brazil",
+          "label": "Brazil",
+          "speak": "Brazil",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇧🇷"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.united_kingdom",
+          "label": "United Kingdom",
+          "speak": "United Kingdom",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇬🇧"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.ireland",
+          "label": "Ireland",
+          "speak": "Ireland",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇮🇪"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.france",
+          "label": "France",
+          "speak": "France",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇫🇷"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.germany",
+          "label": "Germany",
+          "speak": "Germany",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇩🇪"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.spain",
+          "label": "Spain",
+          "speak": "Spain",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇪🇸"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.italy",
+          "label": "Italy",
+          "speak": "Italy",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇮🇹"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.portugal",
+          "label": "Portugal",
+          "speak": "Portugal",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇵🇹"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.greece",
+          "label": "Greece",
+          "speak": "Greece",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇬🇷"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.netherlands",
+          "label": "Netherlands",
+          "speak": "Netherlands",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇳🇱"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.sweden",
+          "label": "Sweden",
+          "speak": "Sweden",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇸🇪"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.norway",
+          "label": "Norway",
+          "speak": "Norway",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇳🇴"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.poland",
+          "label": "Poland",
+          "speak": "Poland",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇵🇱"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.ukraine",
+          "label": "Ukraine",
+          "speak": "Ukraine",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇺🇦"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.russia",
+          "label": "Russia",
+          "speak": "Russia",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇷🇺"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.turkey",
+          "label": "Turkey",
+          "speak": "Turkey",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇹🇷"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.egypt",
+          "label": "Egypt",
+          "speak": "Egypt",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇪🇬"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.kenya",
+          "label": "Kenya",
+          "speak": "Kenya",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇰🇪"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.nigeria",
+          "label": "Nigeria",
+          "speak": "Nigeria",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇳🇬"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.south_africa",
+          "label": "South Africa",
+          "speak": "South Africa",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇿🇦"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.india",
+          "label": "India",
+          "speak": "India",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇮🇳"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.china",
+          "label": "China",
+          "speak": "China",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇨🇳"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.japan",
+          "label": "Japan",
+          "speak": "Japan",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇯🇵"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.south_korea",
+          "label": "South Korea",
+          "speak": "South Korea",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇰🇷"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.thailand",
+          "label": "Thailand",
+          "speak": "Thailand",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇹🇭"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.australia",
+          "label": "Australia",
+          "speak": "Australia",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇦🇺"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.new_zealand",
+          "label": "New Zealand",
+          "speak": "New Zealand",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇳🇿"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.argentina",
+          "label": "Argentina",
+          "speak": "Argentina",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇦🇷"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.switzerland",
+          "label": "Switzerland",
+          "speak": "Switzerland",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🇨🇭"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.flag",
+          "label": "flag",
+          "speak": "flag",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏳️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "flags"
+          }
+        },
+        {
+          "id": "world.country",
+          "label": "country",
+          "speak": "country",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🗺️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "countries"
+          }
+        },
+        {
+          "id": "world.map",
+          "label": "map",
+          "speak": "map",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🗺️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "maps"
+          }
+        },
+        {
+          "id": "world.world",
+          "label": "world",
+          "speak": "world",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌍"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "world.continent",
+          "label": "continent",
+          "speak": "continent",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌎"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "continents"
+          }
+        },
+        {
+          "id": "world.ocean",
+          "label": "ocean",
+          "speak": "ocean",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌊"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "oceans"
+          }
+        },
+        {
+          "id": "world.language",
+          "label": "language",
+          "speak": "language",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "💬"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "languages"
+          }
+        },
+        {
+          "id": "world.capital_city",
+          "label": "capital city",
+          "speak": "capital city",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏙️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        }
+      ]
+    },
+    {
       "id": "keyboard",
       "title": "Letters",
       "icon": "svg:keyboard",
@@ -15262,6 +16573,36 @@
       "special": "keyboard"
     }
   ],
+  "tenses": [
+    {
+      "id": "tense.past",
+      "label": "did",
+      "hint": "before",
+      "tense": "past",
+      "glyph": "⏪"
+    },
+    {
+      "id": "tense.present",
+      "label": "now",
+      "hint": "right now",
+      "tense": "present",
+      "glyph": "▶"
+    },
+    {
+      "id": "tense.continuous",
+      "label": "-ing",
+      "hint": "happening",
+      "tense": "continuous",
+      "glyph": "🔄"
+    },
+    {
+      "id": "tense.future",
+      "label": "will",
+      "hint": "later",
+      "tense": "future",
+      "glyph": "⏩"
+    }
+  ],
   "grammarBar": [
     {
       "id": "gram.plural",
@@ -15270,21 +16611,21 @@
       "op": "plural"
     },
     {
-      "id": "gram.ing",
-      "label": "-ing",
-      "hint": "doing it now",
-      "op": "ing"
-    },
-    {
       "id": "gram.past",
       "label": "-ed",
-      "hint": "already happened",
+      "hint": "before",
       "op": "past"
+    },
+    {
+      "id": "gram.ing",
+      "label": "-ing",
+      "hint": "happening",
+      "op": "ing"
     },
     {
       "id": "gram.will",
       "label": "will",
-      "hint": "going to happen",
+      "hint": "later",
       "op": "will"
     },
     {

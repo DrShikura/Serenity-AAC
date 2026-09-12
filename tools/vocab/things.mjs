@@ -121,7 +121,7 @@ export const boards = [
     p('look at the animal', '👀', 'look at the animal', { color: 'social' }),
   ]),
 
-  board('school', 'School', '✏️', 'noun', 8, 4, [
+  board('school', 'School', '✏️', 'noun', 8, 5, [
     w('teacher', '🧑‍🏫', { color: 'people' }), w('friend', '🧒', { color: 'people', plural: 'friends' }),
     w('class', '🏫'), w('desk', '🪑'), w('chair', '🪑'), w('backpack', '🎒'),
     w('pencil', '✏️', { plural: 'pencils' }), w('paper', '📄'),
@@ -138,6 +138,17 @@ export const boards = [
     p('what do I do?', '❓', 'what do I do now', { color: 'question' }),
     p('I want to work alone', '🚶', 'I want to work alone', { color: 'social' }),
     p('this is too hard', '😤', 'this is too hard for me', { color: 'urgent' }),
+
+    // Learning hub. She is reading, spelling and learning her flags, so the
+    // things she is being taught get their own way in.
+    f('Letters', '🔤', 'keyboard', { color: 'social' }),
+    f('Numbers', '🔢', 'numbers', { color: 'describe' }),
+    f('Flags', '🌍', 'world'),
+    f('Building words', '🧩', 'build', { color: 'social' }),
+    f('Colors', '🌈', 'describe_colors', { color: 'describe' }),
+    f('Shapes', '🔷', 'describe_shapes', { color: 'describe' }),
+    f('Opposites', '↔️', 'describe_opposites', { color: 'describe' }),
+    f('Time', '⏰', 'time', { color: 'describe' }),
   ]),
 
   board('numbers', 'Numbers & Counting', '🔢', 'describe', 8, 3, [

@@ -110,3 +110,43 @@ test('the urgent vocabulary a child actually needs in a hurry exists', () => {
     assert.ok(all.some((s) => s === must), `missing: ${must}`);
   }
 });
+
+test('the tense strip is present and complete', () => {
+  const tenses = shipped.tenses.map((t) => t.tense);
+  assert.deepEqual(tenses, ['past', 'present', 'continuous', 'future']);
+});
+
+test('doing words are marked so the tense strip can reach them', () => {
+  const verbs = shipped.boards
+    .flatMap((b) => b.buttons.filter(Boolean))
+    .filter((b) => b.grammar?.pos === 'verb');
+  assert.ok(verbs.length > 70, `only ${verbs.length} conjugable verbs`);
+  // Every one must carry the forms the tense engine needs or be regular.
+  for (const must of ['go', 'eat', 'play', 'see', 'take', 'run']) {
+    assert.ok(verbs.some((v) => v.label === must), `missing verb: ${must}`);
+  }
+});
+
+test('helper verbs are NOT conjugable — "was" must never become "wasing"', () => {
+  const build = shipped.boardsById.get('build');
+  assert.ok(build, 'the Building Words board exists');
+  for (const label of ['am', 'is', 'are', 'was', 'were', 'will', 'did', 'had']) {
+    const button = build.buttons.find((b) => b?.label === label);
+    assert.ok(button, `missing helper verb: ${label}`);
+    assert.notEqual(button.grammar?.pos, 'verb', `${label} must not be conjugable`);
+  }
+});
+
+test('the words needed to build a sentence by hand are all there', () => {
+  const build = shipped.boardsById.get('build').buttons.filter(Boolean).map((b) => b.label);
+  for (const must of ['am', 'is', 'the', 'and', 'because', 'with', 'to', 'my', 'if']) {
+    assert.ok(build.includes(must), `missing: ${must}`);
+  }
+});
+
+test('the keyboard board is reachable and the flags board exists', () => {
+  assert.ok(shipped.boardsById.get('keyboard'));
+  const world = shipped.boardsById.get('world');
+  assert.ok(world);
+  assert.ok(world.buttons.filter(Boolean).length >= 32);
+});

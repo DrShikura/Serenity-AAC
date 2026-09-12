@@ -28,7 +28,8 @@ export const DEFAULT_SETTINGS = {
   speakOnSentence: true,
   autoHome: true,       // jump back to Home after a fringe word, keeping core in view
   collapseHidden: false,
-  showGrammar: false,
+  showGrammar: true,    // she is working on past/present/future, so this is on
+  tenseMode: 'present', // sticky: every verb she taps arrives in this tense
   dwellMs: 0,           // hold-to-activate; 0 = ordinary tap
   debounceMs: 250,      // ignore an accidental second tap on the same key
   keepAwake: true,
