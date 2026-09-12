@@ -18,9 +18,17 @@ export function w(label, icon, opts = {}) {
   return { type: 'word', label, icon, ...opts };
 }
 
-/** A phrase button: appends a whole phrase as a single chip. */
-export function p(label, icon, speak, opts = {}) {
-  return { type: 'phrase', label, icon, speak: speak ?? label, ...opts };
+/**
+ * A phrase button: appends a whole phrase as a single chip.
+ *
+ * `speak` is always exactly `label` — set *after* spreading `opts`, so
+ * nothing can override it by accident. What a button says out loud must
+ * always be exactly what it shows; there is no way to author a mismatch.
+ * (`type: 'phrase'` survives only as a hint for anyone reading the source —
+ * no runtime code branches on it differently from `type: 'word'`.)
+ */
+export function p(label, icon, opts = {}) {
+  return { type: 'phrase', label, icon, ...opts, speak: label };
 }
 
 /** A folder button: navigates to another board. */

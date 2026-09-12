@@ -103,12 +103,20 @@ test('core words are present and the core board is exactly the rail', () => {
 test('the urgent vocabulary a child actually needs in a hurry exists', () => {
   const all = shipped.boards.flatMap((b) => b.buttons.filter(Boolean)).map((b) => b.speak.toLowerCase());
   for (const must of [
-    'i need to go to the bathroom', 'it hurts', 'i need a break',
-    'help me please', 'it is too loud for me', 'please do not touch me',
-    'that is not what i meant', 'i am not okay',
+    'i need the bathroom', 'it hurts', 'i need a break',
+    'help me please', 'too loud', "don't touch me",
+    "that's not what i meant", "i'm not okay",
   ]) {
     assert.ok(all.some((s) => s === must), `missing: ${must}`);
   }
+});
+
+test('every word/phrase button says exactly what it shows', () => {
+  const offenders = shipped.boards
+    .flatMap((b) => b.buttons.filter(Boolean))
+    .filter((b) => (b.type === 'word' || b.type === 'phrase') && b.speak !== b.label)
+    .map((b) => b.id);
+  assert.deepEqual(offenders, [], 'these buttons say something different from what they show');
 });
 
 test('the tense strip is present and complete', () => {

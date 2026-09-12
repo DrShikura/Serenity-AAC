@@ -326,7 +326,7 @@
         {
           "id": "home.bathroom",
           "label": "bathroom",
-          "speak": "I need the bathroom",
+          "speak": "bathroom",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -339,7 +339,7 @@
         {
           "id": "home.help_me",
           "label": "help me",
-          "speak": "help me please",
+          "speak": "help me",
           "type": "phrase",
           "icon": {
             "kind": "svg",
@@ -669,7 +669,7 @@
         {
           "id": "home.whats_that",
           "label": "what's that?",
-          "speak": "what is that?",
+          "speak": "what's that?",
           "type": "phrase",
           "icon": {
             "kind": "svg",
@@ -1070,7 +1070,7 @@
         {
           "id": "food.too_hot",
           "label": "too hot",
-          "speak": "it is too hot",
+          "speak": "too hot",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1083,7 +1083,7 @@
         {
           "id": "food.too_cold",
           "label": "too cold",
-          "speak": "it is too cold",
+          "speak": "too cold",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1096,7 +1096,7 @@
         {
           "id": "food.all_gone",
           "label": "all gone",
-          "speak": "it is all gone",
+          "speak": "all gone",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1238,7 +1238,7 @@
         {
           "id": "food.im_hungry",
           "label": "I'm hungry",
-          "speak": "I am hungry",
+          "speak": "I'm hungry",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1290,7 +1290,7 @@
         {
           "id": "food.i_dont_like_it",
           "label": "I don't like it",
-          "speak": "I do not like it",
+          "speak": "I don't like it",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1303,7 +1303,7 @@
         {
           "id": "food.thats_too_much",
           "label": "that's too much",
-          "speak": "that is too much",
+          "speak": "that's too much",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1316,7 +1316,7 @@
         {
           "id": "food.a_little_bit",
           "label": "a little bit",
-          "speak": "just a little bit",
+          "speak": "a little bit",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -1329,7 +1329,7 @@
         {
           "id": "food.im_all_done",
           "label": "I'm all done",
-          "speak": "I am all done",
+          "speak": "I'm all done",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -2738,7 +2738,7 @@
         {
           "id": "food_drinks.more_to_drink",
           "label": "more to drink",
-          "speak": "I want more to drink",
+          "speak": "more to drink",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3392,7 +3392,7 @@
         {
           "id": "food_table.i_spilled",
           "label": "I spilled",
-          "speak": "I spilled something",
+          "speak": "I spilled",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3418,7 +3418,7 @@
         {
           "id": "food_table.clean_it_up",
           "label": "clean it up",
-          "speak": "can you clean it up",
+          "speak": "clean it up",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3431,7 +3431,7 @@
         {
           "id": "food_table.sit_down",
           "label": "sit down",
-          "speak": "sit down please",
+          "speak": "sit down",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3702,7 +3702,7 @@
         {
           "id": "play.my_turn",
           "label": "my turn",
-          "speak": "it is my turn",
+          "speak": "my turn",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3715,7 +3715,7 @@
         {
           "id": "play.your_turn",
           "label": "your turn",
-          "speak": "it is your turn",
+          "speak": "your turn",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3728,7 +3728,7 @@
         {
           "id": "play.play_with_me",
           "label": "play with me",
-          "speak": "will you play with me",
+          "speak": "play with me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3780,7 +3780,7 @@
         {
           "id": "play.im_bored",
           "label": "I'm bored",
-          "speak": "I am bored",
+          "speak": "I'm bored",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3793,7 +3793,7 @@
         {
           "id": "play.play_again",
           "label": "play again",
-          "speak": "I want to play again",
+          "speak": "play again",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3910,7 +3910,7 @@
         {
           "id": "play.help_me_build",
           "label": "help me build",
-          "speak": "help me build it",
+          "speak": "help me build",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3936,7 +3936,7 @@
         {
           "id": "play.fix_it_please",
           "label": "fix it please",
-          "speak": "can you fix it please",
+          "speak": "fix it please",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3949,7 +3949,7 @@
         {
           "id": "play.put_it_away",
           "label": "put it away",
-          "speak": "time to put it away",
+          "speak": "put it away",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -3962,7 +3962,7 @@
         {
           "id": "play.one_more_time",
           "label": "one more time",
-          "speak": "one more time please",
+          "speak": "one more time",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4001,7 +4001,7 @@
         {
           "id": "play.all_done_playing",
           "label": "all done playing",
-          "speak": "I am all done playing",
+          "speak": "all done playing",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4675,7 +4675,7 @@
         {
           "id": "play_outside.go_outside",
           "label": "go outside",
-          "speak": "I want to go outside",
+          "speak": "go outside",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4688,7 +4688,7 @@
         {
           "id": "play_outside.go_home_now",
           "label": "go home now",
-          "speak": "I want to go home now",
+          "speak": "go home now",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4701,7 +4701,7 @@
         {
           "id": "play_outside.too_hot_outside",
           "label": "too hot outside",
-          "speak": "it is too hot outside",
+          "speak": "too hot outside",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4905,7 +4905,7 @@
         {
           "id": "play_screens.my_show_please",
           "label": "my show please",
-          "speak": "can I watch my show please",
+          "speak": "my show please",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4918,7 +4918,7 @@
         {
           "id": "play_screens.turn_it_on",
           "label": "turn it on",
-          "speak": "turn it on please",
+          "speak": "turn it on",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4931,7 +4931,7 @@
         {
           "id": "play_screens.turn_it_off",
           "label": "turn it off",
-          "speak": "turn it off please",
+          "speak": "turn it off",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -4944,7 +4944,7 @@
         {
           "id": "play_screens.too_loud",
           "label": "too loud",
-          "speak": "it is too loud",
+          "speak": "too loud",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -5196,7 +5196,7 @@
         {
           "id": "play_art.messy_hands",
           "label": "messy hands",
-          "speak": "my hands are messy",
+          "speak": "messy hands",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -5391,7 +5391,7 @@
         {
           "id": "play_music.play_my_song",
           "label": "play my song",
-          "speak": "play my song please",
+          "speak": "play my song",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -5417,7 +5417,7 @@
         {
           "id": "play_music.music_off_please",
           "label": "music off please",
-          "speak": "turn the music off please",
+          "speak": "music off please",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -5636,7 +5636,7 @@
         {
           "id": "play_games.thats_not_fair",
           "label": "that's not fair",
-          "speak": "that is not fair",
+          "speak": "that's not fair",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -5649,7 +5649,7 @@
         {
           "id": "play_games.play_with_me",
           "label": "play with me",
-          "speak": "will you play with me",
+          "speak": "play with me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -5662,7 +5662,7 @@
         {
           "id": "play_games.i_want_to_stop",
           "label": "I want to stop",
-          "speak": "I want to stop playing",
+          "speak": "I want to stop",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6029,7 +6029,7 @@
         {
           "id": "play_books.read_to_me",
           "label": "read to me",
-          "speak": "will you read to me",
+          "speak": "read to me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6055,7 +6055,7 @@
         {
           "id": "play_books.read_it_again",
           "label": "read it again",
-          "speak": "read it again please",
+          "speak": "read it again",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6068,7 +6068,7 @@
         {
           "id": "play_books.my_favorite",
           "label": "my favorite",
-          "speak": "this is my favorite",
+          "speak": "my favorite",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6081,7 +6081,7 @@
         {
           "id": "play_books.turn_the_page_2",
           "label": "turn the page",
-          "speak": "turn the page please",
+          "speak": "turn the page",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6094,7 +6094,7 @@
         {
           "id": "play_books.whats_that",
           "label": "what's that?",
-          "speak": "what is that",
+          "speak": "what's that?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6120,7 +6120,7 @@
         {
           "id": "play_books.all_done_reading",
           "label": "all done reading",
-          "speak": "I am all done reading",
+          "speak": "all done reading",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6143,7 +6143,7 @@
         {
           "id": "body.i_need_the_bathroom",
           "label": "I need the bathroom",
-          "speak": "I need to go to the bathroom",
+          "speak": "I need the bathroom",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6208,7 +6208,7 @@
         {
           "id": "body.i_cant_breathe",
           "label": "I can't breathe",
-          "speak": "I cannot breathe well",
+          "speak": "I can't breathe",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6629,7 +6629,7 @@
         {
           "id": "body.i_feel_better",
           "label": "I feel better",
-          "speak": "I feel better now",
+          "speak": "I feel better",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -6653,8 +6653,8 @@
           "action": null
         },
         {
-          "id": "body.where_does_it_hurt",
-          "label": "where does it hurt",
+          "id": "body.it_hurts_here",
+          "label": "it hurts here",
           "speak": "it hurts here",
           "type": "phrase",
           "icon": {
@@ -6668,7 +6668,7 @@
         {
           "id": "body.im_okay",
           "label": "I'm okay",
-          "speak": "I am okay",
+          "speak": "I'm okay",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7272,8 +7272,21 @@
       "icon": "😊",
       "color": "describe",
       "cols": 8,
-      "rows": 4,
+      "rows": 3,
       "buttons": [
+        {
+          "id": "feelings.more_feelings",
+          "label": "More Feelings",
+          "speak": "More Feelings",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "💭"
+          },
+          "color": "describe",
+          "target": "feelings_more",
+          "action": null
+        },
         {
           "id": "feelings.happy",
           "label": "happy",
@@ -7327,19 +7340,6 @@
           "action": null
         },
         {
-          "id": "feelings.silly",
-          "label": "silly",
-          "speak": "silly",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🤪"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
           "id": "feelings.excited",
           "label": "excited",
           "speak": "excited",
@@ -7347,32 +7347,6 @@
           "icon": {
             "kind": "emoji",
             "value": "🤩"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.nervous",
-          "label": "nervous",
-          "speak": "nervous",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😬"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.frustrated",
-          "label": "frustrated",
-          "speak": "frustrated",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😤"
           },
           "color": "describe",
           "target": null,
@@ -7392,91 +7366,13 @@
           "action": null
         },
         {
-          "id": "feelings.proud",
-          "label": "proud",
-          "speak": "proud",
+          "id": "feelings.silly",
+          "label": "silly",
+          "speak": "silly",
           "type": "word",
           "icon": {
             "kind": "emoji",
-            "value": "🥰"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.lonely",
-          "label": "lonely",
-          "speak": "lonely",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🥺"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.bored",
-          "label": "bored",
-          "speak": "bored",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😐"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.surprised",
-          "label": "surprised",
-          "speak": "surprised",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😲"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.shy",
-          "label": "shy",
-          "speak": "shy",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🫣"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.confused",
-          "label": "confused",
-          "speak": "confused",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😕"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.embarrassed",
-          "label": "embarrassed",
-          "speak": "embarrassed",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😳"
+            "value": "🤪"
           },
           "color": "describe",
           "target": null,
@@ -7490,45 +7386,6 @@
           "icon": {
             "kind": "emoji",
             "value": "❤️"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.worried",
-          "label": "worried",
-          "speak": "worried",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😟"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.grumpy",
-          "label": "grumpy",
-          "speak": "grumpy",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "😒"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "feelings.safe",
-          "label": "safe",
-          "speak": "safe",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🛡️"
           },
           "color": "describe",
           "target": null,
@@ -7586,6 +7443,9 @@
           "target": null,
           "action": null
         },
+        null,
+        null,
+        null,
         {
           "id": "feelings.i_feel_happy",
           "label": "I feel happy",
@@ -7628,7 +7488,7 @@
         {
           "id": "feelings.im_scared",
           "label": "I'm scared",
-          "speak": "I am scared",
+          "speak": "I'm scared",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7654,7 +7514,7 @@
         {
           "id": "feelings.i_dont_like_it",
           "label": "I don't like it",
-          "speak": "I do not like it",
+          "speak": "I don't like it",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7677,10 +7537,177 @@
           "target": null,
           "action": null
         },
+        null
+      ]
+    },
+    {
+      "id": "feelings_more",
+      "title": "More Feelings",
+      "icon": "💭",
+      "color": "describe",
+      "cols": 8,
+      "rows": 2,
+      "buttons": [
         {
-          "id": "feelings.why_do_i_feel_this_way",
+          "id": "feelings_more.proud",
+          "label": "proud",
+          "speak": "proud",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🥰"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.lonely",
+          "label": "lonely",
+          "speak": "lonely",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🥺"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.bored",
+          "label": "bored",
+          "speak": "bored",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😐"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.surprised",
+          "label": "surprised",
+          "speak": "surprised",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😲"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.shy",
+          "label": "shy",
+          "speak": "shy",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫣"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.confused",
+          "label": "confused",
+          "speak": "confused",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😕"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.embarrassed",
+          "label": "embarrassed",
+          "speak": "embarrassed",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😳"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.nervous",
+          "label": "nervous",
+          "speak": "nervous",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😬"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.frustrated",
+          "label": "frustrated",
+          "speak": "frustrated",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😤"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.worried",
+          "label": "worried",
+          "speak": "worried",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😟"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.grumpy",
+          "label": "grumpy",
+          "speak": "grumpy",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "😒"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.safe",
+          "label": "safe",
+          "speak": "safe",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🛡️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "feelings_more.why_do_i_feel_this_way",
           "label": "why do I feel this way",
-          "speak": "I do not know why I feel this way",
+          "speak": "why do I feel this way",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7689,7 +7716,10 @@
           "color": "question",
           "target": null,
           "action": null
-        }
+        },
+        null,
+        null,
+        null
       ]
     },
     {
@@ -7703,7 +7733,7 @@
         {
           "id": "regulate.i_need_a_break",
           "label": "I need a break",
-          "speak": "I need a break please",
+          "speak": "I need a break",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7716,7 +7746,7 @@
         {
           "id": "regulate.i_need_space",
           "label": "I need space",
-          "speak": "I need some space please",
+          "speak": "I need space",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7729,7 +7759,7 @@
         {
           "id": "regulate.too_loud",
           "label": "too loud",
-          "speak": "it is too loud for me",
+          "speak": "too loud",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7742,7 +7772,7 @@
         {
           "id": "regulate.too_bright",
           "label": "too bright",
-          "speak": "it is too bright for me",
+          "speak": "too bright",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7755,7 +7785,7 @@
         {
           "id": "regulate.too_many_people",
           "label": "too many people",
-          "speak": "there are too many people",
+          "speak": "too many people",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7768,7 +7798,7 @@
         {
           "id": "regulate.dont_touch_me",
           "label": "don't touch me",
-          "speak": "please do not touch me",
+          "speak": "don't touch me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7781,7 +7811,7 @@
         {
           "id": "regulate.i_need_quiet",
           "label": "I need quiet",
-          "speak": "I need it to be quiet",
+          "speak": "I need quiet",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7794,7 +7824,7 @@
         {
           "id": "regulate.i_need_to_go_now",
           "label": "I need to go now",
-          "speak": "I need to leave now",
+          "speak": "I need to go now",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7820,7 +7850,7 @@
         {
           "id": "regulate.im_not_okay",
           "label": "I'm not okay",
-          "speak": "I am not okay",
+          "speak": "I'm not okay",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7833,7 +7863,7 @@
         {
           "id": "regulate.i_feel_too_big",
           "label": "I feel too big",
-          "speak": "my feelings are too big right now",
+          "speak": "I feel too big",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7846,7 +7876,7 @@
         {
           "id": "regulate.i_want_to_be_alone",
           "label": "I want to be alone",
-          "speak": "I want to be alone right now",
+          "speak": "I want to be alone",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7859,7 +7889,7 @@
         {
           "id": "regulate.stay_with_me",
           "label": "stay with me",
-          "speak": "please stay with me",
+          "speak": "stay with me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7885,7 +7915,7 @@
         {
           "id": "regulate.i_need_my_toy",
           "label": "I need my toy",
-          "speak": "I need my comfort toy",
+          "speak": "I need my toy",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7898,7 +7928,7 @@
         {
           "id": "regulate.i_need_headphones",
           "label": "I need headphones",
-          "speak": "I need my headphones",
+          "speak": "I need headphones",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7911,7 +7941,7 @@
         {
           "id": "regulate.thats_not_what_i_meant",
           "label": "that's not what I meant",
-          "speak": "that is not what I meant",
+          "speak": "that's not what I meant",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7937,7 +7967,7 @@
         {
           "id": "regulate.youre_not_listening",
           "label": "you're not listening",
-          "speak": "you are not listening to me",
+          "speak": "you're not listening",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7950,7 +7980,7 @@
         {
           "id": "regulate.wait_for_me",
           "label": "wait for me",
-          "speak": "please wait for me",
+          "speak": "wait for me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7963,7 +7993,7 @@
         {
           "id": "regulate.slow_down",
           "label": "slow down",
-          "speak": "please slow down",
+          "speak": "slow down",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -7989,7 +8019,7 @@
         {
           "id": "regulate.i_dont_understand",
           "label": "I don't understand",
-          "speak": "I do not understand",
+          "speak": "I don't understand",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -8002,7 +8032,7 @@
         {
           "id": "regulate.ask_me_again",
           "label": "ask me again",
-          "speak": "can you ask me again",
+          "speak": "ask me again",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -8124,110 +8154,49 @@
       "icon": "👨‍👩‍👧",
       "color": "people",
       "cols": 8,
-      "rows": 4,
+      "rows": 2,
       "buttons": [
         {
-          "id": "people.mom",
-          "label": "Mom",
-          "speak": "Mom",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👩"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.dad",
-          "label": "Dad",
-          "speak": "Dad",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👨"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.grandma",
-          "label": "Grandma",
-          "speak": "Grandma",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👵"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.grandpa",
-          "label": "Grandpa",
-          "speak": "Grandpa",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👴"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.sister",
-          "label": "sister",
-          "speak": "sister",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👧"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "plural": "sisters"
-          }
-        },
-        {
-          "id": "people.brother",
-          "label": "brother",
-          "speak": "brother",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👦"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "plural": "brothers"
-          }
-        },
-        {
-          "id": "people.baby",
-          "label": "baby",
-          "speak": "baby",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👶"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "plural": "babies"
-          }
-        },
-        {
           "id": "people.family",
+          "label": "Family",
+          "speak": "Family",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "👨‍👩‍👧"
+          },
+          "color": "people",
+          "target": "people_family",
+          "action": null
+        },
+        {
+          "id": "people.friends_helpers",
+          "label": "Friends & Helpers",
+          "speak": "Friends & Helpers",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤝"
+          },
+          "color": "people",
+          "target": "people_community",
+          "action": null
+        },
+        {
+          "id": "people.me_you_mine",
+          "label": "Me, You & Mine",
+          "speak": "Me, You & Mine",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🙋"
+          },
+          "color": "people",
+          "target": "people_pronouns",
+          "action": null
+        },
+        {
+          "id": "people.family_2",
           "label": "family",
           "speak": "family",
           "type": "word",
@@ -8272,32 +8241,6 @@
           }
         },
         {
-          "id": "people.doctor",
-          "label": "doctor",
-          "speak": "doctor",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🩺"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.nurse",
-          "label": "nurse",
-          "speak": "nurse",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🧑‍⚕️"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
           "id": "people.helper",
           "label": "helper",
           "speak": "helper",
@@ -8305,32 +8248,6 @@
           "icon": {
             "kind": "emoji",
             "value": "🤝"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.bus_driver",
-          "label": "bus driver",
-          "speak": "bus driver",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🚌"
-          },
-          "color": "people",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "people.neighbor",
-          "label": "neighbor",
-          "speak": "neighbor",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🏘️"
           },
           "color": "people",
           "target": null,
@@ -8350,201 +8267,22 @@
           "action": null
         },
         {
-          "id": "people.i",
-          "label": "I",
-          "speak": "I",
+          "id": "people.neighbor",
+          "label": "neighbor",
+          "speak": "neighbor",
           "type": "word",
           "icon": {
             "kind": "emoji",
-            "value": "🙋"
+            "value": "🏘️"
           },
           "color": "people",
           "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.me",
-          "label": "me",
-          "speak": "me",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👇"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.my",
-          "label": "my",
-          "speak": "my",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🤲"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.you",
-          "label": "you",
-          "speak": "you",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👉"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.your",
-          "label": "your",
-          "speak": "your",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🫵"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.we",
-          "label": "we",
-          "speak": "we",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👥"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.they",
-          "label": "they",
-          "speak": "they",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👬"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.he",
-          "label": "he",
-          "speak": "he",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👦"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.she",
-          "label": "she",
-          "speak": "she",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👧"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.it",
-          "label": "it",
-          "speak": "it",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "📦"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.them",
-          "label": "them",
-          "speak": "them",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👫"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
-        },
-        {
-          "id": "people.us",
-          "label": "us",
-          "speak": "us",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🫂"
-          },
-          "color": "people",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "pronoun"
-          }
+          "action": null
         },
         {
           "id": "people.whats_your_name",
           "label": "what's your name?",
-          "speak": "what is your name",
+          "speak": "what's your name?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -8592,7 +8330,544 @@
           "color": "social",
           "target": null,
           "action": null
-        }
+        },
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "people_family",
+      "title": "Family",
+      "icon": "👨‍👩‍👧",
+      "color": "people",
+      "cols": 8,
+      "rows": 2,
+      "buttons": [
+        {
+          "id": "people_family.mom",
+          "label": "Mom",
+          "speak": "Mom",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👩"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_family.dad",
+          "label": "Dad",
+          "speak": "Dad",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👨"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_family.grandma",
+          "label": "Grandma",
+          "speak": "Grandma",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👵"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_family.grandpa",
+          "label": "Grandpa",
+          "speak": "Grandpa",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👴"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_family.sister",
+          "label": "sister",
+          "speak": "sister",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👧"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "sisters"
+          }
+        },
+        {
+          "id": "people_family.brother",
+          "label": "brother",
+          "speak": "brother",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👦"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "brothers"
+          }
+        },
+        {
+          "id": "people_family.baby",
+          "label": "baby",
+          "speak": "baby",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👶"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "babies"
+          }
+        },
+        {
+          "id": "people_family.family",
+          "label": "family",
+          "speak": "family",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👨‍👩‍👧"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_family.aunt",
+          "label": "aunt",
+          "speak": "aunt",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👩"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_family.uncle",
+          "label": "uncle",
+          "speak": "uncle",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👨"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "people_community",
+      "title": "Friends & Helpers",
+      "icon": "🤝",
+      "color": "people",
+      "cols": 8,
+      "rows": 2,
+      "buttons": [
+        {
+          "id": "people_community.friend",
+          "label": "friend",
+          "speak": "friend",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧒"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "friends"
+          }
+        },
+        {
+          "id": "people_community.teacher",
+          "label": "teacher",
+          "speak": "teacher",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧑‍🏫"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "plural": "teachers"
+          }
+        },
+        {
+          "id": "people_community.doctor",
+          "label": "doctor",
+          "speak": "doctor",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🩺"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_community.nurse",
+          "label": "nurse",
+          "speak": "nurse",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧑‍⚕️"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_community.helper",
+          "label": "helper",
+          "speak": "helper",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤝"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_community.bus_driver",
+          "label": "bus driver",
+          "speak": "bus driver",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚌"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_community.neighbor",
+          "label": "neighbor",
+          "speak": "neighbor",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏘️"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "people_community.everybody",
+          "label": "everybody",
+          "speak": "everybody",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👥"
+          },
+          "color": "people",
+          "target": null,
+          "action": null
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "people_pronouns",
+      "title": "Me, You & Mine",
+      "icon": "🙋",
+      "color": "people",
+      "cols": 8,
+      "rows": 2,
+      "buttons": [
+        {
+          "id": "people_pronouns.i",
+          "label": "I",
+          "speak": "I",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🙋"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.me",
+          "label": "me",
+          "speak": "me",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👇"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.my",
+          "label": "my",
+          "speak": "my",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤲"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.mine",
+          "label": "mine",
+          "speak": "mine",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🙋"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.you",
+          "label": "you",
+          "speak": "you",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👉"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.your",
+          "label": "your",
+          "speak": "your",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫵"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.yours",
+          "label": "yours",
+          "speak": "yours",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👉"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.we",
+          "label": "we",
+          "speak": "we",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👥"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.they",
+          "label": "they",
+          "speak": "they",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👬"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.he",
+          "label": "he",
+          "speak": "he",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👦"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.she",
+          "label": "she",
+          "speak": "she",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👧"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.it",
+          "label": "it",
+          "speak": "it",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📦"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.them",
+          "label": "them",
+          "speak": "them",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👫"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.us",
+          "label": "us",
+          "speak": "us",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫂"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        {
+          "id": "people_pronouns.ours",
+          "label": "ours",
+          "speak": "ours",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🫂"
+          },
+          "color": "people",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "pronoun"
+          }
+        },
+        null
       ]
     },
     {
@@ -8601,8 +8876,34 @@
       "icon": "🏫",
       "color": "noun",
       "cols": 8,
-      "rows": 5,
+      "rows": 2,
       "buttons": [
+        {
+          "id": "places.where_we_go",
+          "label": "Where We Go",
+          "speak": "Where We Go",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏫"
+          },
+          "color": "noun",
+          "target": "places_where",
+          "action": null
+        },
+        {
+          "id": "places.going_moving",
+          "label": "Going & Moving",
+          "speak": "Going & Moving",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚗"
+          },
+          "color": "noun",
+          "target": "places_going",
+          "action": null
+        },
         {
           "id": "places.home",
           "label": "home",
@@ -8624,45 +8925,6 @@
           "icon": {
             "kind": "emoji",
             "value": "🏫"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.store",
-          "label": "store",
-          "speak": "store",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🏪"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.park",
-          "label": "park",
-          "speak": "park",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🏞️"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.car",
-          "label": "car",
-          "speak": "car",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🚗"
           },
           "color": "noun",
           "target": null,
@@ -8695,347 +8957,28 @@
           "action": null
         },
         {
-          "id": "places.grandmas_house",
-          "label": "Grandma's house",
-          "speak": "Grandma's house",
+          "id": "places.car",
+          "label": "car",
+          "speak": "car",
           "type": "word",
           "icon": {
             "kind": "emoji",
-            "value": "🏡"
+            "value": "🚗"
           },
           "color": "noun",
           "target": null,
           "action": null
         },
         {
-          "id": "places.restaurant",
-          "label": "restaurant",
-          "speak": "restaurant",
+          "id": "places.store",
+          "label": "store",
+          "speak": "store",
           "type": "word",
           "icon": {
             "kind": "emoji",
-            "value": "🍽️"
+            "value": "🏪"
           },
           "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.doctor",
-          "label": "doctor",
-          "speak": "doctor",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🏥"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.library",
-          "label": "library",
-          "speak": "library",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "📚"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.pool",
-          "label": "pool",
-          "speak": "pool",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🏊"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.playground",
-          "label": "playground",
-          "speak": "playground",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🛝"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.bus",
-          "label": "bus",
-          "speak": "bus",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🚌"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.church",
-          "label": "church",
-          "speak": "church",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "⛪"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.beach",
-          "label": "beach",
-          "speak": "beach",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🏖️"
-          },
-          "color": "noun",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.go",
-          "label": "go",
-          "speak": "go",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "➡️"
-          },
-          "color": "verb",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "verb",
-            "past": "went",
-            "ing": "going"
-          }
-        },
-        {
-          "id": "places.come",
-          "label": "come",
-          "speak": "come",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "⬅️"
-          },
-          "color": "verb",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "verb",
-            "past": "came",
-            "ing": "coming"
-          }
-        },
-        {
-          "id": "places.stay",
-          "label": "stay",
-          "speak": "stay",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🛑"
-          },
-          "color": "verb",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "verb",
-            "past": "stayed",
-            "ing": "staying"
-          }
-        },
-        {
-          "id": "places.leave",
-          "label": "leave",
-          "speak": "leave",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🚪"
-          },
-          "color": "verb",
-          "target": null,
-          "action": null,
-          "grammar": {
-            "pos": "verb",
-            "past": "left",
-            "ing": "leaving"
-          }
-        },
-        {
-          "id": "places.in",
-          "label": "in",
-          "speak": "in",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "📥"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.out",
-          "label": "out",
-          "speak": "out",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "📤"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.up",
-          "label": "up",
-          "speak": "up",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "⬆️"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.down",
-          "label": "down",
-          "speak": "down",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "⬇️"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.here",
-          "label": "here",
-          "speak": "here",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "📍"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.there",
-          "label": "there",
-          "speak": "there",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "👉"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.under",
-          "label": "under",
-          "speak": "under",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "⬇️"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.on_top",
-          "label": "on top",
-          "speak": "on top",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "⬆️"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.behind",
-          "label": "behind",
-          "speak": "behind",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🔙"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.next_to",
-          "label": "next to",
-          "speak": "next to",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "↔️"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.far",
-          "label": "far",
-          "speak": "far",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🔭"
-          },
-          "color": "describe",
-          "target": null,
-          "action": null
-        },
-        {
-          "id": "places.close",
-          "label": "close",
-          "speak": "close",
-          "type": "word",
-          "icon": {
-            "kind": "emoji",
-            "value": "🤏"
-          },
-          "color": "describe",
           "target": null,
           "action": null
         },
@@ -9055,7 +8998,7 @@
         {
           "id": "places.are_we_there_yet",
           "label": "are we there yet?",
-          "speak": "are we there yet",
+          "speak": "are we there yet?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -9068,7 +9011,7 @@
         {
           "id": "places.where_are_we_going",
           "label": "where are we going?",
-          "speak": "where are we going",
+          "speak": "where are we going?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -9081,7 +9024,7 @@
         {
           "id": "places.i_dont_want_to_go",
           "label": "I don't want to go",
-          "speak": "I do not want to go",
+          "speak": "I don't want to go",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -9091,6 +9034,432 @@
           "target": null,
           "action": null
         },
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "places_where",
+      "title": "Where We Go",
+      "icon": "🏫",
+      "color": "noun",
+      "cols": 8,
+      "rows": 2,
+      "buttons": [
+        {
+          "id": "places_where.park",
+          "label": "park",
+          "speak": "park",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏞️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.grandmas_house",
+          "label": "Grandma's house",
+          "speak": "Grandma's house",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏡"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.restaurant",
+          "label": "restaurant",
+          "speak": "restaurant",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🍽️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.doctor",
+          "label": "doctor",
+          "speak": "doctor",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏥"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.library",
+          "label": "library",
+          "speak": "library",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📚"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.pool",
+          "label": "pool",
+          "speak": "pool",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏊"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.playground",
+          "label": "playground",
+          "speak": "playground",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🛝"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.bus",
+          "label": "bus",
+          "speak": "bus",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚌"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.church",
+          "label": "church",
+          "speak": "church",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⛪"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_where.beach",
+          "label": "beach",
+          "speak": "beach",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏖️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "places_going",
+      "title": "Going & Moving",
+      "icon": "🚗",
+      "color": "noun",
+      "cols": 8,
+      "rows": 3,
+      "buttons": [
+        {
+          "id": "places_going.go",
+          "label": "go",
+          "speak": "go",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "➡️"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "went",
+            "ing": "going"
+          }
+        },
+        {
+          "id": "places_going.come",
+          "label": "come",
+          "speak": "come",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬅️"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "came",
+            "ing": "coming"
+          }
+        },
+        {
+          "id": "places_going.stay",
+          "label": "stay",
+          "speak": "stay",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🛑"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "stayed",
+            "ing": "staying"
+          }
+        },
+        {
+          "id": "places_going.leave",
+          "label": "leave",
+          "speak": "leave",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚪"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "left",
+            "ing": "leaving"
+          }
+        },
+        {
+          "id": "places_going.walk",
+          "label": "walk",
+          "speak": "walk",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚶"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "walked",
+            "ing": "walking"
+          }
+        },
+        {
+          "id": "places_going.run",
+          "label": "run",
+          "speak": "run",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏃"
+          },
+          "color": "verb",
+          "target": null,
+          "action": null,
+          "grammar": {
+            "pos": "verb",
+            "past": "ran",
+            "ing": "running"
+          }
+        },
+        {
+          "id": "places_going.in",
+          "label": "in",
+          "speak": "in",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📥"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.out",
+          "label": "out",
+          "speak": "out",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📤"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.up",
+          "label": "up",
+          "speak": "up",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬆️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.down",
+          "label": "down",
+          "speak": "down",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬇️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.here",
+          "label": "here",
+          "speak": "here",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📍"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.there",
+          "label": "there",
+          "speak": "there",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "👉"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.under",
+          "label": "under",
+          "speak": "under",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬇️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.on_top",
+          "label": "on top",
+          "speak": "on top",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "⬆️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.behind",
+          "label": "behind",
+          "speak": "behind",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔙"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.next_to",
+          "label": "next to",
+          "speak": "next to",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "↔️"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.far",
+          "label": "far",
+          "speak": "far",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔭"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "places_going.close",
+          "label": "close",
+          "speak": "close",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🤏"
+          },
+          "color": "describe",
+          "target": null,
+          "action": null
+        },
+        null,
+        null,
         null,
         null,
         null,
@@ -10306,7 +10675,7 @@
         {
           "id": "describe.thats_silly",
           "label": "that's silly",
-          "speak": "that is silly",
+          "speak": "that's silly",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -10332,7 +10701,7 @@
         {
           "id": "describe.its_too_big",
           "label": "it's too big",
-          "speak": "it is too big",
+          "speak": "it's too big",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -10345,7 +10714,7 @@
         {
           "id": "describe.its_broken",
           "label": "it's broken",
-          "speak": "it is broken",
+          "speak": "it's broken",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11282,7 +11651,7 @@
         {
           "id": "describe_weather.its_raining",
           "label": "it's raining",
-          "speak": "it is raining",
+          "speak": "it's raining",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11295,7 +11664,7 @@
         {
           "id": "describe_weather.i_need_a_coat",
           "label": "I need a coat",
-          "speak": "I need my coat",
+          "speak": "I need a coat",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11308,7 +11677,7 @@
         {
           "id": "describe_weather.too_hot_for_me",
           "label": "too hot for me",
-          "speak": "it is too hot for me",
+          "speak": "too hot for me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11604,7 +11973,7 @@
         {
           "id": "social.whats_that",
           "label": "what's that?",
-          "speak": "what is that",
+          "speak": "what's that?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11617,7 +11986,7 @@
         {
           "id": "social.where_is_it",
           "label": "where is it?",
-          "speak": "where is it",
+          "speak": "where is it?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11630,7 +11999,7 @@
         {
           "id": "social.who_is_that",
           "label": "who is that?",
-          "speak": "who is that",
+          "speak": "who is that?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11643,7 +12012,7 @@
         {
           "id": "social.can_i_have_it",
           "label": "can I have it?",
-          "speak": "can I have it please",
+          "speak": "can I have it?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11656,7 +12025,7 @@
         {
           "id": "social.can_you_help_me",
           "label": "can you help me?",
-          "speak": "can you help me please",
+          "speak": "can you help me?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11669,7 +12038,7 @@
         {
           "id": "social.is_it_my_turn",
           "label": "is it my turn?",
-          "speak": "is it my turn",
+          "speak": "is it my turn?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11682,7 +12051,7 @@
         {
           "id": "social.what_happens_next",
           "label": "what happens next?",
-          "speak": "what happens next",
+          "speak": "what happens next?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11695,7 +12064,7 @@
         {
           "id": "social.can_we_go",
           "label": "can we go?",
-          "speak": "can we go now",
+          "speak": "can we go?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11708,7 +12077,7 @@
         {
           "id": "social.i_dont_know",
           "label": "I don't know",
-          "speak": "I do not know",
+          "speak": "I don't know",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11721,7 +12090,7 @@
         {
           "id": "social.i_dont_understand",
           "label": "I don't understand",
-          "speak": "I do not understand",
+          "speak": "I don't understand",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11734,7 +12103,7 @@
         {
           "id": "social.say_it_again",
           "label": "say it again",
-          "speak": "can you say it again",
+          "speak": "say it again",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11760,7 +12129,7 @@
         {
           "id": "social.listen_to_me",
           "label": "listen to me",
-          "speak": "please listen to me",
+          "speak": "listen to me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -11869,7 +12238,7 @@
       "icon": "🛋️",
       "color": "noun",
       "cols": 8,
-      "rows": 4,
+      "rows": 5,
       "buttons": [
         {
           "id": "household.kitchen",
@@ -11973,6 +12342,19 @@
           },
           "color": "noun",
           "target": "school",
+          "action": null
+        },
+        {
+          "id": "household.garage_yard",
+          "label": "Garage & Yard",
+          "speak": "Garage & Yard",
+          "type": "folder",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧰"
+          },
+          "color": "noun",
+          "target": "household_garage",
           "action": null
         },
         {
@@ -12225,10 +12607,17 @@
             "plural": "remotes"
           }
         },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         {
           "id": "household.turn_the_light_on",
           "label": "turn the light on",
-          "speak": "turn the light on please",
+          "speak": "turn the light on",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12241,7 +12630,7 @@
         {
           "id": "household.turn_the_light_off",
           "label": "turn the light off",
-          "speak": "turn the light off please",
+          "speak": "turn the light off",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12254,7 +12643,7 @@
         {
           "id": "household.open_the_door",
           "label": "open the door",
-          "speak": "open the door please",
+          "speak": "open the door",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12280,7 +12669,7 @@
         {
           "id": "household.where_is_my_stuff",
           "label": "where is my stuff?",
-          "speak": "where is my stuff",
+          "speak": "where is my stuff?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12293,7 +12682,7 @@
         {
           "id": "household.its_not_working",
           "label": "it's not working",
-          "speak": "it is not working",
+          "speak": "it's not working",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12319,7 +12708,7 @@
         {
           "id": "household.put_it_here",
           "label": "put it here",
-          "speak": "put it here please",
+          "speak": "put it here",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12329,6 +12718,200 @@
           "target": null,
           "action": null
         }
+      ]
+    },
+    {
+      "id": "household_garage",
+      "title": "Garage & Yard",
+      "icon": "🧰",
+      "color": "noun",
+      "cols": 8,
+      "rows": 2,
+      "buttons": [
+        {
+          "id": "household_garage.garage",
+          "label": "garage",
+          "speak": "garage",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚙"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.driveway",
+          "label": "driveway",
+          "speak": "driveway",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🛣️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.mailbox",
+          "label": "mailbox",
+          "speak": "mailbox",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "📬"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.doorbell",
+          "label": "doorbell",
+          "speak": "doorbell",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔔"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.hose",
+          "label": "hose",
+          "speak": "hose",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🚿"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.trash_can",
+          "label": "trash can",
+          "speak": "trash can",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🗑️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.recycling_bin",
+          "label": "recycling bin",
+          "speak": "recycling bin",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "♻️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.porch",
+          "label": "porch",
+          "speak": "porch",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🏘️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.tools",
+          "label": "tools",
+          "speak": "tools",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🧰"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.toolbox",
+          "label": "toolbox",
+          "speak": "toolbox",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔧"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.ladder",
+          "label": "ladder",
+          "speak": "ladder",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🪜"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.flashlight",
+          "label": "flashlight",
+          "speak": "flashlight",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🔦"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.umbrella",
+          "label": "umbrella",
+          "speak": "umbrella",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "☂️"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        {
+          "id": "household_garage.lawn_mower",
+          "label": "lawn mower",
+          "speak": "lawn mower",
+          "type": "word",
+          "icon": {
+            "kind": "emoji",
+            "value": "🌱"
+          },
+          "color": "noun",
+          "target": null,
+          "action": null
+        },
+        null,
+        null
       ]
     },
     {
@@ -12765,7 +13348,7 @@
         {
           "id": "household_bedroom.i_cant_sleep",
           "label": "I can't sleep",
-          "speak": "I cannot sleep",
+          "speak": "I can't sleep",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12778,7 +13361,7 @@
         {
           "id": "household_bedroom.leave_the_light_on",
           "label": "leave the light on",
-          "speak": "leave the light on please",
+          "speak": "leave the light on",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12970,7 +13553,7 @@
         {
           "id": "household_bathroom.i_need_the_bathroom",
           "label": "I need the bathroom",
-          "speak": "I need to go to the bathroom",
+          "speak": "I need the bathroom",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -12983,7 +13566,7 @@
         {
           "id": "household_bathroom.im_done",
           "label": "I'm done",
-          "speak": "I am done",
+          "speak": "I'm done",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13201,7 +13784,7 @@
         {
           "id": "household_living.sit_with_me",
           "label": "sit with me",
-          "speak": "come sit with me",
+          "speak": "sit with me",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13227,7 +13810,7 @@
         {
           "id": "household_living.too_loud_in_here",
           "label": "too loud in here",
-          "speak": "it is too loud in here",
+          "speak": "too loud in here",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13354,7 +13937,7 @@
         {
           "id": "household_car.are_we_there_yet",
           "label": "are we there yet?",
-          "speak": "are we there yet",
+          "speak": "are we there yet?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13367,7 +13950,7 @@
         {
           "id": "household_car.where_are_we_going",
           "label": "where are we going?",
-          "speak": "where are we going",
+          "speak": "where are we going?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13393,7 +13976,7 @@
         {
           "id": "household_car.music_please",
           "label": "music please",
-          "speak": "can we have music please",
+          "speak": "music please",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13406,7 +13989,7 @@
         {
           "id": "household_car.too_hot_in_here",
           "label": "too hot in here",
-          "speak": "it is too hot in here",
+          "speak": "too hot in here",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13720,7 +14303,7 @@
         {
           "id": "clothes.it_feels_scratchy",
           "label": "it feels scratchy",
-          "speak": "it feels scratchy on my skin",
+          "speak": "it feels scratchy",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13733,7 +14316,7 @@
         {
           "id": "clothes.too_tight",
           "label": "too tight",
-          "speak": "it is too tight",
+          "speak": "too tight",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13746,7 +14329,7 @@
         {
           "id": "clothes.i_dont_want_to_wear_that",
           "label": "I don't want to wear that",
-          "speak": "I do not want to wear that",
+          "speak": "I don't want to wear that",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -13785,7 +14368,7 @@
         {
           "id": "clothes.im_cold",
           "label": "I'm cold",
-          "speak": "I am cold",
+          "speak": "I'm cold",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14245,9 +14828,9 @@
           "action": null
         },
         {
-          "id": "animals.i_want_to_pet_it",
-          "label": "I want to pet it",
-          "speak": "can I pet it",
+          "id": "animals.can_i_pet_it",
+          "label": "can I pet it?",
+          "speak": "can I pet it?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14260,7 +14843,7 @@
         {
           "id": "animals.its_too_big",
           "label": "it's too big",
-          "speak": "it is too big",
+          "speak": "it's too big",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14273,7 +14856,7 @@
         {
           "id": "animals.im_scared_of_it",
           "label": "I'm scared of it",
-          "speak": "I am scared of it",
+          "speak": "I'm scared of it",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14646,7 +15229,7 @@
         {
           "id": "school.im_finished",
           "label": "I'm finished",
-          "speak": "I am finished",
+          "speak": "I'm finished",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14659,7 +15242,7 @@
         {
           "id": "school.i_dont_understand",
           "label": "I don't understand",
-          "speak": "I do not understand",
+          "speak": "I don't understand",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14672,7 +15255,7 @@
         {
           "id": "school.can_i_have_a_break",
           "label": "can I have a break?",
-          "speak": "can I have a break please",
+          "speak": "can I have a break?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14685,7 +15268,7 @@
         {
           "id": "school.i_need_the_bathroom",
           "label": "I need the bathroom",
-          "speak": "I need to go to the bathroom",
+          "speak": "I need the bathroom",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14698,7 +15281,7 @@
         {
           "id": "school.what_do_i_do",
           "label": "what do I do?",
-          "speak": "what do I do now",
+          "speak": "what do I do?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -14724,7 +15307,7 @@
         {
           "id": "school.this_is_too_hard",
           "label": "this is too hard",
-          "speak": "this is too hard for me",
+          "speak": "this is too hard",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -15433,7 +16016,7 @@
         {
           "id": "time.how_long",
           "label": "how long?",
-          "speak": "how long until then",
+          "speak": "how long?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -15459,7 +16042,7 @@
         {
           "id": "time.whats_next",
           "label": "what's next?",
-          "speak": "what is next",
+          "speak": "what's next?",
           "type": "phrase",
           "icon": {
             "kind": "emoji",
@@ -15472,7 +16055,7 @@
         {
           "id": "time.five_more_minutes",
           "label": "five more minutes",
-          "speak": "five more minutes please",
+          "speak": "five more minutes",
           "type": "phrase",
           "icon": {
             "kind": "emoji",

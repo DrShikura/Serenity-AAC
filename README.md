@@ -7,9 +7,11 @@ buttons; tap them to build a sentence; the tablet says it out loud.
 It runs entirely in a browser, works with **no internet at all**, and needs no
 account, no subscription, and no app store.
 
-- **1,160 buttons** across **48 pages** — food, toys, the bathroom, feelings,
+- **1,194 buttons** across **55 pages** — food, toys, the bathroom, feelings,
   people, places, describing words, questions, school, the car, flags and
-  countries, and the small words that hold a sentence together.
+  countries, and the small words that hold a sentence together. Everything a
+  button says out loud is exactly what it shows — tap "bathroom" and it says
+  "bathroom," never a surprise longer sentence.
 - **Past, present and future** — pick a tense once and every doing-word she taps
   arrives already in it. "go" becomes "went", "eat" becomes "will eat".
 - **A real keyboard**, one tap from every screen, with capitals, punctuation,
@@ -119,7 +121,7 @@ because, so, if) and prepositions (in, on, under, with, to, from) live on the
 
 The blue **spell** key in the top corner opens the keyboard from any page.
 It has capitals (`⇧ caps`), an apostrophe, a `123` layer with numbers and
-punctuation, and suggestions drawn from the app's own 1,160-word vocabulary —
+punctuation, and suggestions drawn from the app's own 776-word vocabulary —
 type `fla` and it offers *flag*, *flat*. What she has typed shows on a green
 key; tapping it (or `space`, or `✓ add`) drops it into the sentence.
 
@@ -162,8 +164,10 @@ Inside you can change:
 ### Changing the buttons
 
 **Setup → Change the buttons.** For any button you can set the word she sees,
-what it says out loud (these can differ — a button reading `bathroom` can say
-"I need to go to the bathroom"), the colour, and the picture.
+what it says out loud, the colour, and the picture. Every button ships saying
+exactly what it shows, but you can make one of your own say something
+different if you want a shortcut — a button labeled `snack` could speak
+"I want a snack please," for instance.
 
 - **📷 Use a photo** — take or choose a photo. A real picture of *her* cup, *her*
   bed, or Grandma works far better than a generic drawing.

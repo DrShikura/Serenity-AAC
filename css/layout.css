@@ -86,21 +86,38 @@ body::before {
 .core-rail {
   display: grid;
   grid-template-columns: repeat(2, var(--rail-w, 104px));
-  grid-template-rows: repeat(var(--core-rows, 6), minmax(0, 1fr));
+  /* A minimum row height (not 0) so this can genuinely overflow and scroll —
+     see the comment on .board below for why that matters. */
+  grid-template-rows: repeat(var(--core-rows, 6), minmax(var(--cell, 92px), 1fr));
   gap: 6px;
   min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
 }
 
 .board {
   display: grid;
   /* The board's own declared grid. Driven by custom properties rather than
-     inline styles so the narrow-screen rules below can still override it. */
-  grid-template-columns: repeat(var(--cols, 8), minmax(0, 1fr));
-  grid-template-rows: repeat(var(--rows, 5), minmax(0, 1fr));
+     inline styles so the narrow-screen rules below can still override it.
+     minmax(var(--cell), 1fr) rather than minmax(0, 1fr): a cell never shrinks
+     below a real, tappable minimum. A board with fewer rows than fit simply
+     stops (see align-content below) instead of stretching huge; a board with
+     more than fit overflows and scrolls, at any screen size — not just on a
+     phone — with a real minimum finger-sized target either way. */
+  grid-template-columns: repeat(var(--cols, 8), minmax(var(--cell, 92px), 1fr));
+  grid-template-rows: repeat(var(--rows, 5), minmax(var(--cell, 92px), 1fr));
   gap: 6px;
   min-height: 0;
   min-width: 0;
-  align-content: stretch;
+  overflow-y: auto;
+  overflow-x: auto;
+  overscroll-behavior: contain;
+  /* Content that doesn't fill the box sits at the top-left rather than being
+     stretched to cover it — this is what makes intentionally-empty slots read
+     as breathing room instead of oddly inflated buttons. */
+  align-content: start;
+  justify-content: start;
 }
 
 /* ── Bottom: navigation and the optional grammar row ────────────────────── */
@@ -142,10 +159,10 @@ body::before {
 /* ── Size presets. Only the rail width and font scale change; the grid
       itself is always the board's own declared cols x rows. ───────────── */
 
-[data-size="s"] { --rail-w: 84px;  --label: 13px; --glyph: 26px; }
-[data-size="m"] { --rail-w: 104px; --label: 15px; --glyph: 32px; }
-[data-size="l"] { --rail-w: 124px; --label: 18px; --glyph: 40px; }
-[data-size="xl"]{ --rail-w: 150px; --label: 21px; --glyph: 48px; }
+[data-size="s"] { --rail-w: 84px;  --label: 13px; --glyph: 26px; --cell: 72px;  }
+[data-size="m"] { --rail-w: 104px; --label: 15px; --glyph: 32px; --cell: 92px;  }
+[data-size="l"] { --rail-w: 124px; --label: 18px; --glyph: 40px; --cell: 112px; }
+[data-size="xl"]{ --rail-w: 150px; --label: 21px; --glyph: 48px; --cell: 136px; }
 
 /* ── Narrower screens. The board keeps its column count so relative button
       positions are preserved; everything just gets proportionally smaller
@@ -157,9 +174,11 @@ body::before {
 @media (max-aspect-ratio: 1/1) {
   .middle { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
   .core-rail {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(var(--cell, 92px), 1fr));
     grid-template-rows: none;
     grid-auto-rows: minmax(60px, auto);
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
 
@@ -167,20 +186,21 @@ body::before {
   :root { --gap: 5px; --radius: 13px; }
   .topbar { min-height: 74px; }
   .controls { grid-template-columns: repeat(4, minmax(42px, 54px)); }
-  [data-size="m"] { --label: 12px; --glyph: 24px; }
-  [data-size="l"] { --label: 14px; --glyph: 30px; }
-  [data-size="xl"]{ --label: 16px; --glyph: 34px; }
+  [data-size="m"] { --label: 12px; --glyph: 24px; --cell: 74px; }
+  [data-size="l"] { --label: 14px; --glyph: 30px; --cell: 84px; }
+  [data-size="xl"]{ --label: 16px; --glyph: 34px; --cell: 96px; }
   /* A phone cannot hold eight columns at a size a child can hit — eight
      columns on a 360px screen gives 39px keys. So narrow screens wrap the same
      buttons, in the same reading order, into as many columns as fit at a
-     usable size. Absolute positions change; the sequence she learned does not,
-     and every key stays big enough to press. */
+     usable size (the universal .board rule above already scrolls when they
+     don't all fit — auto-fill here just lets the column COUNT shrink too, on
+     top of that, rather than keeping 8 cramped columns). Absolute positions
+     change; the sequence she learned does not, and every key stays big
+     enough to press. */
   .board {
-    grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--cell, 74px), 1fr));
     grid-template-rows: none;
-    grid-auto-rows: minmax(74px, 1fr);
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    grid-auto-rows: minmax(var(--cell, 74px), 1fr);
   }
   .core-rail {
     grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));

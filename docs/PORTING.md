@@ -65,7 +65,7 @@ A button:
 {
   "id": "food.apple",                          // stable, unique, never reused
   "label": "apple",                            // shown under the symbol
-  "speak": "apple",                            // said aloud; may be a whole sentence
+  "speak": "apple",                            // said aloud; always equals label
   "type": "word",                              // word | phrase | folder | action
   "icon": { "kind": "emoji", "value": "🍎" },  // or { "kind": "svg", "value": "want" }
   "color": "noun",
@@ -80,7 +80,11 @@ Rules the renderer must honour:
 - `buttons.length === cols * rows` exactly. A `null` entry is a **visible empty
   slot**, not something to skip — it holds its neighbours in position.
 - Never sort, never reorder, never collapse. Grid order is the file's order.
-- `label` and `speak` are independent. A short label may say a long sentence.
+- `label` and `speak` are the *same string* on every shipped button — what she
+  sees is always exactly what's spoken. The fields are technically independent
+  (a parent customisation in Edit mode may set them apart on purpose, as a
+  shortcut), but the shipped vocabulary never does, and no future authoring
+  should reintroduce a silent mismatch there.
 - `icon.kind === "svg"` refers to `assets/icons/<value>.svg`.
 
 ## Behaviour worth preserving

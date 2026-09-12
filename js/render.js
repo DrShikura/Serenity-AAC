@@ -89,6 +89,11 @@ export function renderEmptySlot() {
 /** Draw a board into a container. */
 export function renderBoard(container, board, media, { editing = false } = {}) {
   container.replaceChildren();
+  // A fresh board always starts scrolled to the top-left — carrying over
+  // wherever the previous board happened to be scrolled to would be
+  // disorienting, not a convenience.
+  container.scrollTop = 0;
+  container.scrollLeft = 0;
   // Custom properties rather than inline grid templates, so the stylesheet's
   // narrow-screen rules can still take over.
   container.style.setProperty('--cols', board.cols);
@@ -112,6 +117,9 @@ export function renderBoard(container, board, media, { editing = false } = {}) {
     if (editing) key.classList.add('is-editing');
     container.append(key);
   }
+  // So a board with more rows/columns than fit shows "there's more" right
+  // away, before she's touched it — not only once she starts scrolling.
+  updateScrollEdges(container);
 }
 
 /** Draw the fixed core rail. Identical on every board, always. */
@@ -125,6 +133,7 @@ export function renderCore(container, coreBoard, media) {
       hasRecording: media?.recordings?.has(button.id),
     }));
   }
+  updateScrollEdges(container);
 }
 
 /** Draw the sentence in the output bar as removable chips. */
@@ -135,6 +144,7 @@ export function renderOutput(container, utterance, speakingKey) {
     hint.className = 'output__empty';
     hint.textContent = 'Tap the pictures to talk';
     container.append(hint);
+    updateScrollEdges(container);
     return;
   }
   for (const token of utterance.tokens) {
@@ -168,6 +178,30 @@ export function renderOutput(container, utterance, speakingKey) {
   }
   // Keep the newest word in view without yanking the whole page around.
   container.scrollLeft = container.scrollWidth;
+  updateScrollEdges(container);
+}
+
+// A hair of slack so a container that's scrolled to (or within a sub-pixel
+// of) an edge doesn't flicker the shadow on and off from rounding error.
+const EDGE_SLACK = 2;
+
+/**
+ * Toggle .can-scroll-up/-down/-left/-right on a scrollable container to
+ * match its actual scroll position, so the CSS edge-shadow only ever shows
+ * on a side that genuinely has more content — never as a static decoration,
+ * and never lingering once she's scrolled all the way to that edge.
+ * Safe to call on any element, scrollable or not (all four just clear).
+ */
+export function updateScrollEdges(el) {
+  if (!el) return;
+  const canUp = el.scrollTop > EDGE_SLACK;
+  const canDown = el.scrollTop < el.scrollHeight - el.clientHeight - EDGE_SLACK;
+  const canLeft = el.scrollLeft > EDGE_SLACK;
+  const canRight = el.scrollLeft < el.scrollWidth - el.clientWidth - EDGE_SLACK;
+  el.classList.toggle('can-scroll-up', canUp);
+  el.classList.toggle('can-scroll-down', canDown);
+  el.classList.toggle('can-scroll-left', canLeft);
+  el.classList.toggle('can-scroll-right', canRight);
 }
 
 /** A little burst of sparkles when something is spoken. */

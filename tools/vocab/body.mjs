@@ -1,15 +1,15 @@
-import { board, w, p, f } from '../dsl.mjs';
+import { board, w, p, f, gap } from '../dsl.mjs';
 
 export const boards = [
   board('body', 'My Body', '🫀', 'noun', 8, 5, [
-    p('I need the bathroom', '🚽', 'I need to go to the bathroom', { color: 'urgent' }),
-    p('I need to pee', '🚽', 'I need to pee', { color: 'urgent' }),
-    p('I need to poop', '🚽', 'I need to poop', { color: 'urgent' }),
-    p('it hurts', '🤕', 'it hurts', { color: 'urgent' }),
-    p('I feel sick', '🤢', 'I feel sick', { color: 'urgent' }),
-    p("I can't breathe", '😰', 'I cannot breathe well', { color: 'urgent' }),
-    p('I need my medicine', '💊', 'I need my medicine', { color: 'urgent' }),
-    p('I need a doctor', '🩺', 'I need a doctor', { color: 'urgent' }),
+    p('I need the bathroom', '🚽', { color: 'urgent' }),
+    p('I need to pee', '🚽', { color: 'urgent' }),
+    p('I need to poop', '🚽', { color: 'urgent' }),
+    p('it hurts', '🤕', { color: 'urgent' }),
+    p('I feel sick', '🤢', { color: 'urgent' }),
+    p("I can't breathe", '😰', { color: 'urgent' }),
+    p('I need my medicine', '💊', { color: 'urgent' }),
+    p('I need a doctor', '🩺', { color: 'urgent' }),
 
     f('Body parts', '🦵', 'body_parts'),
     f('Hygiene', '🪥', 'body_hygiene'),
@@ -38,14 +38,14 @@ export const boards = [
     w('rest', '🛌', { color: 'verb', past: 'rested', ing: 'resting' }),
     w('sleep', '😴', { color: 'verb', past: 'slept', ing: 'sleeping' }),
 
-    p('my tummy hurts', '🫄', 'my tummy hurts', { color: 'urgent' }),
-    p('my head hurts', '🤕', 'my head hurts', { color: 'urgent' }),
-    p('I bumped it', '💥', 'I bumped it', { color: 'social' }),
-    p('I need a hug', '🤗', 'I need a hug', { color: 'social' }),
-    p('I feel better', '😊', 'I feel better now', { color: 'social' }),
-    p('I need to lie down', '🛌', 'I need to lie down', { color: 'social' }),
-    p('where does it hurt', '❓', 'it hurts here', { color: 'question' }),
-    p("I'm okay", '👌', 'I am okay', { color: 'social' }),
+    p('my tummy hurts', '🫄', { color: 'urgent' }),
+    p('my head hurts', '🤕', { color: 'urgent' }),
+    p('I bumped it', '💥', { color: 'social' }),
+    p('I need a hug', '🤗', { color: 'social' }),
+    p('I feel better', '😊', { color: 'social' }),
+    p('I need to lie down', '🛌', { color: 'social' }),
+    p('it hurts here', '❓', { color: 'question' }),
+    p("I'm okay", '👌', { color: 'social' }),
   ]),
 
   board('body_parts', 'Body Parts', '🦵', 'noun', 8, 3, [
@@ -66,58 +66,72 @@ export const boards = [
     w('soap', '🧼'), w('towel', '🧻', { plural: 'towels' }),
     w('toilet paper', '🧻'), w('hair brush', '💇'),
     w('toothbrush', '🪥'), w('toothpaste', '🪥'), w('shampoo', '🧴'), w('tissue', '🤧', { plural: 'tissues' }),
-    p('I need to wash my hands', '🧼', 'I need to wash my hands', { color: 'social' }),
-    p('I need a tissue', '🤧', 'I need a tissue', { color: 'social' }),
-    p('I had an accident', '💧', 'I had an accident', { color: 'urgent' }),
-    p('help me please', '🆘', 'help me please', { color: 'urgent' }),
+    p('I need to wash my hands', '🧼', { color: 'social' }),
+    p('I need a tissue', '🤧', { color: 'social' }),
+    p('I had an accident', '💧', { color: 'urgent' }),
+    p('help me please', '🆘', { color: 'urgent' }),
   ]),
 
-  board('feelings', 'Feelings', '😊', 'describe', 8, 4, [
+  // Like people/places, feelings used to be one flat, fully-packed board —
+  // now a hub with the most frequent feelings and phrases, plus a folder to
+  // the rest, with real empty space left on purpose.
+  board('feelings', 'Feelings', '😊', 'describe', 8, 3, [
+    f('More Feelings', '💭', 'feelings_more'),
     w('happy', '😀'), w('sad', '😢'), w('mad', '😠'), w('scared', '😨'),
-    w('silly', '🤪'), w('excited', '🤩'), w('nervous', '😬'), w('frustrated', '😤'),
-    w('calm', '😌'), w('proud', '🥰'), w('lonely', '🥺'), w('bored', '😐'),
-    w('surprised', '😲'), w('shy', '🫣'), w('confused', '😕'), w('embarrassed', '😳'),
-    w('love', '❤️'), w('worried', '😟'), w('grumpy', '😒'), w('safe', '🛡️'),
-    w('a little', '🤏'), w('very', '⬆️'), w('so much', '💯'), w('not', '🚫', { color: 'negation' }),
-    p('I feel happy', '😀', 'I feel happy', { color: 'social' }),
-    p('I feel sad', '😢', 'I feel sad', { color: 'social' }),
-    p('I am mad', '😠', 'I am mad', { color: 'social' }),
-    p("I'm scared", '😨', 'I am scared', { color: 'social' }),
-    p('I like it', '👍', 'I like it', { color: 'social' }),
-    p("I don't like it", '👎', 'I do not like it', { color: 'negation' }),
-    p('I love you', '❤️', 'I love you', { color: 'social' }),
-    p('why do I feel this way', '❓', 'I do not know why I feel this way', { color: 'question' }),
+    w('excited', '🤩'), w('calm', '😌'), w('silly', '🤪'),
+
+    w('love', '❤️'), w('a little', '🤏'), w('very', '⬆️'), w('so much', '💯'),
+    w('not', '🚫', { color: 'negation' }),
+    gap, gap, gap,
+
+    p('I feel happy', '😀', { color: 'social' }),
+    p('I feel sad', '😢', { color: 'social' }),
+    p('I am mad', '😠', { color: 'social' }),
+    p("I'm scared", '😨', { color: 'social' }),
+    p('I like it', '👍', { color: 'social' }),
+    p("I don't like it", '👎', { color: 'negation' }),
+    p('I love you', '❤️', { color: 'social' }),
+    gap,
+  ]),
+
+  board('feelings_more', 'More Feelings', '💭', 'describe', 8, 2, [
+    w('proud', '🥰'), w('lonely', '🥺'), w('bored', '😐'), w('surprised', '😲'),
+    w('shy', '🫣'), w('confused', '😕'), w('embarrassed', '😳'), w('nervous', '😬'),
+
+    w('frustrated', '😤'), w('worried', '😟'), w('grumpy', '😒'), w('safe', '🛡️'),
+    p('why do I feel this way', '❓', { color: 'question' }),
+    gap, gap, gap,
   ]),
 
   // Regulation and repair. Autistic kids are routinely given no way to say any
   // of this, so it gets a full board and a one-tap route from Home.
   board('regulate', 'Help & Feeling Big', '🆘', 'urgent', 8, 4, [
-    p('I need a break', '⏸️', 'I need a break please', { color: 'urgent' }),
-    p('I need space', '↔️', 'I need some space please', { color: 'urgent' }),
-    p('too loud', '📢', 'it is too loud for me', { color: 'urgent' }),
-    p('too bright', '💡', 'it is too bright for me', { color: 'urgent' }),
-    p('too many people', '👥', 'there are too many people', { color: 'urgent' }),
-    p("don't touch me", '🙅', 'please do not touch me', { color: 'urgent' }),
-    p('I need quiet', '🤫', 'I need it to be quiet', { color: 'urgent' }),
-    p('I need to go now', '🚪', 'I need to leave now', { color: 'urgent' }),
+    p('I need a break', '⏸️', { color: 'urgent' }),
+    p('I need space', '↔️', { color: 'urgent' }),
+    p('too loud', '📢', { color: 'urgent' }),
+    p('too bright', '💡', { color: 'urgent' }),
+    p('too many people', '👥', { color: 'urgent' }),
+    p("don't touch me", '🙅', { color: 'urgent' }),
+    p('I need quiet', '🤫', { color: 'urgent' }),
+    p('I need to go now', '🚪', { color: 'urgent' }),
 
-    p('something is wrong', '⚠️', 'something is wrong', { color: 'urgent' }),
-    p("I'm not okay", '😞', 'I am not okay', { color: 'urgent' }),
-    p('I feel too big', '🌋', 'my feelings are too big right now', { color: 'urgent' }),
-    p('I want to be alone', '🚶', 'I want to be alone right now', { color: 'urgent' }),
-    p('stay with me', '🤝', 'please stay with me', { color: 'social' }),
-    p('I need my person', '🫂', 'I need my person', { color: 'social' }),
-    p('I need my toy', '🧸', 'I need my comfort toy', { color: 'social' }),
-    p('I need headphones', '🎧', 'I need my headphones', { color: 'social' }),
+    p('something is wrong', '⚠️', { color: 'urgent' }),
+    p("I'm not okay", '😞', { color: 'urgent' }),
+    p('I feel too big', '🌋', { color: 'urgent' }),
+    p('I want to be alone', '🚶', { color: 'urgent' }),
+    p('stay with me', '🤝', { color: 'social' }),
+    p('I need my person', '🫂', { color: 'social' }),
+    p('I need my toy', '🧸', { color: 'social' }),
+    p('I need headphones', '🎧', { color: 'social' }),
 
-    p("that's not what I meant", '🔄', 'that is not what I meant', { color: 'social' }),
-    p('let me try again', '↩️', 'let me try again', { color: 'social' }),
-    p("you're not listening", '👂', 'you are not listening to me', { color: 'social' }),
-    p('wait for me', '✋', 'please wait for me', { color: 'social' }),
-    p('slow down', '🐌', 'please slow down', { color: 'social' }),
-    p('I need more time', '⏳', 'I need more time', { color: 'social' }),
-    p("I don't understand", '❓', 'I do not understand', { color: 'social' }),
-    p('ask me again', '🔁', 'can you ask me again', { color: 'social' }),
+    p("that's not what I meant", '🔄', { color: 'social' }),
+    p('let me try again', '↩️', { color: 'social' }),
+    p("you're not listening", '👂', { color: 'social' }),
+    p('wait for me', '✋', { color: 'social' }),
+    p('slow down', '🐌', { color: 'social' }),
+    p('I need more time', '⏳', { color: 'social' }),
+    p("I don't understand", '❓', { color: 'social' }),
+    p('ask me again', '🔁', { color: 'social' }),
 
     // Single comfort words, not emergencies — the red urgent face and its halo
     // stay meaningful only if they are reserved for the rows above.

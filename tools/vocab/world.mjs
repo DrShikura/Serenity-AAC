@@ -1,46 +1,94 @@
-import { board, w, p, f } from '../dsl.mjs';
+import { board, w, p, f, gap } from '../dsl.mjs';
 
 export const boards = [
+  // people, feelings and places used to be flat, single boards, packed edge to
+  // edge with no room to grow. They're now hub-and-subpage, matching the
+  // pattern food/play/body/household already use: a hub with quick-access
+  // words and phrases, plus folders into a few focused sub-boards — each with
+  // real empty space left on purpose, for growth and for breathing room.
+
+  board('people', 'People', '👨‍👩‍👧', 'people', 8, 2, [
+    f('Family', '👨‍👩‍👧', 'people_family'),
+    f('Friends & Helpers', '🤝', 'people_community'),
+    f('Me, You & Mine', '🙋', 'people_pronouns'),
+    w('family', '👨‍👩‍👧'), w('friend', '🧒', { plural: 'friends' }),
+    w('teacher', '🧑‍🏫', { plural: 'teachers' }), w('helper', '🤝'), w('everybody', '👥'),
+
+    w('neighbor', '🏘️'),
+    p("what's your name?", '❓', { color: 'question' }),
+    p('come here please', '👋', { color: 'social' }),
+    p('I want Mom', '👩', { color: 'social' }),
+    p('I miss you', '🥺', { color: 'social' }),
+    gap, gap, gap,
+  ]),
+
   // Family buttons are deliberately generic. A parent swaps in real names and
   // photos from Edit mode; the ids stay stable so the layout never shifts.
-  board('people', 'People', '👨‍👩‍👧', 'people', 8, 4, [
+  board('people_family', 'Family', '👨‍👩‍👧', 'people', 8, 2, [
     w('Mom', '👩'), w('Dad', '👨'), w('Grandma', '👵'), w('Grandpa', '👴'),
     w('sister', '👧', { plural: 'sisters' }), w('brother', '👦', { plural: 'brothers' }),
     w('baby', '👶', { plural: 'babies' }), w('family', '👨‍👩‍👧'),
+
+    w('aunt', '👩'), w('uncle', '👨'),
+    gap, gap, gap, gap, gap, gap,
+  ]),
+
+  board('people_community', 'Friends & Helpers', '🤝', 'people', 8, 2, [
     w('friend', '🧒', { plural: 'friends' }), w('teacher', '🧑‍🏫', { plural: 'teachers' }),
     w('doctor', '🩺'), w('nurse', '🧑‍⚕️'), w('helper', '🤝'), w('bus driver', '🚌'),
     w('neighbor', '🏘️'), w('everybody', '👥'),
-    w('I', '🙋', { pos: 'pronoun' }), w('me', '👇', { pos: 'pronoun' }), w('my', '🤲', { pos: 'pronoun' }),
-    w('you', '👉', { pos: 'pronoun' }), w('your', '🫵', { pos: 'pronoun' }),
-    w('we', '👥', { pos: 'pronoun' }), w('they', '👬', { pos: 'pronoun' }),
-    w('he', '👦', { pos: 'pronoun' }),
-    w('she', '👧', { pos: 'pronoun' }), w('it', '📦', { pos: 'pronoun' }),
-    w('them', '👫', { pos: 'pronoun' }), w('us', '🫂', { pos: 'pronoun' }),
-    p("what's your name?", '❓', 'what is your name', { color: 'question' }),
-    p('come here please', '👋', 'come here please', { color: 'social' }),
-    p('I want Mom', '👩', 'I want Mom', { color: 'social' }),
-    p('I miss you', '🥺', 'I miss you', { color: 'social' }),
+
+    // A full empty row, on purpose — this is where a specific real name
+    // (a therapist, an aide, a particular friend) goes.
+    gap, gap, gap, gap, gap, gap, gap, gap,
   ]),
 
-  board('places', 'Places & Going', '🏫', 'noun', 8, 5, [
-    w('home', '🏠'), w('school', '🏫'), w('store', '🏪'), w('park', '🏞️'),
-    w('car', '🚗'), w('outside', '🌳'), w('inside', '🚪'), w("Grandma's house", '🏡'),
-    w('restaurant', '🍽️'), w('doctor', '🏥'), w('library', '📚'), w('pool', '🏊'),
-    w('playground', '🛝'), w('bus', '🚌'), w('church', '⛪'), w('beach', '🏖️'),
+  board('people_pronouns', 'Me, You & Mine', '🙋', 'people', 8, 2, [
+    w('I', '🙋', { pos: 'pronoun' }), w('me', '👇', { pos: 'pronoun' }), w('my', '🤲', { pos: 'pronoun' }),
+    w('mine', '🙋', { pos: 'pronoun' }), w('you', '👉', { pos: 'pronoun' }), w('your', '🫵', { pos: 'pronoun' }),
+    w('yours', '👉', { pos: 'pronoun' }), w('we', '👥', { pos: 'pronoun' }),
+
+    w('they', '👬', { pos: 'pronoun' }), w('he', '👦', { pos: 'pronoun' }), w('she', '👧', { pos: 'pronoun' }),
+    w('it', '📦', { pos: 'pronoun' }), w('them', '👫', { pos: 'pronoun' }), w('us', '🫂', { pos: 'pronoun' }),
+    w('ours', '🫂', { pos: 'pronoun' }), gap,
+  ]),
+
+  board('places', 'Places & Going', '🏫', 'noun', 8, 2, [
+    f('Where We Go', '🏫', 'places_where'),
+    f('Going & Moving', '🚗', 'places_going'),
+    w('home', '🏠'), w('school', '🏫'), w('outside', '🌳'), w('inside', '🚪'), w('car', '🚗'), w('store', '🏪'),
+
+    p('I want to go home', '🏠', { color: 'social' }),
+    p('are we there yet?', '❓', { color: 'question' }),
+    p('where are we going?', '❓', { color: 'question' }),
+    p("I don't want to go", '🙅', { color: 'negation' }),
+    gap, gap, gap, gap,
+  ]),
+
+  board('places_where', 'Where We Go', '🏫', 'noun', 8, 2, [
+    w('park', '🏞️'), w("Grandma's house", '🏡'), w('restaurant', '🍽️'), w('doctor', '🏥'),
+    w('library', '📚'), w('pool', '🏊'), w('playground', '🛝'), w('bus', '🚌'),
+
+    w('church', '⛪'), w('beach', '🏖️'),
+    gap, gap, gap, gap, gap, gap,
+  ]),
+
+  board('places_going', 'Going & Moving', '🚗', 'noun', 8, 3, [
     w('go', '➡️', { color: 'verb', past: 'went', ing: 'going' }),
     w('come', '⬅️', { color: 'verb', past: 'came', ing: 'coming' }),
     w('stay', '🛑', { color: 'verb', past: 'stayed', ing: 'staying' }),
     w('leave', '🚪', { color: 'verb', past: 'left', ing: 'leaving' }),
+    w('walk', '🚶', { color: 'verb', past: 'walked', ing: 'walking' }),
+    w('run', '🏃', { color: 'verb', past: 'ran', ing: 'running' }),
     w('in', '📥', { color: 'describe' }), w('out', '📤', { color: 'describe' }),
+
     w('up', '⬆️', { color: 'describe' }), w('down', '⬇️', { color: 'describe' }),
     w('here', '📍', { color: 'describe' }), w('there', '👉', { color: 'describe' }),
     w('under', '⬇️', { color: 'describe' }), w('on top', '⬆️', { color: 'describe' }),
     w('behind', '🔙', { color: 'describe' }), w('next to', '↔️', { color: 'describe' }),
+
     w('far', '🔭', { color: 'describe' }), w('close', '🤏', { color: 'describe' }),
-    p('I want to go home', '🏠', 'I want to go home', { color: 'social' }),
-    p('are we there yet?', '❓', 'are we there yet', { color: 'question' }),
-    p('where are we going?', '❓', 'where are we going', { color: 'question' }),
-    p("I don't want to go", '🙅', 'I do not want to go', { color: 'negation' }),
+    gap, gap, gap, gap, gap, gap,
   ]),
 
   board('actions', 'Doing Words', '🏃', 'verb', 8, 5, [
@@ -79,10 +127,10 @@ export const boards = [
     w('dirty', '🧺'), w('clean', '✨'), w('broken', '💔'), w('new', '✨'),
     w('same', '🟰'), w('different', '🔀'), w('all', '💯'), w('some', '🤏'),
     w('none', '🚫', { color: 'negation' }), w('too much', '🙌'), w('enough', '✋'), w('favorite', '⭐'),
-    p("that's silly", '🤪', 'that is silly', { color: 'social' }),
-    p('I like that', '👍', 'I like that', { color: 'social' }),
-    p("it's too big", '🐘', 'it is too big', { color: 'social' }),
-    p("it's broken", '💔', 'it is broken', { color: 'social' }),
+    p("that's silly", '🤪', { color: 'social' }),
+    p('I like that', '👍', { color: 'social' }),
+    p("it's too big", '🐘', { color: 'social' }),
+    p("it's broken", '💔', { color: 'social' }),
   ]),
 
   board('describe_colors', 'Colors', '🌈', 'describe', 8, 2, [
@@ -112,10 +160,10 @@ export const boards = [
     w('sunny', '☀️'), w('rainy', '🌧️'), w('cloudy', '☁️'), w('snowy', '❄️'),
     w('windy', '🌬️'), w('stormy', '⛈️'), w('hot', '🥵'), w('cold', '🥶'),
     w('rainbow', '🌈'), w('moon', '🌙'), w('stars', '⭐'), w('sky', '🌤️'),
-    p("it's raining", '🌧️', 'it is raining', { color: 'social' }),
-    p('I need a coat', '🧥', 'I need my coat', { color: 'social' }),
-    p('too hot for me', '🥵', 'it is too hot for me', { color: 'urgent' }),
-    p('I want to go outside', '🌳', 'I want to go outside', { color: 'social' }),
+    p("it's raining", '🌧️', { color: 'social' }),
+    p('I need a coat', '🧥', { color: 'social' }),
+    p('too hot for me', '🥵', { color: 'urgent' }),
+    p('I want to go outside', '🌳', { color: 'social' }),
   ]),
 
   board('social', 'Words & Questions', '💬', 'social', 8, 5, [
@@ -126,22 +174,22 @@ export const boards = [
     w('yes', '✅'), w('no', '❌', { color: 'negation' }), w('maybe', '🤷'), w('okay', '👌'),
     w('please', '🙏'), w('thank you', '🙇'), w('sorry', '😔'), w('excuse me', '🙋'),
     w('hi', '👋'), w('bye', '👋'), w('good morning', '🌅'), w('good night', '🌙'),
-    p("what's that?", '❓', 'what is that', { color: 'question' }),
-    p('where is it?', '📍', 'where is it', { color: 'question' }),
-    p('who is that?', '❓', 'who is that', { color: 'question' }),
-    p('can I have it?', '🤲', 'can I have it please', { color: 'question' }),
-    p('can you help me?', '🆘', 'can you help me please', { color: 'question' }),
-    p('is it my turn?', '🙋', 'is it my turn', { color: 'question' }),
-    p('what happens next?', '➡️', 'what happens next', { color: 'question' }),
-    p('can we go?', '🚪', 'can we go now', { color: 'question' }),
-    p("I don't know", '🤷', 'I do not know'),
-    p("I don't understand", '😕', 'I do not understand'),
-    p('say it again', '🔁', 'can you say it again'),
-    p('I have something to say', '🗣️', 'I have something to say'),
-    p('listen to me', '👂', 'please listen to me'),
-    p('my name is', '🏷️', 'my name is'),
-    p('nice to meet you', '🤝', 'nice to meet you'),
-    p('see you later', '👋', 'see you later'),
+    p("what's that?", '❓', { color: 'question' }),
+    p('where is it?', '📍', { color: 'question' }),
+    p('who is that?', '❓', { color: 'question' }),
+    p('can I have it?', '🤲', { color: 'question' }),
+    p('can you help me?', '🆘', { color: 'question' }),
+    p('is it my turn?', '🙋', { color: 'question' }),
+    p('what happens next?', '➡️', { color: 'question' }),
+    p('can we go?', '🚪', { color: 'question' }),
+    p("I don't know", '🤷'),
+    p("I don't understand", '😕'),
+    p('say it again', '🔁'),
+    p('I have something to say', '🗣️'),
+    p('listen to me', '👂'),
+    p('my name is', '🏷️'),
+    p('nice to meet you', '🤝'),
+    p('see you later', '👋'),
     f('Building words', '🧩', 'build'),
     f('Letters', '🔤', 'keyboard'),
     f('Flags', '🌍', 'world', { color: 'noun' }),

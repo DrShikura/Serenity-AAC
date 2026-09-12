@@ -113,13 +113,44 @@
 
 [data-theme="dark"] .key { color: #16121c; }
 
+/* ── Scrollable panels: a visible frame, and a soft edge shadow that shows
+      only when there's more content that direction — so a button caught
+      mid-scroll at a container's edge reads as "more this way", never as a
+      rendering glitch. updateScrollEdges() in js/render.js toggles the
+      .can-scroll-* classes based on real scroll position. ─────────────────── */
+
+.board, .core-rail, .navbar__scroll, .tense-strip, .ending-strip, .output {
+  /* Each edge is its own custom property so JS can toggle one at a time
+     without fighting over a single box-shadow declaration, and so a panel
+     with its own decorative shadow (the output bar's drop shadow, below)
+     keeps it alongside the edge cues instead of losing it to an override. */
+  --edge-up: 0 0 0 transparent;
+  --edge-down: 0 0 0 transparent;
+  --edge-left: 0 0 0 transparent;
+  --edge-right: 0 0 0 transparent;
+  box-shadow: var(--edge-up), var(--edge-down), var(--edge-left), var(--edge-right),
+              var(--own-shadow, 0 0 0 transparent);
+}
+
+.can-scroll-up    { --edge-up:    inset 0 14px 10px -10px rgba(0, 0, 0, .3); }
+.can-scroll-down  { --edge-down:  inset 0 -14px 10px -10px rgba(0, 0, 0, .3); }
+.can-scroll-left  { --edge-left:  inset 14px 0 10px -10px rgba(0, 0, 0, .3); }
+.can-scroll-right { --edge-right: inset -14px 0 10px -10px rgba(0, 0, 0, .3); }
+
+.board, .core-rail, .navbar__scroll, .tense-strip, .ending-strip {
+  background: var(--paper-deep);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 16px;
+  padding: 6px;
+}
+
 /* ── Output bar and its word chips ──────────────────────────────────────── */
 
 .output {
   background: var(--paper-deep);
   border: var(--stroke) solid var(--outline);
   border-radius: 20px 26px 20px 24px;
-  box-shadow: 0 4px 0 rgba(51, 37, 26, .28);
+  --own-shadow: 0 4px 0 rgba(51, 37, 26, .28);
 }
 
 .output__empty {

@@ -39,7 +39,7 @@ app's own Edit mode — those changes live in a separate overlay on the device.
 |---|---|---|
 | `id` | string | Unique across the whole file, stable forever. User edits key off it. |
 | `label` | string | The word shown under the symbol. |
-| `speak` | string | What is said aloud. May differ from `label` and may be a whole sentence. |
+| `speak` | string | What is said aloud. Every button *shipped in this file* has `speak === label` — `tools/dsl.mjs`'s `p()` enforces this structurally, so what she sees is always exactly what's spoken. The field can still diverge on a button a parent customises through the app's Edit mode (an opt-in shortcut, e.g. a `snack` button that speaks "I want a snack please") — but never in the authored defaults. |
 | `type` | string | `word` · `phrase` · `folder` · `action` |
 | `icon` | object\|null | `{ "kind": "emoji", "value": "🍎" }` or `{ "kind": "svg", "value": "want" }` |
 | `color` | string | A swatch name from `colors`. |

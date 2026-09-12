@@ -25,9 +25,9 @@ export const boards = [
     w('full', '🫄', { color: 'describe' }),
     w('yummy', '😍', { color: 'describe' }),
     w('yucky', '🤢', { color: 'describe' }),
-    p('too hot', '🥵', 'it is too hot', { color: 'describe' }),
-    p('too cold', '🥶', 'it is too cold', { color: 'describe' }),
-    p('all gone', '🫗', 'it is all gone', { color: 'describe' }),
+    p('too hot', '🥵', { color: 'describe' }),
+    p('too cold', '🥶', { color: 'describe' }),
+    p('all gone', '🫗', { color: 'describe' }),
 
     w('water', '💧', { pos: 'noun' }),
     w('milk', '🥛', { pos: 'noun' }),
@@ -38,14 +38,14 @@ export const boards = [
     w('pasta', '🍝', { pos: 'noun' }),
     w('rice', '🍚', { pos: 'noun' }),
 
-    p("I'm hungry", '🍽️', 'I am hungry', { color: 'social' }),
-    p('I want a snack', '🍿', 'I want a snack', { color: 'social' }),
-    p('more please', '➕', 'more please', { color: 'social' }),
-    p('no thank you', '🙅', 'no thank you', { color: 'negation' }),
-    p("I don't like it", '👎', "I do not like it", { color: 'negation' }),
-    p("that's too much", '🙌', 'that is too much', { color: 'describe' }),
-    p('a little bit', '🤏', 'just a little bit', { color: 'describe' }),
-    p("I'm all done", '✅', 'I am all done', { color: 'social' }),
+    p("I'm hungry", '🍽️', { color: 'social' }),
+    p('I want a snack', '🍿', { color: 'social' }),
+    p('more please', '➕', { color: 'social' }),
+    p('no thank you', '🙅', { color: 'negation' }),
+    p("I don't like it", '👎', { color: 'negation' }),
+    p("that's too much", '🙌', { color: 'describe' }),
+    p('a little bit', '🤏', { color: 'describe' }),
+    p("I'm all done", '✅', { color: 'social' }),
   ]),
 
   board('food_fruit', 'Fruit', '🍓', 'noun', 8, 3, [
@@ -94,7 +94,7 @@ export const boards = [
     w('water', '💧'), w('milk', '🥛'), w('juice', '🧃'), w('apple juice', '🍎'),
     w('orange juice', '🍊'), w('chocolate milk', '🍫'), w('smoothie', '🥤'), w('soda', '🥤'),
     w('lemonade', '🍋'), w('tea', '🍵'), w('hot chocolate', '☕'), w('water bottle', '🍶'),
-    w('straw', '🥤'), w('cup', '🥛', { plural: 'cups' }), w('ice', '🧊'), p('more to drink', '🥤', 'I want more to drink'),
+    w('straw', '🥤'), w('cup', '🥛', { plural: 'cups' }), w('ice', '🧊'), p('more to drink', '🥤'),
   ]),
 
   board('food_veggies', 'Veggies', '🥕', 'noun', 8, 2, [
@@ -118,9 +118,9 @@ export const boards = [
     w('spoon', '🥄', { plural: 'spoons' }), w('knife', '🔪', { plural: 'knives' }),
     w('napkin', '🧻', { plural: 'napkins' }), w('table', '🪑'),
     w('high chair', '🪑'), w('lunch box', '🧰'), w('bib', '👶'), w('tray', '🍱'),
-    p('I spilled', '💦', 'I spilled something', { color: 'social' }),
-    p('I need a napkin', '🧻', 'I need a napkin', { color: 'social' }),
-    p('clean it up', '🧽', 'can you clean it up', { color: 'social' }),
-    p('sit down', '🪑', 'sit down please', { color: 'verb' }),
+    p('I spilled', '💦', { color: 'social' }),
+    p('I need a napkin', '🧻', { color: 'social' }),
+    p('clean it up', '🧽', { color: 'social' }),
+    p('sit down', '🪑', { color: 'verb' }),
   ]),
 ];

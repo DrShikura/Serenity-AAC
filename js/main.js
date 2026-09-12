@@ -7,7 +7,7 @@ import {
   clear, undo, canUndo, applyGrammarToLast, toSpeech, toText, isEmpty,
 } from './output.js';
 import { conjugate } from './grammar.js';
-import { renderBoard, renderCore, renderOutput, sparkleAt } from './render.js';
+import { renderBoard, renderCore, renderOutput, sparkleAt, updateScrollEdges } from './render.js';
 import { renderKeyboard } from './keyboard.js';
 import { initSpeech, speak, speakButton, stopSpeaking, defaultVoice, playRecording } from './speech.js';
 import * as store from './storage.js';
@@ -132,6 +132,7 @@ function drawNav(board) {
   pin.classList.toggle('is-on', pinned);
   pin.title = 'Stay on this page instead of going back Home after each word';
   dom.navbar.append(pin);
+  updateScrollEdges(scroller);
 }
 
 function navButton(icon, label, onClick, current = false) {
@@ -190,6 +191,7 @@ function drawTenses() {
     });
     strip.append(b);
   }
+  updateScrollEdges(strip);
 }
 
 function drawEndings() {
@@ -210,6 +212,7 @@ function drawEndings() {
     });
     strip.append(b);
   }
+  updateScrollEdges(strip);
 }
 
 /* ── Navigation ────────────────────────────────────────────────────────── */
@@ -558,6 +561,28 @@ function registerServiceWorker() {
   if (location.protocol === 'file:') return;
   navigator.serviceWorker.register('sw.js').catch(() => { /* offline support is a bonus */ });
 }
+
+/* ── Scroll edges ──────────────────────────────────────────────────────── */
+
+// One delegated listener covers every scrollable panel, present or future —
+// including .navbar__scroll, which is a brand-new DOM node on every
+// navigation (drawNav rebuilds it), so a listener bound directly to it would
+// not survive. The scroll event itself doesn't bubble, but a capture-phase
+// listener still sees it on the way down regardless, so this needs neither
+// bubbling nor rebinding.
+const SCROLLABLE = '.board, .core-rail, .output, .navbar__scroll, .tense-strip, .ending-strip';
+document.addEventListener('scroll', (event) => {
+  if (event.target instanceof Element && event.target.matches(SCROLLABLE)) {
+    updateScrollEdges(event.target);
+  }
+}, true);
+
+// Rotating the tablet or resizing the window can turn a board that fit into
+// one that overflows, or the reverse — refresh every edge, not just whichever
+// one happens to be re-rendered next.
+window.addEventListener('resize', () => {
+  for (const el of document.querySelectorAll(SCROLLABLE)) updateScrollEdges(el);
+});
 
 /* ── Go ────────────────────────────────────────────────────────────────── */
 
