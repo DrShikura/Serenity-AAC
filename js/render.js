@@ -4,6 +4,20 @@
 const ICON_PATH = 'assets/icons/';
 
 /**
+ * Resolve a hand-drawn icon name to a src.
+ *
+ * The single-file standalone build (tools/build-standalone.mjs) has no
+ * assets/ directory to point at — every SVG is inlined as a data: URI and
+ * dropped onto `window.SERENITY_ICONS[name]` before this module runs. When
+ * that map exists we use it; the ordinary served app never sets it, so this
+ * is a no-op there and the plain path is used as always.
+ */
+function iconSrc(name) {
+  const embedded = typeof window !== 'undefined' && window.SERENITY_ICONS;
+  return embedded?.[name] ?? `${ICON_PATH}${name}.svg`;
+}
+
+/**
  * A stable "hand-drawn" lean for a key, derived from its own id.
  * Deterministic on purpose: the wobble is charm, but a button that shifted
  * between renders would undermine the motor memory the whole layout depends on.
@@ -26,7 +40,7 @@ function glyphNode(icon, photoUrl, label) {
     span.append(img);
   } else if (icon?.kind === 'svg') {
     const img = document.createElement('img');
-    img.src = `${ICON_PATH}${icon.value}.svg`;
+    img.src = iconSrc(icon.value);
     img.alt = '';
     img.draggable = false;
     span.append(img);
@@ -133,7 +147,7 @@ export function renderOutput(container, utterance, speakingKey) {
 
     if (token.icon?.kind === 'svg') {
       const img = document.createElement('img');
-      img.src = `${ICON_PATH}${token.icon.value}.svg`;
+      img.src = iconSrc(token.icon.value);
       img.alt = '';
       chip.append(img);
     } else if (token.icon?.kind === 'emoji') {

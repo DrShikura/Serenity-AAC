@@ -4,8 +4,19 @@
 // mode lives in a separate overlay keyed by button id, applied on top at load
 // time. That way shipping new vocabulary in an update never wipes their work.
 
-/** Fetch and index the shipped vocabulary. */
+/**
+ * Fetch and index the shipped vocabulary.
+ *
+ * The single-file standalone build (tools/build-standalone.mjs) embeds this
+ * same JSON as `<script type="application/json" id="vocab-data">`, since a
+ * file:// page cannot fetch() its own directory. When that element exists we
+ * read it directly instead — the ordinary served app never has it, so this
+ * fetch path is unchanged for everyone else.
+ */
 export async function loadVocabulary(url = 'data/vocabulary.json') {
+  const embedded = typeof document !== 'undefined' && document.getElementById('vocab-data');
+  if (embedded) return indexVocabulary(JSON.parse(embedded.textContent));
+
   const res = await fetch(url, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`Could not load vocabulary (${res.status})`);
   return indexVocabulary(await res.json());

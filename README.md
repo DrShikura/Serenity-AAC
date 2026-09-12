@@ -52,6 +52,24 @@ To reach it from the tablet, find your computer's address on the network
 (`ipconfig` on Windows, `ifconfig` or `ipconfig getifaddr en0` on a Mac) and
 open `http://THAT-ADDRESS:8080` on the tablet while both are on the same wifi.
 
+### The no-server way: one file, for quick testing
+
+```sh
+npm install --no-save esbuild
+npm run build:standalone
+```
+
+This writes `serenity-aac.standalone.html` — the entire app (vocabulary,
+symbols, font, code) folded into one file with no separate assets and no
+network calls at all. Double-click it, email it, or drop it on a USB stick;
+it opens straight from disk in any browser, no server needed.
+
+It's meant for quick testing, not day-to-day use — GitHub Pages (above) is
+still the way to actually install this on her tablet, since only a real,
+installed PWA works offline reliably and stays put across restarts. This file
+is regenerated on demand rather than kept in the repository, since it's a
+600KB copy of files already tracked elsewhere.
+
 ---
 
 ## Using it
