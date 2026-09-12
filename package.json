@@ -1,0 +1,17 @@
+{
+  "name": "serenity-aac",
+  "version": "1.0.0",
+  "description": "A whimsical, offline-first AAC communication app for a nonverbal child.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "test": "node --test tests/*.test.js",
+    "build": "node tools/build-vocabulary.mjs && node tools/build-icons.mjs",
+    "check": "node tools/check-vocabulary.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.63.0"
+  }
+}

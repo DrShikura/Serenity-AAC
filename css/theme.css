@@ -1,0 +1,124 @@
+/* Comic Neue, bundled rather than linked so the app keeps its handwriting look
+   with no network — and on Android, which has no Comic Sans to fall back to.
+   SIL Open Font License 1.1; the full licence is in assets/fonts/OFL.txt.
+   Rounded, open letterforms like these are the usual recommendation for
+   emerging and dyslexic readers. */
+@font-face {
+  font-family: "Comic Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/comic-neue-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Comic Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/comic-neue-700.woff2") format("woff2");
+}
+
+/* Crayon palette and theme tokens.
+   Four themes. Every colour pair used for text has been checked to at least
+   4.5:1 contrast — bright does not have to mean unreadable. */
+
+:root {
+  /* Crayon box. These are the button face colours. */
+  --crayon-red:      #ff5a4a;
+  --crayon-orange:   #ff9b3f;
+  --crayon-yellow:   #ffd23f;
+  --crayon-green:    #5ddb7c;
+  --crayon-teal:     #3fd7cd;
+  --crayon-blue:     #66b7ff;
+  --crayon-purple:   #bb8dff;
+  --crayon-pink:     #ff90cb;
+
+  /* Paper and ink. */
+  --paper:           #fffaf0;
+  --paper-deep:      #fbeeda;
+  --ink:             #33251a;
+  --ink-soft:        #6b5744;
+  --outline:         #33251a;
+
+  /* Category swatches, mapped to the crayon box.
+     Following the usual AAC colour convention helps this transfer to whatever
+     device she meets at school. */
+  --c-core:      var(--crayon-teal);
+  --c-people:    var(--crayon-yellow);
+  --c-verb:      var(--crayon-green);
+  --c-describe:  var(--crayon-blue);
+  --c-noun:      var(--crayon-orange);
+  --c-social:    var(--crayon-pink);
+  --c-question:  var(--crayon-purple);
+  --c-negation:  var(--crayon-red);
+  --c-urgent:    var(--crayon-red);
+
+  --radius: 18px;
+  --gap: 8px;
+  --stroke: 3px;
+  --font: "Comic Neue", "Comic Sans MS", "Chalkboard SE", ui-rounded,
+          "Trebuchet MS", system-ui, sans-serif;
+
+  --press-time: 90ms;
+  --sparkle: 1;
+}
+
+/* High contrast: heavier outlines, pure white paper, darker faces.
+   For low vision, bright sunlight, or a cheap tablet screen. */
+[data-theme="contrast"] {
+  --paper: #ffffff;
+  --paper-deep: #f0f0f0;
+  --ink: #000000;
+  --ink-soft: #000000;
+  --outline: #000000;
+  --stroke: 5px;
+  --crayon-red:    #ff2d1a;
+  --crayon-orange: #ff8400;
+  --crayon-yellow: #ffdd00;
+  --crayon-green:  #00d24a;
+  --crayon-teal:   #00ccc0;
+  --crayon-blue:   #2c9bff;
+  --crayon-purple: #a45cff;
+  --crayon-pink:   #ff5bb0;
+}
+
+/* Calm: low-stimulus. For when the bright version is too much — during
+   a meltdown, at bedtime, or in a loud place. Same layout, quieter skin. */
+[data-theme="calm"] {
+  --paper: #f4f1ea;
+  --paper-deep: #e8e3d8;
+  --ink: #3a3630;
+  --ink-soft: #6e685e;
+  --outline: #8b8377;
+  --stroke: 2px;
+  --crayon-red:    #d99a92;
+  --crayon-orange: #dcb68f;
+  --crayon-yellow: #e3d29a;
+  --crayon-green:  #a9c9a6;
+  --crayon-teal:   #9ec9c4;
+  --crayon-blue:   #a6bed6;
+  --crayon-purple: #bdb0d1;
+  --crayon-pink:   #d9b2c6;
+  --sparkle: 0;
+}
+
+/* Dark: for evening use, keeping the faces saturated enough to stay legible. */
+[data-theme="dark"] {
+  --paper: #1c1a24;
+  --paper-deep: #13121a;
+  --ink: #16121c;
+  --ink-soft: #b9b2c4;
+  --outline: #0d0b12;
+  --crayon-red:    #ff6b5c;
+  --crayon-orange: #ffa85c;
+  --crayon-yellow: #ffd95c;
+  --crayon-green:  #6fe08d;
+  --crayon-teal:   #5ce0d6;
+  --crayon-blue:   #7cc3ff;
+  --crayon-purple: #c7a1ff;
+  --crayon-pink:   #ffa3d6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --press-time: 0ms; --sparkle: 0; }
+}

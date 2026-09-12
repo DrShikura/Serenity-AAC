@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="crayon" data-size="m" data-labels="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Serenity — My Talking App</title>
+<meta name="description" content="A picture-and-word communication board.">
+<meta name="theme-color" content="#fffaf0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/core.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/app-icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<div id="app">
+  <div class="topbar">
+    <div class="output" id="output" role="log" aria-live="polite" aria-label="What I am saying. Tap to say the whole sentence."></div>
+
+    <div class="controls">
+      <button class="ctl ctl--speak" id="btn-speak" type="button" title="Say it">
+        <span class="ctl__glyph" aria-hidden="true">▶</span><span>say it</span>
+      </button>
+      <button class="ctl" id="btn-back" type="button" title="Take off the last word">
+        <span class="ctl__glyph" aria-hidden="true">⌫</span><span>back</span>
+      </button>
+      <button class="ctl" id="btn-undo" type="button" title="Put it back">
+        <span class="ctl__glyph" aria-hidden="true">↺</span><span>undo</span>
+      </button>
+      <button class="ctl ctl--clear" id="btn-clear" type="button" title="Start again">
+        <span class="ctl__glyph" aria-hidden="true">✕</span><span>clear</span>
+      </button>
+      <button class="ctl" id="btn-history" type="button" title="Things I said before">
+        <span class="ctl__glyph" aria-hidden="true">🕘</span><span>before</span>
+      </button>
+      <button class="ctl" id="btn-settings" type="button" title="Settings. Grown-ups: press and hold.">
+        <span class="ctl__glyph" aria-hidden="true">⚙</span><span>setup</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="middle">
+    <div class="core-rail" id="core-rail" role="group" aria-label="Words I always need"></div>
+    <div class="board" id="board" role="group"></div>
+  </div>
+
+  <div class="grammar-bar" id="grammar-bar" hidden role="group" aria-label="Word endings"></div>
+
+  <nav class="navbar" id="navbar" aria-label="Go to another page"></nav>
+</div>
+
+<div class="scrim" id="scrim" hidden>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+</div>
+
+<noscript>
+  <p style="padding:24px;font:16px system-ui">
+    This talking app needs JavaScript switched on.
+  </p>
+</noscript>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

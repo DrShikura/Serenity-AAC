@@ -1,0 +1,429 @@
+/* Buttons, chips and panels — the crayon look lives here. */
+
+/* ── The key: a hand-drawn button ───────────────────────────────────────── */
+
+.key {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 0;
+  min-width: 0;
+  padding: 4px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--face, var(--crayon-yellow));
+  border: var(--stroke) solid var(--outline);
+  border-radius: var(--radius) calc(var(--radius) + 7px) var(--radius) calc(var(--radius) + 4px);
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .35);
+  cursor: pointer;
+  /* Each key leans a hair, deterministically from its own id — whimsical,
+     but it never changes between renders, so nothing appears to move. */
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform var(--press-time) ease, box-shadow var(--press-time) ease,
+              filter var(--press-time) ease;
+}
+
+/* The crayon overshoot: a second, offset outline just past the edge. */
+.key::after {
+  content: "";
+  position: absolute;
+  inset: -5px -3px -2px -4px;
+  border: 2px solid var(--outline);
+  border-radius: inherit;
+  opacity: .28;
+  pointer-events: none;
+}
+
+.key:active,
+.key.is-pressed {
+  transform: rotate(var(--tilt, 0deg)) translateY(4px) scale(.96);
+  box-shadow: 0 0 0 rgba(51, 37, 26, .35);
+  filter: brightness(1.08);
+}
+
+.key:focus-visible {
+  outline: 4px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.key__glyph {
+  font-size: var(--glyph, 32px);
+  line-height: 1.05;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.key__glyph img {
+  width: calc(var(--glyph, 32px) * 1.25);
+  height: calc(var(--glyph, 32px) * 1.25);
+  display: block;
+  pointer-events: none;
+}
+.key__glyph .photo {
+  width: calc(var(--glyph, 32px) * 1.4);
+  height: calc(var(--glyph, 32px) * 1.4);
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--outline);
+}
+
+.key__label {
+  font-size: var(--label, 15px);
+  font-weight: 700;
+  line-height: 1.05;
+  text-align: center;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  max-width: 100%;
+}
+
+[data-labels="off"] .board .key__label,
+[data-labels="off"] .core-rail .key__label { display: none; }
+
+/* Folders read as a stack of paper you can open. */
+.key--folder { box-shadow: 3px 5px 0 rgba(51, 37, 26, .35), 6px 9px 0 rgba(51, 37, 26, .16); }
+.key--folder .key__label { text-decoration: underline wavy 1.5px; text-underline-offset: 3px; }
+
+/* Urgent keys get a crayon scribble halo so they are findable in a hurry. */
+.key--urgent { box-shadow: 0 4px 0 rgba(51, 37, 26, .35), 0 0 0 4px rgba(255, 90, 74, .3); }
+
+.key--empty {
+  background: transparent;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--outline) 22%, transparent);
+  box-shadow: none;
+  cursor: default;
+}
+.key--empty::after { display: none; }
+.key--empty:active { transform: none; }
+
+/* Category faces. */
+.face-core      { --face: var(--c-core); }
+.face-people    { --face: var(--c-people); }
+.face-verb      { --face: var(--c-verb); }
+.face-describe  { --face: var(--c-describe); }
+.face-noun      { --face: var(--c-noun); }
+.face-social    { --face: var(--c-social); }
+.face-question  { --face: var(--c-question); }
+.face-negation  { --face: var(--c-negation); }
+.face-urgent    { --face: var(--c-urgent); }
+
+[data-theme="dark"] .key { color: #16121c; }
+
+/* ── Output bar and its word chips ──────────────────────────────────────── */
+
+.output {
+  background: var(--paper-deep);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 20px 26px 20px 24px;
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .28);
+}
+
+.output__empty {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  padding-left: 8px;
+  pointer-events: none;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  padding: 6px 8px 6px 10px;
+  font: inherit;
+  font-size: clamp(15px, 2.1vw, 22px);
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--face, var(--crayon-yellow));
+  border: 2.5px solid var(--outline);
+  border-radius: 14px 18px 14px 16px;
+  cursor: pointer;
+  animation: chip-in 160ms ease-out;
+}
+@keyframes chip-in {
+  from { transform: translateY(-6px) scale(.85); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.chip img { width: 1.2em; height: 1.2em; }
+.chip__x {
+  display: grid;
+  place-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  font-size: .8em;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .65);
+  border: 2px solid var(--outline);
+  border-radius: 50%;
+}
+.chip.is-speaking { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* ── Control, nav and grammar keys ──────────────────────────────────────── */
+
+.ctl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 14px 18px 14px 16px;
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
+  cursor: pointer;
+  transition: transform var(--press-time) ease, box-shadow var(--press-time) ease;
+}
+.ctl:active { transform: translateY(4px); box-shadow: none; }
+.ctl:focus-visible { outline: 4px solid var(--ink); outline-offset: 2px; }
+.ctl__glyph { font-size: 22px; line-height: 1; }
+.ctl:disabled { opacity: .35; cursor: default; box-shadow: none; }
+.ctl--speak { background: var(--crayon-green); font-size: 12px; }
+.ctl--clear { background: var(--crayon-red); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 14px 18px 14px 16px;
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
+  cursor: pointer;
+}
+.nav:active { transform: translateY(4px); box-shadow: none; }
+.nav:focus-visible { outline: 4px solid var(--ink); outline-offset: 2px; }
+.nav img { width: 26px; height: 26px; }
+.nav__glyph { font-size: 22px; }
+.nav.is-current { background: var(--crayon-yellow); }
+.nav--pin.is-on { background: var(--crayon-green); }
+
+.gram {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--crayon-teal);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 12px 16px 12px 14px;
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
+  cursor: pointer;
+}
+.gram small { font-size: 10px; font-weight: 700; opacity: .8; }
+.gram:active { transform: translateY(4px); box-shadow: none; }
+
+/* ── Sparkle on speak ───────────────────────────────────────────────────── */
+
+.sparkle {
+  position: fixed;
+  z-index: 60;
+  pointer-events: none;
+  font-size: 22px;
+  animation: sparkle-up 620ms ease-out forwards;
+}
+@keyframes sparkle-up {
+  from { transform: translate(-50%, -50%) scale(.4) rotate(0deg); opacity: 1; }
+  to   { transform: translate(-50%, -160%) scale(1.25) rotate(28deg); opacity: 0; }
+}
+
+/* ── Sheets: settings, editor, history, gate ────────────────────────────── */
+
+.sheet h2 { margin: 0 0 4px; font-size: 26px; }
+.sheet h3 { margin: 22px 0 8px; font-size: 18px; border-bottom: 2px dashed var(--outline); padding-bottom: 5px; }
+.sheet p.hint { margin: 0 0 14px; color: var(--ink-soft); font-size: 14px; line-height: 1.45; }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.row > label { flex: 1 1 auto; }
+.row input[type="range"] { flex: 0 0 190px; accent-color: var(--crayon-blue); }
+.row select, .row input[type="text"], .sheet textarea, .sheet input[type="number"] {
+  font: inherit;
+  font-size: 15px;
+  padding: 7px 10px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2.5px solid var(--outline);
+  border-radius: 10px;
+}
+.row select { min-width: 190px; }
+
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.seg button {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 13px;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 2.5px solid var(--outline);
+  border-radius: 11px;
+  cursor: pointer;
+}
+.seg button.is-on { background: var(--crayon-green); }
+
+.switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 62px;
+  height: 34px;
+  padding: 0;
+  background: var(--paper-deep);
+  border: 2.5px solid var(--outline);
+  border-radius: 20px;
+  cursor: pointer;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 25px; height: 25px;
+  background: var(--ink-soft);
+  border-radius: 50%;
+  transition: transform 140ms ease, background 140ms ease;
+}
+.switch[aria-checked="true"] { background: var(--crayon-green); }
+.switch[aria-checked="true"]::after { transform: translateX(28px); background: var(--paper); }
+
+.btn {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 11px 18px;
+  color: var(--ink);
+  background: var(--crayon-yellow);
+  border: var(--stroke) solid var(--outline);
+  border-radius: 13px 17px 13px 15px;
+  box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
+  cursor: pointer;
+}
+.btn:active { transform: translateY(4px); box-shadow: none; }
+.btn--go { background: var(--crayon-green); }
+.btn--warn { background: var(--crayon-red); }
+.btn--quiet { background: var(--paper-deep); }
+.sheet__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+.history-list { display: grid; gap: 8px; }
+.history-list button {
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 15px;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 2.5px solid var(--outline);
+  border-radius: 12px 16px 12px 14px;
+  cursor: pointer;
+}
+.history-list button:hover { background: var(--crayon-yellow); }
+
+/* ── Editor ─────────────────────────────────────────────────────────────── */
+
+.editor-grid { display: grid; gap: 8px; }
+.editor-grid .pick {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: left;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 2.5px solid var(--outline);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.editor-grid .pick .swatch {
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  font-size: 24px;
+  background: var(--face, var(--crayon-yellow));
+  border: 2.5px solid var(--outline);
+  border-radius: 10px;
+}
+.editor-grid .pick .swatch img { width: 30px; height: 30px; }
+.editor-grid .pick small { display: block; font-weight: 700; color: var(--ink-soft); font-size: 12px; }
+
+.edit-badge {
+  position: fixed;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 5px 15px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--crayon-yellow);
+  border: 2.5px solid var(--outline);
+  border-radius: 0 0 14px 14px;
+}
+
+.key.is-editing { animation: wiggle 620ms ease-in-out infinite; }
+@keyframes wiggle {
+  0%, 100% { transform: rotate(calc(var(--tilt, 0deg) - 2.5deg)); }
+  50%      { transform: rotate(calc(var(--tilt, 0deg) + 2.5deg)); }
+}
+
+/* ── Keyboard board ─────────────────────────────────────────────────────── */
+
+.kb { display: grid; grid-template-rows: auto 1fr; gap: 7px; min-height: 0; }
+.kb__predict { display: flex; gap: 6px; overflow-x: auto; min-height: 48px; }
+.kb__predict button {
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 6px 16px;
+  color: var(--ink);
+  background: var(--crayon-yellow);
+  border: 2.5px solid var(--outline);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.kb__keys { display: grid; gap: 6px; align-content: stretch; min-height: 0; }
+.kb__row { display: flex; gap: 6px; justify-content: center; }
+.kb__row button {
+  flex: 1 1 0;
+  font: inherit;
+  font-size: clamp(16px, 2.4vw, 27px);
+  font-weight: 800;
+  text-transform: lowercase;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 2.5px solid var(--outline);
+  border-radius: 11px;
+  box-shadow: 0 3px 0 rgba(51, 37, 26, .3);
+  cursor: pointer;
+}
+.kb__row button:active { transform: translateY(3px); box-shadow: none; }
+.kb__row button.wide { flex: 3 1 0; background: var(--crayon-green); }
+.kb__row button.util { background: var(--crayon-blue); }
