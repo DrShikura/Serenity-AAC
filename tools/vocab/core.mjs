@@ -55,7 +55,10 @@ export const home = board('home', 'Home', 'svg:home', 'noun', 8, 5, [
   f('Time', '⏰', 'time', { color: 'describe' }),
   f('Words', 'svg:questions', 'social', { color: 'social' }),
   f('Numbers', '🔢', 'numbers', { color: 'describe' }),
-  f('Letters', 'svg:keyboard', 'keyboard', { color: 'social' }),
+  // The "spell" key in the top corner already opens the keyboard from every
+  // page, so a dedicated Letters folder here was the one clearly-redundant
+  // shortcut — this is its slot now.
+  f('My Buttons', '⭐', 'custom', { color: 'social' }),
 
   w('this', 'svg:this', { color: 'describe' }),
   w('that', 'svg:that', { color: 'describe' }),
@@ -65,4 +68,16 @@ export const home = board('home', 'Home', 'svg:home', 'noun', 8, 5, [
   p('look at this', 'svg:look', { color: 'verb' }),
   p('my turn', 'svg:myturn', { color: 'social' }),
   p('I love you', '❤️', { color: 'social' }),
+]);
+
+// A permanent home for every button a parent creates from scratch — wherever
+// it actually gets placed (via Edit mode), a copy of it always lands here
+// too, so there's one obvious page to find every custom button again later.
+// Ships empty; js/main.js appends a reference here each time a new button is
+// saved anywhere.
+export const custom = board('custom', 'My Buttons', '⭐', 'social', 8, 4, [
+  gap, gap, gap, gap, gap, gap, gap, gap,
+  gap, gap, gap, gap, gap, gap, gap, gap,
+  gap, gap, gap, gap, gap, gap, gap, gap,
+  gap, gap, gap, gap, gap, gap, gap, gap,
 ]);

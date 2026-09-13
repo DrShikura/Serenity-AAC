@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 import { compile, board } from './dsl.mjs';
-import { core, home } from './vocab/core.mjs';
+import { core, home, custom } from './vocab/core.mjs';
 import { boards as foodBoards } from './vocab/food.mjs';
 import { boards as playBoards } from './vocab/play.mjs';
 import { boards as bodyBoards } from './vocab/body.mjs';
@@ -26,6 +26,7 @@ const keyboard = {
 
 const boards = [
   home,
+  custom,
   ...foodBoards,
   ...playBoards,
   ...bodyBoards,

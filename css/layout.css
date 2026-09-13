@@ -84,11 +84,17 @@ body::before {
 }
 
 .core-rail {
+  /* .key__glyph/.key__label (components.css) read the generic --glyph/--label
+     custom properties — scoping them here (rather than in :root) is what lets
+     the same shared key markup come out sized independently in the hotbar
+     vs. the board vs., via .board below, the main grid. */
+  --glyph: var(--hotbar-glyph);
+  --label: var(--hotbar-label);
   display: grid;
-  grid-template-columns: repeat(2, var(--rail-w, 104px));
+  grid-template-columns: repeat(2, var(--rail-w));
   /* A minimum row height (not 0) so this can genuinely overflow and scroll —
      see the comment on .board below for why that matters. */
-  grid-template-rows: repeat(var(--core-rows, 6), minmax(var(--cell, 92px), 1fr));
+  grid-template-rows: repeat(var(--core-rows, 6), minmax(var(--hotbar-cell), 1fr));
   gap: 6px;
   min-height: 0;
   overflow-y: auto;
@@ -97,16 +103,18 @@ body::before {
 }
 
 .board {
+  --glyph: var(--board-glyph);
+  --label: var(--board-label);
   display: grid;
   /* The board's own declared grid. Driven by custom properties rather than
      inline styles so the narrow-screen rules below can still override it.
-     minmax(var(--cell), 1fr) rather than minmax(0, 1fr): a cell never shrinks
-     below a real, tappable minimum. A board with fewer rows than fit simply
-     stops (see align-content below) instead of stretching huge; a board with
-     more than fit overflows and scrolls, at any screen size — not just on a
-     phone — with a real minimum finger-sized target either way. */
-  grid-template-columns: repeat(var(--cols, 8), minmax(var(--cell, 92px), 1fr));
-  grid-template-rows: repeat(var(--rows, 5), minmax(var(--cell, 92px), 1fr));
+     minmax(var(--board-cell), 1fr) rather than minmax(0, 1fr): a cell never
+     shrinks below a real, tappable minimum. A board with fewer rows than fit
+     simply stops (see align-content below) instead of stretching huge; a
+     board with more than fit overflows and scrolls, at any screen size — not
+     just on a phone — with a real minimum finger-sized target either way. */
+  grid-template-columns: repeat(var(--cols, 8), minmax(var(--board-cell), 1fr));
+  grid-template-rows: repeat(var(--rows, 5), minmax(var(--board-cell), 1fr));
   gap: 6px;
   min-height: 0;
   min-width: 0;
@@ -156,27 +164,48 @@ body::before {
   .grammar-bar { grid-template-columns: minmax(0, 1fr); grid-auto-rows: minmax(46px, auto); }
 }
 
-/* ── Size presets. Only the rail width and font scale change; the grid
-      itself is always the board's own declared cols x rows. ───────────── */
+/* ── Per-panel scale. Three independent multipliers — board buttons, hotbar
+      buttons, category buttons — each set as a plain number (1 = default) by
+      js/main.js's applyChrome() straight onto :root from its own Settings
+      slider. Everything below derives actual pixel sizes from them; the grid
+      itself is always the board's own declared cols x rows regardless. ───── */
 
-[data-size="s"] { --rail-w: 84px;  --label: 13px; --glyph: 26px; --cell: 72px;  }
-[data-size="m"] { --rail-w: 104px; --label: 15px; --glyph: 32px; --cell: 92px;  }
-[data-size="l"] { --rail-w: 124px; --label: 18px; --glyph: 40px; --cell: 112px; }
-[data-size="xl"]{ --rail-w: 150px; --label: 21px; --glyph: 48px; --cell: 136px; }
+:root {
+  --board-scale: 1;
+  --hotbar-scale: 1;
+  --nav-scale: 1;
+
+  --board-cell:  calc(92px * var(--board-scale));
+  --board-label: calc(15px * var(--board-scale));
+  --board-glyph: calc(32px * var(--board-scale));
+
+  --hotbar-cell:  calc(92px * var(--hotbar-scale));
+  --rail-w:       calc(104px * var(--hotbar-scale));
+  --hotbar-label: calc(15px * var(--hotbar-scale));
+  --hotbar-glyph: calc(32px * var(--hotbar-scale));
+
+  --nav-label: calc(15px * var(--nav-scale));
+  --nav-glyph: calc(22px * var(--nav-scale));
+}
 
 /* ── Narrower screens. The board keeps its column count so relative button
       positions are preserved; everything just gets proportionally smaller
       and the board becomes scrollable rather than reflowed. ───────────── */
 
 /* Portrait: the core rail lies down across the top instead of standing beside
-   the board. The twelve core words keep their reading order, so "I / you" is
-   still the first pair she reaches for. */
+   the board. Always exactly two rows tall — a fixed height that never eats
+   into the board's space — with new entries extending it sideways
+   (grid-auto-flow: column) instead of adding rows, so an unbounded hotbar
+   stays a horizontal strip that scrolls, exactly as it does when it grows
+   too tall in landscape. "I / you" (the first two hotbar entries) still land
+   in the first reachable column, just stacked instead of side-by-side. */
 @media (max-aspect-ratio: 1/1) {
   .middle { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
   .core-rail {
-    grid-template-columns: repeat(6, minmax(var(--cell, 92px), 1fr));
-    grid-template-rows: none;
-    grid-auto-rows: minmax(60px, auto);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: minmax(var(--hotbar-cell), 1fr);
+    grid-template-rows: repeat(2, minmax(60px, 1fr));
     overflow-x: auto;
     overflow-y: hidden;
   }
@@ -186,9 +215,6 @@ body::before {
   :root { --gap: 5px; --radius: 13px; }
   .topbar { min-height: 74px; }
   .controls { grid-template-columns: repeat(4, minmax(42px, 54px)); }
-  [data-size="m"] { --label: 12px; --glyph: 24px; --cell: 74px; }
-  [data-size="l"] { --label: 14px; --glyph: 30px; --cell: 84px; }
-  [data-size="xl"]{ --label: 16px; --glyph: 34px; --cell: 96px; }
   /* A phone cannot hold eight columns at a size a child can hit — eight
      columns on a 360px screen gives 39px keys. So narrow screens wrap the same
      buttons, in the same reading order, into as many columns as fit at a
@@ -196,14 +222,17 @@ body::before {
      don't all fit — auto-fill here just lets the column COUNT shrink too, on
      top of that, rather than keeping 8 cramped columns). Absolute positions
      change; the sequence she learned does not, and every key stays big
-     enough to press. */
+     enough to press. The scale sliders apply exactly as chosen even here —
+     a parent who deliberately picked a big scale for low vision gets it on
+     every device; the overflow/scroll machinery above is what absorbs
+     whatever doesn't fit, not a forced-smaller size. */
   .board {
-    grid-template-columns: repeat(auto-fill, minmax(var(--cell, 74px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--board-cell), 1fr));
     grid-template-rows: none;
-    grid-auto-rows: minmax(var(--cell, 74px), 1fr);
+    grid-auto-rows: minmax(var(--board-cell), 1fr);
   }
   .core-rail {
-    grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--hotbar-cell), 1fr));
     grid-auto-rows: minmax(56px, auto);
   }
 }

@@ -69,10 +69,104 @@ test('added buttons drop into empty slots before growing the grid', () => {
   assert.equal(home.buttons.length, 2, 'reused the gap instead of growing');
 });
 
+test('a custom (overlay-added) button can be patched after the fact', () => {
+  const withCustom = () => applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    added: { home: [{ id: 'custom.home.1', label: 'Snack', speak: 'Snack', type: 'word', color: 'noun' }] },
+  });
+  const custom = withCustom().boardsById.get('home').buttons.find((b) => b?.id === 'custom.home.1');
+  assert.equal(custom.label, 'Snack');
+
+  // Apply a patch on top, as if the parent re-opened its editor and changed it.
+  const patched = applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    added: { home: [{ id: 'custom.home.1', label: 'Snack', speak: 'Snack', type: 'word', color: 'noun' }] },
+    buttons: { 'custom.home.1': { label: 'Snack time', speak: 'I want a snack please' } },
+  }).boardsById.get('home').buttons.find((b) => b?.id === 'custom.home.1');
+  assert.equal(patched.label, 'Snack time');
+  assert.equal(patched.speak, 'I want a snack please');
+});
+
+test('hiding a custom button removes it from every board it was added to', () => {
+  const merged = applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    added: {
+      home: [{ id: 'custom.x', label: 'X', speak: 'X', type: 'word', color: 'noun' }],
+      core: [{ id: 'custom.x', label: 'X', speak: 'X', type: 'word', color: 'noun' }],
+    },
+    buttons: { 'custom.x': null },
+  });
+  assert.ok(!merged.boardsById.get('home').buttons.some((b) => b?.id === 'custom.x'));
+  assert.ok(!merged.boardsById.get('core').buttons.some((b) => b?.id === 'custom.x'));
+});
+
 test('an empty overlay changes nothing', () => {
   const before = tiny();
   const after = applyOverlay(before, emptyOverlay());
   assert.deepEqual(after.boardsById.get('home').buttons, before.boardsById.get('home').buttons);
+});
+
+test('a move swaps two occupied slots on the same board', () => {
+  const merged = applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    moves: [{ a: { boardId: 'home', index: 0 }, b: { boardId: 'home', index: 1 } }],
+  });
+  const home = merged.boardsById.get('home');
+  assert.equal(home.buttons[0].id, 'home.b');
+  assert.equal(home.buttons[1].id, 'home.a');
+});
+
+test('a move relocates a button onto a different board, swapping with whatever was there', () => {
+  const merged = applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    moves: [{ a: { boardId: 'core', index: 0 }, b: { boardId: 'home', index: 0 } }],
+  });
+  assert.equal(merged.boardsById.get('home').buttons[0].id, 'core.i', 'core.i relocated into home');
+  assert.equal(merged.boardsById.get('core').buttons[0].id, 'home.a', 'home.a swapped into the vacated core slot');
+});
+
+test('moving a button into an empty slot leaves the source empty, not duplicated', () => {
+  const withGap = () => indexVocabulary({
+    version: 1, home: 'home', core: 'core',
+    boards: [
+      { id: 'home', title: 'Home', cols: 2, rows: 1, color: 'noun', buttons: [
+        { id: 'home.a', label: 'a', speak: 'a', type: 'word', color: 'noun' }, null,
+      ]},
+    ],
+  });
+  const merged = applyOverlay(withGap(), {
+    ...emptyOverlay(),
+    moves: [{ a: { boardId: 'home', index: 0 }, b: { boardId: 'home', index: 1 } }],
+  });
+  const home = merged.boardsById.get('home');
+  assert.equal(home.buttons[1].id, 'home.a');
+  assert.equal(home.buttons[0], null, 'the vacated slot is empty, not a duplicate');
+});
+
+test('a move naming a board that no longer exists is skipped rather than throwing', () => {
+  assert.doesNotThrow(() => applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    moves: [{ a: { boardId: 'home', index: 0 }, b: { boardId: 'deleted-board', index: 0 } }],
+  }));
+  const merged = applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    moves: [{ a: { boardId: 'home', index: 0 }, b: { boardId: 'deleted-board', index: 0 } }],
+  });
+  assert.equal(merged.boardsById.get('home').buttons[0].id, 'home.a', 'unaffected — the bad move was skipped');
+});
+
+test('several moves replay in order, each acting on the result of the last', () => {
+  const merged = applyOverlay(tiny(), {
+    ...emptyOverlay(),
+    moves: [
+      { a: { boardId: 'home', index: 0 }, b: { boardId: 'home', index: 1 } }, // a<->b: [b, a]
+      { a: { boardId: 'home', index: 1 }, b: { boardId: 'core', index: 0 } }, // a<->core.i: [b, i], core:[a]
+    ],
+  });
+  const home = merged.boardsById.get('home');
+  assert.equal(home.buttons[0].id, 'home.b');
+  assert.equal(home.buttons[1].id, 'core.i');
+  assert.equal(merged.boardsById.get('core').buttons[0].id, 'home.a');
 });
 
 test('prediction word list is lowercase, deduped and excludes navigation', () => {

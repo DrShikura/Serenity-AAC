@@ -229,7 +229,7 @@
   gap: 7px;
   padding: 0 14px;
   font: inherit;
-  font-size: 15px;
+  font-size: var(--nav-label);
   font-weight: 700;
   color: var(--ink);
   background: var(--paper-deep);
@@ -240,8 +240,8 @@
 }
 .nav:active { transform: translateY(4px); box-shadow: none; }
 .nav:focus-visible { outline: 4px solid var(--ink); outline-offset: 2px; }
-.nav img { width: 26px; height: 26px; }
-.nav__glyph { font-size: 22px; }
+.nav img { width: var(--nav-glyph); height: var(--nav-glyph); }
+.nav__glyph { font-size: var(--nav-glyph); }
 .nav.is-current { background: var(--crayon-yellow); }
 .nav--pin.is-on { background: var(--crayon-green); }
 
@@ -256,7 +256,7 @@
   min-width: 76px;
   padding: 0 10px;
   font: inherit;
-  font-size: 16px;
+  font-size: var(--nav-label);
   font-weight: 800;
   color: var(--ink);
   background: var(--paper-deep);
@@ -265,8 +265,8 @@
   box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
   cursor: pointer;
 }
-.tense small { font-size: 10px; font-weight: 700; opacity: .75; }
-.tense .tense__glyph { font-size: 15px; line-height: 1; }
+.tense small { font-size: calc(var(--nav-label) * 0.67); font-weight: 700; opacity: .75; }
+.tense .tense__glyph { font-size: var(--nav-glyph); line-height: 1; }
 .tense:active { transform: translateY(4px); box-shadow: none; }
 .tense:focus-visible { outline: 4px solid var(--ink); outline-offset: 2px; }
 .tense[aria-checked="true"] {
@@ -282,7 +282,7 @@
   align-items: center;
   justify-content: center;
   font: inherit;
-  font-size: 17px;
+  font-size: var(--nav-label);
   font-weight: 800;
   color: var(--ink);
   background: var(--crayon-teal);
@@ -291,7 +291,7 @@
   box-shadow: 0 4px 0 rgba(51, 37, 26, .3);
   cursor: pointer;
 }
-.gram small { font-size: 10px; font-weight: 700; opacity: .8; }
+.gram small { font-size: calc(var(--nav-label) * 0.59); font-weight: 700; opacity: .8; }
 .gram:active { transform: translateY(4px); box-shadow: none; }
 
 /* ── Sparkle on speak ───────────────────────────────────────────────────── */
@@ -306,6 +306,29 @@
 @keyframes sparkle-up {
   from { transform: translate(-50%, -50%) scale(.4) rotate(0deg); opacity: 1; }
   to   { transform: translate(-50%, -160%) scale(1.25) rotate(28deg); opacity: 0; }
+}
+
+/* ── Whimsical motion: a jelly wobble on tap, a bouncy pop-in when a board
+      first appears. Both gated on --motion (0 under prefers-reduced-motion
+      and in the Calm theme, same switch --press-time/--sparkle already use),
+      so turning either off keeps this fully still, not just slower. ──────── */
+
+.key--tap-wobble { animation: key-wobble calc(260ms * var(--motion, 1)) ease-out; }
+@keyframes key-wobble {
+  0%   { transform: rotate(var(--tilt, 0deg)) scale(1); }
+  30%  { transform: rotate(calc(var(--tilt, 0deg) - 6deg)) scale(1.08); }
+  55%  { transform: rotate(calc(var(--tilt, 0deg) + 4deg)) scale(1.05); }
+  80%  { transform: rotate(calc(var(--tilt, 0deg) - 2deg)) scale(1.02); }
+  100% { transform: rotate(var(--tilt, 0deg)) scale(1); }
+}
+
+.key--pop-in {
+  animation: key-pop-in calc(340ms * var(--motion, 1)) both cubic-bezier(.34, 1.56, .64, 1);
+  animation-delay: calc(var(--pop-delay, 0) * 1ms * var(--motion, 1));
+}
+@keyframes key-pop-in {
+  from { transform: rotate(var(--tilt, 0deg)) scale(.55); opacity: 0; }
+  to   { transform: rotate(var(--tilt, 0deg)) scale(1); opacity: 1; }
 }
 
 /* ── Sheets: settings, editor, history, gate ────────────────────────────── */
@@ -454,6 +477,16 @@
 @keyframes wiggle {
   0%, 100% { transform: rotate(calc(var(--tilt, 0deg) - 2.5deg)); }
   50%      { transform: rotate(calc(var(--tilt, 0deg) + 2.5deg)); }
+}
+
+/* The one button currently picked up to be moved. Lifted and glowing rather
+   than wiggling — it reads as "held", distinct from its still-wiggling
+   neighbours, any one of which is now a valid place to set it down. */
+.key.is-picked-up {
+  animation: none;
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 0 0 5px var(--crayon-yellow), 0 10px 0 rgba(51, 37, 26, .35);
+  z-index: 2;
 }
 
 /* ── Keyboard board ─────────────────────────────────────────────────────── */

@@ -18,6 +18,45 @@
   src: url("../assets/fonts/comic-neue-700.woff2") format("woff2");
 }
 
+/* Three more bundled options for the Settings font picker, same reasoning as
+   Comic Neue above (offline, no Android fallback gap) — each SIL OFL 1.1,
+   licence text alongside it in assets/fonts/. */
+@font-face {
+  font-family: "Fredoka";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/fredoka-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fredoka";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/fredoka-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Patrick Hand";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/patrick-hand-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/opendyslexic-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/opendyslexic-700.woff2") format("woff2");
+}
+
 /* Crayon palette and theme tokens.
    Four themes. Every colour pair used for text has been checked to at least
    4.5:1 contrast — bright does not have to mean unreadable. */
@@ -61,6 +100,29 @@
 
   --press-time: 90ms;
   --sparkle: 1;
+  --motion: 1;
+}
+
+/* The font picker in Settings. "System" is the one option that loads nothing
+   bundled — a genuinely plain fallback stack, for a device where even a
+   rounded face reads as too busy. Every other option is a real bundled family
+   (see the @font-face rules above), swapped in over the default via
+   [data-font], the same attribute-selector pattern [data-theme] already uses. */
+[data-font="system"] {
+  --font: ui-rounded, "Segoe UI", Roboto, system-ui, sans-serif;
+}
+[data-font="comic-neue"] {
+  --font: "Comic Neue", "Comic Sans MS", "Chalkboard SE", ui-rounded,
+          "Trebuchet MS", system-ui, sans-serif;
+}
+[data-font="fredoka"] {
+  --font: "Fredoka", "Comic Neue", ui-rounded, system-ui, sans-serif;
+}
+[data-font="patrick-hand"] {
+  --font: "Patrick Hand", "Comic Neue", ui-rounded, system-ui, sans-serif;
+}
+[data-font="opendyslexic"] {
+  --font: "OpenDyslexic", "Comic Neue", ui-rounded, system-ui, sans-serif;
 }
 
 /* High contrast: heavier outlines, pure white paper, darker faces.
@@ -100,6 +162,7 @@
   --crayon-purple: #bdb0d1;
   --crayon-pink:   #d9b2c6;
   --sparkle: 0;
+  --motion: 0;
 }
 
 /* Dark: for evening use, keeping the faces saturated enough to stay legible. */
@@ -120,5 +183,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root { --press-time: 0ms; --sparkle: 0; }
+  :root { --press-time: 0ms; --sparkle: 0; --motion: 0; }
 }

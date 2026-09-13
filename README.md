@@ -16,8 +16,15 @@ account, no subscription, and no app store.
   arrives already in it. "go" becomes "went", "eat" becomes "will eat".
 - **A real keyboard**, one tap from every screen, with capitals, punctuation,
   numbers and word prediction — so she can always choose to spell it herself.
-- **Always-visible core words** — `I · you · my · it · want · need · like ·
-  have · go · stop · more · not` never move, on any page.
+- **Always-visible hotbar** — `I · you · my · it · want · need · like · have ·
+  go · stop · more · not` by default, on any page. A grown-up can add, change,
+  or remove any of them, and it can grow as long as you like.
+- **A picture-perfect fit for her** — pick a font (including OpenDyslexic) and
+  set the button size for the main boards, the hotbar, and the category
+  buttons independently, all in Settings.
+- **Teacher/edit mode** — move any button to a new spot (on the same page or a
+  different one), hide one, or add your own. Every button you create also
+  collects on its own **My Buttons** page.
 - **Your own voice** — record yourself saying any button, and your voice plays
   instead of the computer's.
 - **Your own photos** — put a picture of her actual cup on the "cup" button.
@@ -130,11 +137,12 @@ Turn that off with *Say each word as she taps it* if it gets in the way.
 
 ### Two things worth knowing
 
-**Buttons never move.** Everything in this app is arranged so that a button
-stays exactly where she learned it. Nothing sorts itself, nothing reorders by
+**Buttons never move on their own.** Nothing sorts itself, nothing reorders by
 how often it is used, and hiding a button leaves an empty square rather than
 sliding its neighbours along. Learning where a word lives is most of learning
-to use an AAC app, and moving buttons throws that away.
+to use an AAC app. A grown-up can still deliberately move a button in edit
+mode — see below — but that is always a considered choice, never something
+the app does by itself.
 
 **Nothing she builds is ever lost.** Clear is undoable. So is back. Building a
 sentence is slow, effortful work, and losing one by accident is the fastest way
@@ -152,7 +160,11 @@ Inside you can change:
 
 - **Colours** — Crayon (the bright default), High contrast, Calm (quiet colours
   and no animation, for when the bright version is too much), and Dark.
-- **Button size** and whether the words show under the pictures.
+- **Font** — the default rounded typeface, a couple more childish/handwritten
+  ones, plain system text, or **OpenDyslexic**.
+- **Button size** — three separate sliders for the main boards, the hotbar,
+  and the category buttons, so any one of them can be made bigger or smaller
+  on its own. And whether the words show under the pictures.
 - **Voice** — which voice, how fast, how high, how loud. Press *Try the voice*.
 - **The tense strip and word endings** — on by default, plus which tense the
   app starts in. Turn the whole strip off to go back to plain words.
@@ -174,8 +186,22 @@ different if you want a shortcut — a button labeled `snack` could speak
 - **⏺ Record** — record yourself saying it. Your voice then plays instead of the
   computer voice for that button.
 - **Hide this button** — leaves the space empty so every other button stays put.
+- **✥ Move this button** — pick it up, then tap any spot on this page or any
+  other to drop it there. If something is already there, the two swap places.
 - **Empty space → tap to put a button here**, and **＋ New page** for a page of
   her own: a favourite show, a holiday, a routine.
+
+Every button you create this way also appears on **My Buttons**, a page that
+collects every custom button you've ever added, wherever it actually lives —
+so you can always find and edit it again even after moving it elsewhere.
+
+### Customizing the hotbar
+
+While in edit mode, **press and hold** any button on a page to add it to the
+hotbar. **Press and hold** a button that's already on the hotbar to change it
+or remove it. Removing one leaves that spot empty rather than sliding the rest
+along, and you can keep adding as many as you like — it scrolls to fit them
+all.
 
 Everything you change is stored on that tablet only, separately from the app's
 own word list — so updating the app will never wipe your work.
@@ -215,7 +241,8 @@ button colour in every theme, and `tools/build-app-icons.mjs`.
 
 ## Credits and licence
 
-The app is MIT licensed. The bundled **Comic Neue** typeface is by the Comic
-Neue Project Authors under the SIL Open Font License 1.1 — see
-`assets/fonts/OFL.txt`. Symbols are either hand-drawn for this project or
-standard Unicode emoji rendered by the device.
+The app is MIT licensed. The bundled typefaces — **Comic Neue**, **Fredoka**,
+**Patrick Hand**, and **OpenDyslexic** — are each under the SIL Open Font
+License 1.1, from their respective authors — see `assets/fonts/OFL*.txt`.
+Symbols are either hand-drawn for this project or standard Unicode emoji
+rendered by the device.

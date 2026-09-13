@@ -628,16 +628,16 @@
           "action": null
         },
         {
-          "id": "home.letters",
-          "label": "Letters",
-          "speak": "Letters",
+          "id": "home.my_buttons",
+          "label": "My Buttons",
+          "speak": "My Buttons",
           "type": "folder",
           "icon": {
-            "kind": "svg",
-            "value": "keyboard"
+            "kind": "emoji",
+            "value": "⭐"
           },
           "color": "social",
-          "target": "keyboard",
+          "target": "custom",
           "action": null
         },
         {
@@ -744,6 +744,48 @@
           "target": null,
           "action": null
         }
+      ]
+    },
+    {
+      "id": "custom",
+      "title": "My Buttons",
+      "icon": "⭐",
+      "color": "social",
+      "cols": 8,
+      "rows": 4,
+      "buttons": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
     {

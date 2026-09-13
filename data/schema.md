@@ -7,7 +7,10 @@ the porting notes.
 **Do not hand-edit this file.** It is generated. The vocabulary is authored in
 `tools/vocab/*.mjs` using the small helper set in `tools/dsl.mjs`; run
 `npm run build` to regenerate. To change buttons on a real device, use the
-app's own Edit mode — those changes live in a separate overlay on the device.
+app's own Edit mode — those changes live in a separate overlay on the device
+(patches, hides, additions, moves, the hotbar's contents), documented in
+`docs/PORTING.md`'s "The overlay" section rather than here, since it is not
+part of this file's own schema.
 
 ## Top level
 
@@ -15,7 +18,7 @@ app's own Edit mode — those changes live in a separate overlay on the device.
 |---|---|---|
 | `version` | number | Schema version. Currently `1`. |
 | `home` | string | Board id the app opens on. |
-| `core` | string | Board id of the always-visible core rail. |
+| `core` | string | Board id whose buttons seed the always-visible hotbar the very first time the app runs. From then on the hotbar is a parent-editable list kept in the overlay (see `docs/PORTING.md`), not this board directly. |
 | `colors` | string[] | Swatch names a button's `color` may use. |
 | `tenses` | object[] | The sticky tense strip (see below). |
 | `grammarBar` | object[] | The one-off word-endings row (see below). |

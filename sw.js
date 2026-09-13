@@ -2,7 +2,7 @@
 // install, so it works in the car, at the store, and anywhere with no signal.
 // Her ability to talk must never depend on a network.
 
-const VERSION = 'serenity-v1';
+const VERSION = 'serenity-v2';
 
 const SHELL = [
   './',
@@ -28,6 +28,11 @@ const SHELL = [
   'data/vocabulary.json',
   'assets/fonts/comic-neue-400.woff2',
   'assets/fonts/comic-neue-700.woff2',
+  'assets/fonts/fredoka-400.woff2',
+  'assets/fonts/fredoka-600.woff2',
+  'assets/fonts/patrick-hand-400.woff2',
+  'assets/fonts/opendyslexic-400.woff2',
+  'assets/fonts/opendyslexic-700.woff2',
   'assets/app-icon-192.png',
   'assets/app-icon-512.png',
 ];

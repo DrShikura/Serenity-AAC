@@ -53,13 +53,19 @@ function glyphNode(icon, photoUrl, label) {
 }
 
 /** Build one key element for a vocabulary button. */
-export function renderKey(button, { photoUrl, hasRecording } = {}) {
+export function renderKey(button, { photoUrl, hasRecording, popDelay = null } = {}) {
   const el = document.createElement('button');
   el.type = 'button';
   el.className = `key face-${button.color || 'noun'}`;
   if (button.type === 'folder') el.classList.add('key--folder');
   if (button.color === 'urgent') el.classList.add('key--urgent');
   el.style.setProperty('--tilt', tiltFor(button.id));
+  if (popDelay !== null) {
+    // A gentle cascade as a board first appears — capped so a big board
+    // doesn't take noticeably longer to finish popping in than a small one.
+    el.style.setProperty('--pop-delay', Math.min(popDelay, 220));
+    el.classList.add('key--pop-in');
+  }
   el.dataset.buttonId = button.id;
   el.dataset.type = button.type;
 
@@ -87,7 +93,7 @@ export function renderEmptySlot() {
 }
 
 /** Draw a board into a container. */
-export function renderBoard(container, board, media, { editing = false } = {}) {
+export function renderBoard(container, board, media, { editing = false, pickedUpId = null, animate = false } = {}) {
   container.replaceChildren();
   // A fresh board always starts scrolled to the top-left — carrying over
   // wherever the previous board happened to be scrolled to would be
@@ -100,39 +106,54 @@ export function renderBoard(container, board, media, { editing = false } = {}) {
   container.style.setProperty('--rows', board.rows);
   container.setAttribute('aria-label', `${board.title} board`);
 
-  for (const button of board.buttons) {
+  board.buttons.forEach((button, index) => {
     if (!button) {
       const slot = renderEmptySlot();
+      slot.dataset.index = index;
       if (editing) {
         slot.classList.add('is-editing');
         slot.dataset.emptySlot = 'true';
       }
       container.append(slot);
-      continue;
+      return;
     }
     const key = renderKey(button, {
       photoUrl: media?.photoUrls?.get(button.id),
       hasRecording: media?.recordings?.has(button.id),
+      popDelay: animate ? index * 12 : null,
     });
+    key.dataset.index = index;
     if (editing) key.classList.add('is-editing');
+    // The button a parent just picked up to move — a distinct highlight,
+    // not wiggling, so it visibly reads as "in your hand" against its still-
+    // wiggling neighbours while she chooses where it goes.
+    if (button.id === pickedUpId) { key.classList.remove('is-editing'); key.classList.add('is-picked-up'); }
     container.append(key);
-  }
+  });
   // So a board with more rows/columns than fit shows "there's more" right
   // away, before she's touched it — not only once she starts scrolling.
   updateScrollEdges(container);
 }
 
 /** Draw the fixed core rail. Identical on every board, always. */
-export function renderCore(container, coreBoard, media) {
+export function renderCore(container, coreBoard, media, { editing = false } = {}) {
   container.replaceChildren();
   container.style.setProperty('--core-rows', coreBoard.rows);
-  for (const button of coreBoard.buttons) {
-    if (!button) { container.append(renderEmptySlot()); continue; }
-    container.append(renderKey(button, {
+  coreBoard.buttons.forEach((button, index) => {
+    if (!button) {
+      const slot = renderEmptySlot();
+      slot.dataset.index = index;
+      container.append(slot);
+      return;
+    }
+    const key = renderKey(button, {
       photoUrl: media?.photoUrls?.get(button.id),
       hasRecording: media?.recordings?.has(button.id),
-    }));
-  }
+    });
+    key.dataset.index = index;
+    if (editing) key.classList.add('is-editing');
+    container.append(key);
+  });
   updateScrollEdges(container);
 }
 

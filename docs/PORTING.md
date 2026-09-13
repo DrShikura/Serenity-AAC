@@ -87,6 +87,53 @@ Rules the renderer must honour:
   should reintroduce a silent mismatch there.
 - `icon.kind === "svg"` refers to `assets/icons/<value>.svg`.
 
+## The overlay
+
+Everything a parent changes in Edit mode — patches, hides, additions, moves,
+and the hotbar — lives in one object, kept in `storage.js`/`IndexedDB` and
+merged onto the shipped vocabulary at load time by `applyOverlay()` in
+`js/vocabulary.js`. It never touches `vocabulary.json` itself:
+
+```jsonc
+{
+  "buttons": { "food.apple": { "label": "Apple" }, "custom.home.123": null },
+  "boards": { "trip-2024": { "title": "Our Trip", "buttons": [...] } },
+  "added": { "home": [ { "id": "custom.home.123", ... } ] },
+  "moves": [ { "a": { "boardId": "home", "index": 3 },
+               "b": { "boardId": "food", "index": 0 } } ],
+  "hotbar": [ "core.want", "core.stop", null, "food.apple", ... ]
+}
+```
+
+- `buttons[id]` is a patch merged onto that button wherever it appears (a
+  shipped button, or one a parent added via `added`); `null` means hidden. A
+  button referenced from more than one board (its own page, and always from
+  the auto-populated "My Buttons" board) resolves the same patch everywhere,
+  since every occurrence is looked up by the same id — there is exactly one
+  button, referenced in several places, never a copy that could drift.
+- `boards[id]` is either a patch on a shipped board or, when the id isn't one
+  of the shipped board ids, a whole new parent-created page.
+- `added[boardId]` is the list of custom buttons appended to that board (after
+  patches, filling any empty `null` slots before growing the grid).
+- `moves` is an ordered list of **swaps**, replayed in sequence after every
+  other step: each one exchanges whatever currently occupies two named grid
+  cells (`{ boardId, index }`), which may be the same board (a reorder) or two
+  different ones (a relocation), and either of which may be empty. A swap is
+  always well-defined — nothing can be silently dropped the way a general
+  "here is the whole new layout for board X" replacement could be if two
+  edits disagreed about where something landed. A move naming a board that no
+  longer exists is skipped, not an error.
+- `hotbar` is the resolved list a parent has built for the always-visible
+  rail: an ordered array of button ids (or `null` for a deliberately empty
+  slot after removing one), each looked up by id in the merged vocabulary at
+  render time — the same reference model as `added`. It has no fixed length;
+  a parent can keep appending to it indefinitely. On first boot, when no
+  saved `hotbar` exists yet, it is seeded once from the shipped `core` board's
+  buttons so a fresh install looks the same as it always has.
+
+A Godot port's save file can use this same shape directly — it is already
+plain, serializable data with no DOM references in it.
+
 ## Behaviour worth preserving
 
 These are the decisions that make it work as an AAC app rather than a
@@ -94,7 +141,11 @@ soundboard. If the Godot port drops them, it will be worse than this one:
 
 1. **Positions are permanent.** No frequency sorting, no recents shuffling to
    the front, no collapsing gaps. Motor memory is how fluency develops.
-2. **The core rail is on every screen**, unchanged, in the same place.
+2. **The hotbar is on every screen**, in the same place. Its *contents* are a
+   parent-editable, unbounded list (see "The overlay" below) — `core` in
+   `vocabulary.json` is only the default seed copied in on first boot, not a
+   fixed board. Its on-screen position never changes and it is never
+   collapsed or reordered by removing an entry from it.
 3. **Every tap makes a sound immediately** — the word itself, not just a click.
 4. **Clear and backspace are undoable.** See `undoStack` in `js/output.js`.
 5. **Grammar endings rebuild from the base word** rather than stacking, so no
@@ -108,6 +159,7 @@ soundboard. If the Godot port drops them, it will be worse than this one:
    word and synthesis takes over.
 8. **The user overlay is separate from the shipped vocabulary**, merged by
    button id at load. Shipping new words must never erase a family's edits.
+   See "The overlay" below for its exact shape.
 9. **Auto-return to Home after a fringe word** (toggleable), so core stays
    one tap away.
 10. **Regulation and repair vocabulary is first-class** — "I need a break",

@@ -36,6 +36,10 @@ const app = createStore({
   words: [],
   editing: false,
   pinned: false,
+  // { boardId, index, buttonId } while a teacher-mode move is waiting for its
+  // destination tap — survives navigating to a different board, since a move
+  // can relocate a button onto any page, not just reorder it in place.
+  movePending: null,
 });
 
 /* ── Boot ──────────────────────────────────────────────────────────────── */
@@ -59,6 +63,17 @@ async function boot() {
   const settings = app.get().settings;
   if (!settings.voiceURI) settings.voiceURI = defaultVoice();
 
+  // The hotbar used to just BE the shipped `core` board. Now it's a parent-
+  // managed, unlimited-length list of button ids living in the overlay — on
+  // a brand-new install (or one from before this existed) there is nothing
+  // saved yet, so seed it from that same 12-word board once, so a fresh
+  // install still looks exactly like it always did.
+  if (!overlay.hotbar || overlay.hotbar.length === 0) {
+    const coreBoard = base.boards.find((b) => b.id === base.core);
+    overlay.hotbar = coreBoard.buttons.map((b) => b?.id ?? null);
+    await store.saveOverlay(overlay);
+  }
+
   app.set({
     base, overlay, settings,
     vocab: applyOverlay(base, overlay, { collapseHidden: settings.collapseHidden }),
@@ -73,9 +88,17 @@ async function boot() {
 
 /* ── Drawing ───────────────────────────────────────────────────────────── */
 
+// A one-shot signal: true only for the render caused by actually navigating
+// to a different page, so the bouncy pop-in plays when a board first
+// appears — not on every incidental redraw a settings tweak or overlay
+// commit also triggers while she's staying put.
+let animateNextAppear = false;
+
 function drawEverything() {
-  const { vocab, boardId, media, editing } = app.get();
+  const { vocab, boardId, media, editing, movePending } = app.get();
   const board = vocab.boardsById.get(boardId) || vocab.boardsById.get(vocab.home);
+  const animate = animateNextAppear;
+  animateNextAppear = false;
 
   if (board.special === 'keyboard') {
     renderKeyboard(dom.board, app.get().words, {
@@ -84,13 +107,30 @@ function drawEverything() {
       onBackspace: () => update(backspace(app.get().utterance)),
     });
   } else {
-    renderBoard(dom.board, board, media, { editing });
+    const pickedUpId = movePending?.boardId === board.id ? movePending.buttonId : null;
+    renderBoard(dom.board, board, media, { editing, pickedUpId, animate });
   }
 
-  renderCore(dom.core, vocab.boardsById.get(vocab.core), media);
+  renderCore(dom.core, resolveHotbar(), media, { editing });
   drawOutput();
   drawNav(board);
   drawGrammar();
+}
+
+/**
+ * The hotbar's buttons, resolved fresh from the overlay's ordered id list —
+ * each id is a reference to a real button living on whatever board it was
+ * added from (see the "add to hotbar" long-press below), not a copy, so
+ * editing that button anywhere keeps the hotbar in sync automatically. A
+ * removed entry is a `null` id, rendered as an empty gap — the hotbar never
+ * reorganises itself, the same rule every board already follows. Shaped like
+ * a board only so renderCore() (unchanged) can draw it the same way.
+ */
+function resolveHotbar() {
+  const { overlay, vocab } = app.get();
+  const ids = overlay.hotbar || [];
+  const buttons = ids.map((id) => (id ? vocab.buttonsById.get(id) ?? null : null));
+  return { rows: Math.max(1, Math.ceil(buttons.length / 2)), buttons };
 }
 
 function drawOutput() {
@@ -220,14 +260,51 @@ function drawEndings() {
 function go(boardId, isJump = false) {
   const { boardId: from, trail } = app.get();
   app.set({ boardId, trail: isJump ? [] : [...trail, from] });
+  animateNextAppear = true;
   drawEverything();
+  animateBoardTransition(1);
 }
 
 function goBack() {
   const trail = [...app.get().trail];
   const previous = trail.pop() || app.get().vocab.home;
   app.set({ boardId: previous, trail });
+  animateNextAppear = true;
   drawEverything();
+  animateBoardTransition(-1);
+}
+
+/**
+ * A quick slide-and-fade for the board itself as a whole, layered on top of
+ * its buttons' own individual pop-in — direction 1 for going deeper
+ * (folders, category jumps), -1 for coming back, so the motion has the same
+ * "which way did I just go" sense a book page-turn does.
+ */
+function motionAllowed() {
+  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  return !reduced && app.get().settings.theme !== 'calm';
+}
+
+/** A quick jelly wobble on tap — additive to the plain squish that's always there. */
+function wobbleKey(keyEl) {
+  if (!motionAllowed()) return;
+  keyEl.classList.remove('key--tap-wobble');
+  // Force a reflow so re-adding the class restarts the animation even if she
+  // tapped the same key again before the last wobble finished.
+  void keyEl.offsetWidth;
+  keyEl.classList.add('key--tap-wobble');
+  keyEl.addEventListener('animationend', () => keyEl.classList.remove('key--tap-wobble'), { once: true });
+}
+
+function animateBoardTransition(direction) {
+  if (!motionAllowed()) return;
+  dom.board.animate(
+    [
+      { transform: `translateX(${direction * 18}px)`, opacity: 0.4 },
+      { transform: 'translateX(0)', opacity: 1 },
+    ],
+    { duration: 220, easing: 'cubic-bezier(.22,1,.36,1)' }
+  );
 }
 
 /* ── Taps ──────────────────────────────────────────────────────────────── */
@@ -236,7 +313,13 @@ let lastTapAt = 0;
 let lastTapId = null;
 
 function onKeyActivate(keyEl, event) {
-  const { vocab, settings, editing } = app.get();
+  const { vocab, settings, editing, movePending } = app.get();
+
+  if (movePending) {
+    completeOrCancelMove(keyEl);
+    return;
+  }
+
   const button = vocab.buttonsById.get(keyEl.dataset.buttonId);
   if (!button) return;
 
@@ -256,6 +339,7 @@ function onKeyActivate(keyEl, event) {
     const box = keyEl.getBoundingClientRect();
     sparkleAt(box.left + box.width / 2, box.top + box.height / 2, true);
   }
+  wobbleKey(keyEl);
 
   switch (button.type) {
     case 'folder':
@@ -276,13 +360,37 @@ function onKeyActivate(keyEl, event) {
         else speak(token.speak, settings);   // conjugated: no recording matches it
       }
       // Fringe words live on category pages; bouncing back Home keeps the
-      // core words she needs for the *next* word permanently one tap away.
-      const onCore = app.get().vocab.boardsById.get(vocab.core).buttons.some((b) => b?.id === button.id);
-      if (settings.autoHome && !app.get().pinned && !onCore && app.get().boardId !== vocab.home) {
+      // hotbar words she needs for the *next* word permanently one tap away.
+      const onHotbar = (app.get().overlay.hotbar || []).includes(button.id);
+      if (settings.autoHome && !app.get().pinned && !onHotbar && app.get().boardId !== vocab.home) {
         go(vocab.home, true);
       }
     }
   }
+}
+
+/**
+ * A tap while a teacher-mode move is pending: tapping the picked-up button
+ * again cancels it; tapping anywhere else (an occupied key or an empty slot,
+ * on this board or — after navigating via the nav bar — a different one)
+ * completes it, swapping whatever is there into the vacated slot.
+ */
+function completeOrCancelMove(keyEl) {
+  const { movePending, boardId } = app.get();
+  if (keyEl.dataset.buttonId && keyEl.dataset.buttonId === movePending.buttonId) {
+    app.set({ movePending: null });
+    showEditBadge(true);
+    drawEverything();
+    return;
+  }
+  const overlay = structuredClone(app.get().overlay);
+  overlay.moves = [
+    ...(overlay.moves || []),
+    { a: { boardId: movePending.boardId, index: movePending.index }, b: { boardId, index: Number(keyEl.dataset.index) } },
+  ];
+  app.set({ movePending: null });
+  showEditBadge(true);
+  commitOverlay(overlay);
 }
 
 function runAction(action) {
@@ -323,17 +431,38 @@ async function speakSentence(event) {
 
 /* ── Input plumbing ────────────────────────────────────────────────────── */
 
-function wireKeys(container) {
+const HOTBAR_LONG_PRESS_MS = 600;
+
+function wireKeys(container, { isHotbar = false } = {}) {
   let holdTimer = null;
   let holdKey = null;
+  let longPressTimer = null;
+  let longPressFired = false;
 
   const begin = (event) => {
     const key = event.target.closest?.('.key:not(.key--empty)');
     if (!key) {
       const slot = event.target.closest?.('[data-empty-slot]');
-      if (slot && app.get().editing) openEditorFor(null);
+      if (slot && app.get().movePending) completeOrCancelMove(slot);
+      else if (slot && app.get().editing && !isHotbar) openEditorFor(null);
       return;
     }
+
+    // In edit mode every key gets a long-press gesture instead of the
+    // dwell-to-activate one below (that one is only for her ordinary,
+    // non-editing use) — on the main board it adds the button to the
+    // hotbar; on the hotbar itself it opens that entry's quick actions.
+    if (app.get().editing && !app.get().movePending) {
+      longPressFired = false;
+      longPressTimer = setTimeout(() => {
+        longPressFired = true;
+        if (navigator.vibrate) navigator.vibrate(24);
+        if (isHotbar) openHotbarQuickActions(key);
+        else addToHotbar(key.dataset.buttonId);
+      }, HOTBAR_LONG_PRESS_MS);
+      return;
+    }
+
     const dwell = app.get().settings.dwellMs;
     if (!dwell) return;                   // plain taps handled on click
     holdKey = key;
@@ -349,6 +478,7 @@ function wireKeys(container) {
     clearTimeout(holdTimer);
     holdKey?.classList.remove('is-pressed');
     holdKey = null;
+    clearTimeout(longPressTimer);
   };
 
   container.addEventListener('pointerdown', begin);
@@ -357,12 +487,69 @@ function wireKeys(container) {
   container.addEventListener('pointerleave', cancel);
 
   container.addEventListener('click', (event) => {
-    if (app.get().settings.dwellMs) return;   // the hold already handled it
+    if (longPressFired) { longPressFired = false; return; }   // swallow the tap that follows a long-press
+    // The dwell timer above only ever fires onKeyActivate outside edit mode
+    // (editing has its own long-press gesture instead), so an ordinary click
+    // must still go through normally while editing even with dwell turned on.
+    if (app.get().settings.dwellMs && !app.get().editing) return;
     const key = event.target.closest('.key:not(.key--empty)');
     if (key) return onKeyActivate(key, event);
     const slot = event.target.closest('[data-empty-slot]');
-    if (slot && app.get().editing) openEditorFor(null);
+    if (!slot) return;
+    if (app.get().movePending) completeOrCancelMove(slot);
+    else if (app.get().editing && !isHotbar) openEditorFor(null);
   });
+}
+
+/** Long-press a board key in edit mode: add it to the hotbar. */
+async function addToHotbar(buttonId) {
+  if (!buttonId) return;
+  const { settings } = app.get();
+  const overlay = structuredClone(app.get().overlay);
+  const hotbar = overlay.hotbar || [];
+  if (hotbar.includes(buttonId)) {
+    speak('That is already on your hotbar', settings);
+    return;
+  }
+  const gapIndex = hotbar.indexOf(null);
+  if (gapIndex !== -1) hotbar[gapIndex] = buttonId;
+  else hotbar.push(buttonId);
+  overlay.hotbar = hotbar;
+  await commitOverlay(overlay);
+  speak('Added to your hotbar', settings);
+}
+
+/** Long-press a hotbar key in edit mode: change it, or remove it (leaving a gap). */
+function openHotbarQuickActions(keyEl) {
+  const index = Number(keyEl.dataset.index);
+  const button = app.get().vocab.buttonsById.get(keyEl.dataset.buttonId);
+  const label = escapeHtml(button?.label ?? 'This button');
+
+  dom.sheet.innerHTML = `
+    <h2>${label}</h2>
+    <p class="hint">It's on your hotbar, on every page.</p>
+    <div class="sheet__actions">
+      <button class="btn btn--go" id="hotbar-change" type="button">Change this button</button>
+      <button class="btn btn--warn" id="hotbar-remove" type="button">Remove from hotbar</button>
+      <button class="btn btn--quiet" id="hotbar-cancel" type="button">Never mind</button>
+    </div>`;
+  dom.scrim.hidden = false;
+
+  const close = () => { dom.scrim.hidden = true; dom.sheet.replaceChildren(); };
+  dom.sheet.querySelector('#hotbar-change').addEventListener('click', () => { close(); openEditorFor(button); });
+  dom.sheet.querySelector('#hotbar-remove').addEventListener('click', async () => {
+    close();
+    const overlay = structuredClone(app.get().overlay);
+    overlay.hotbar = [...overlay.hotbar];
+    overlay.hotbar[index] = null;
+    await commitOverlay(overlay);
+  });
+  dom.sheet.querySelector('#hotbar-cancel').addEventListener('click', close);
+}
+
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
 function wireOutput() {
@@ -451,9 +638,12 @@ function showSettings() {
 
 function startEditing() {
   app.set({ editing: true });
-  showEditBadge(true);
+  // The real, wiggling board shows right away — not a list in a sheet — so a
+  // long-press (add to / manage the hotbar) is immediately available, not
+  // just a tap (open that button's editor). Tapping any key, filled or
+  // empty, still opens the usual browse list for whichever page she's on.
+  showEditBadge(true, 'Edit mode — tap a button to change it, or hold one to add it to your hotbar');
   drawEverything();
-  openEditorFor(null);
 }
 
 function openEditorFor(button) {
@@ -474,9 +664,24 @@ function openEditorFor(button) {
       overlay.buttons[id] = null;
       await commitOverlay(overlay);
     },
+    beginMove: (buttonId) => {
+      const { boardId, vocab } = app.get();
+      const index = vocab.boardsById.get(boardId).buttons.findIndex((b) => b?.id === buttonId);
+      if (index === -1) return;   // shouldn't happen — the button we just edited must be on this board
+      app.set({ movePending: { boardId, index, buttonId } });
+      showEditBadge(true, "Choose a spot for it — on this page or any other. Tap it again to cancel.");
+      drawEverything();
+    },
     addButton: async (boardId, newButton) => {
       const overlay = structuredClone(app.get().overlay);
       overlay.added[boardId] = [...(overlay.added[boardId] || []), newButton];
+      // A second copy — same id — always lands on "My Buttons" too, so
+      // there's one obvious place to find any custom button again later even
+      // after it's been moved. Both copies stay in sync afterwards: a patch
+      // or hide is keyed by id, so it applies to every occurrence.
+      if (boardId !== 'custom') {
+        overlay.added.custom = [...(overlay.added.custom || []), newButton];
+      }
       await commitOverlay(overlay);
     },
     addBoard: async ({ title, cols, rows }) => {
@@ -528,21 +733,26 @@ async function refreshMedia() {
   app.set({ media: { photos, recordings, photoUrls } });
 }
 
-function showEditBadge(on) {
-  document.querySelector('.edit-badge')?.remove();
-  if (!on) return;
-  const badge = document.createElement('div');
-  badge.className = 'edit-badge';
-  badge.textContent = 'Edit mode — tap a button to change it';
-  document.body.append(badge);
+function showEditBadge(on, text = 'Edit mode — tap a button to change it') {
+  let badge = document.querySelector('.edit-badge');
+  if (!on) { badge?.remove(); return; }
+  if (!badge) {
+    badge = document.createElement('div');
+    badge.className = 'edit-badge';
+    document.body.append(badge);
+  }
+  badge.textContent = text;
 }
 
 /* ── Chrome, wake lock, service worker ─────────────────────────────────── */
 
 function applyChrome(settings) {
   dom.root.dataset.theme = settings.theme;
-  dom.root.dataset.size = settings.size;
+  dom.root.dataset.font = settings.font;
   dom.root.dataset.labels = settings.labels;
+  dom.root.style.setProperty('--board-scale', settings.boardScale);
+  dom.root.style.setProperty('--hotbar-scale', settings.hotbarScale);
+  dom.root.style.setProperty('--nav-scale', settings.navScale);
 }
 
 async function keepAwake() {
@@ -587,7 +797,7 @@ window.addEventListener('resize', () => {
 /* ── Go ────────────────────────────────────────────────────────────────── */
 
 wireKeys(dom.board);
-wireKeys(dom.core);
+wireKeys(dom.core, { isHotbar: true });
 wireOutput();
 wireControls();
 document.addEventListener('contextmenu', (e) => {

@@ -18,7 +18,13 @@ export function createStore(initial) {
 
 export const DEFAULT_SETTINGS = {
   theme: 'crayon',
-  size: 'm',
+  font: 'comic-neue',   // 'system' | 'comic-neue' | 'fredoka' | 'patrick-hand' | 'opendyslexic'
+  // Independent scale multipliers, replacing the old single 's'/'m'/'l'/'xl'
+  // "button size" preset — a parent can make the main board huge without
+  // also blowing up the hotbar or the category strip.
+  boardScale: 1,
+  hotbarScale: 1,
+  navScale: 1,
   labels: 'on',
   voiceURI: null,
   rate: 0.9,

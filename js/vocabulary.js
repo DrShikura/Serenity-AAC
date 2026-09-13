@@ -37,11 +37,13 @@ export function indexVocabulary(raw) {
 
 /**
  * Overlay shape:
- *   { buttons: { [id]: patch|null }, boards: { [id]: patch }, added: { [boardId]: [button] } }
- * A null button patch means "hidden".
+ *   { buttons: { [id]: patch|null }, boards: { [id]: patch }, added: { [boardId]: [button] },
+ *     moves: [{ a: {boardId, index}, b: {boardId, index} }] }
+ * A null button patch means "hidden". `moves` records teacher-mode
+ * repositioning — see applyMoves() below for why a swap, not a full layout.
  */
 export function emptyOverlay() {
-  return { buttons: {}, boards: {}, added: {} };
+  return { buttons: {}, boards: {}, added: {}, moves: [] };
 }
 
 /**
@@ -55,16 +57,28 @@ export function emptyOverlay() {
  */
 export function applyOverlay(vocab, overlay, { collapseHidden = false } = {}) {
   const ov = { ...emptyOverlay(), ...(overlay || {}) };
-  const boards = vocab.boards.map((board) => {
-    const boardPatch = ov.boards[board.id] || {};
-    let buttons = board.buttons.map((button) => {
-      if (!button) return null;
-      if (!(button.id in ov.buttons)) return button;
+
+  // Applies a parent's patch/hide edit to one button, by id — used for both
+  // buttons shipped in the base vocabulary AND ones a parent added earlier
+  // (e.g. a custom button), so editing or hiding one works the same way no
+  // matter which board it's being viewed from — a custom button referenced
+  // from more than one board (its own page, and always from "My Buttons")
+  // stays in sync between them, since every occurrence resolves the same
+  // patch by the same id.
+  const withPatch = (button) => {
+    if (!button) return null;
+    if (button.id in ov.buttons) {
       const patch = ov.buttons[button.id];
       if (patch === null || patch.hidden) return null;
       return { ...button, ...patch };
-    });
-    const extras = (ov.added[board.id] || []).filter((b) => b && !b.hidden);
+    }
+    return button.hidden ? null : button;
+  };
+
+  const boards = vocab.boards.map((board) => {
+    const boardPatch = ov.boards[board.id] || {};
+    let buttons = board.buttons.map(withPatch);
+    const extras = (ov.added[board.id] || []).map(withPatch).filter(Boolean);
     if (extras.length) buttons = fillGaps(buttons, extras);
     if (collapseHidden) {
       const kept = buttons.filter(Boolean);
@@ -79,7 +93,35 @@ export function applyOverlay(vocab, overlay, { collapseHidden = false } = {}) {
       boards.push({ cols: 8, rows: 4, color: 'noun', ...patch, id });
     }
   }
+  applyMoves(boards, ov.moves);
   return indexVocabulary({ ...vocab, boards });
+}
+
+/**
+ * Replay a parent's teacher-mode repositioning: each recorded move swaps
+ * whatever currently occupies two grid cells, which may be on the same
+ * board (a reorder) or different ones (a relocation) and either of which may
+ * be empty. A swap is always well-defined — the button that was displaced
+ * always lands exactly at the other slot, so nothing can ever be silently
+ * lost the way a general "here is board X's whole new layout" replacement
+ * could if two edits disagreed about where something ended up. Moves are
+ * replayed in the order they happened, on top of every other overlay step,
+ * so a button being moved is patched/relabelled first and then relocated.
+ */
+function applyMoves(boards, moves) {
+  if (!moves || !moves.length) return boards;
+  const byId = new Map(boards.map((b) => [b.id, b]));
+  for (const { a, b } of moves) {
+    const boardA = byId.get(a?.boardId);
+    const boardB = byId.get(b?.boardId);
+    if (!boardA || !boardB) continue;                    // a board since removed
+    if (a.index < 0 || a.index >= boardA.buttons.length) continue;
+    if (b.index < 0 || b.index >= boardB.buttons.length) continue;
+    const tmp = boardA.buttons[a.index];
+    boardA.buttons[a.index] = boardB.buttons[b.index];
+    boardB.buttons[b.index] = tmp;
+  }
+  return boards;
 }
 
 /** Drop new buttons into empty slots first, then grow the grid if needed. */

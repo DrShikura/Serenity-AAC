@@ -10,7 +10,23 @@ const THEMES = [
   ['calm', 'Calm'],
   ['dark', 'Dark'],
 ];
-const SIZES = [['s', 'Small'], ['m', 'Medium'], ['l', 'Large'], ['xl', 'Huge']];
+// Each option is rendered in its own actual typeface, so the picker previews
+// itself rather than just naming the choice.
+const FONTS = [
+  ['comic-neue', 'Comic Neue', '"Comic Neue", cursive'],
+  ['system', 'Plain', 'ui-rounded, system-ui, sans-serif'],
+  ['fredoka', 'Fredoka', '"Fredoka", cursive'],
+  ['patrick-hand', 'Patrick Hand', '"Patrick Hand", cursive'],
+  ['opendyslexic', 'OpenDyslexic', '"OpenDyslexic", sans-serif'],
+];
+// Board/hotbar/nav scale together used to be one "button size" preset
+// (s/m/l/xl); each is now its own slider so a parent can make the main board
+// huge without also blowing up the category strip, say.
+const SCALES = [
+  ['boardScale', '--board-scale', 'Main buttons'],
+  ['hotbarScale', '--hotbar-scale', 'Hotbar buttons'],
+  ['navScale', '--nav-scale', 'Category buttons'],
+];
 
 export function openSettings(sheet, scrim, { settings, onChange, onEdit, onClose }) {
   const s = { ...settings };
@@ -28,11 +44,14 @@ export function openSettings(sheet, scrim, { settings, onChange, onEdit, onClose
       <div class="row"><label>Colours</label>
         <div class="seg" id="seg-theme">${THEMES.map(([v, n]) =>
           `<button data-v="${v}" class="${s.theme === v ? 'is-on' : ''}">${n}</button>`).join('')}</div></div>
-      <div class="row"><label>Button size</label>
-        <div class="seg" id="seg-size">${SIZES.map(([v, n]) =>
-          `<button data-v="${v}" class="${s.size === v ? 'is-on' : ''}">${n}</button>`).join('')}</div></div>
+      <div class="row"><label>Lettering</label>
+        <div class="seg" id="seg-font">${FONTS.map(([v, n, css]) =>
+          `<button data-v="${v}" class="${s.font === v ? 'is-on' : ''}" style="font-family:${css};font-size:15px">${n}</button>`).join('')}</div></div>
       <div class="row"><label>Show the words under the pictures</label>
         ${toggle('labels', s.labels === 'on')}</div>
+      ${SCALES.map(([key, cssVar, label]) => `
+      <div class="row"><label>${label} size <span class="hint">${s[key].toFixed(2)}×</span></label>
+        <input type="range" id="${key}" data-css-var="${cssVar}" min="0.7" max="1.8" step="0.05" value="${s[key]}"></div>`).join('')}
       <div class="row"><label>Sparkles when she talks</label>${toggle('sparkles', s.sparkles)}</div>
 
       <h3>Voice</h3>
@@ -109,9 +128,21 @@ export function openSettings(sheet, scrim, { settings, onChange, onEdit, onClose
     sheet.querySelector('#seg-theme').addEventListener('click', (e) => {
       const v = e.target.dataset?.v; if (v) set({ theme: v });
     });
-    sheet.querySelector('#seg-size').addEventListener('click', (e) => {
-      const v = e.target.dataset?.v; if (v) set({ size: v });
+    sheet.querySelector('#seg-font').addEventListener('click', (e) => {
+      const v = e.target.dataset?.v; if (v) set({ font: v });
     });
+    for (const [key, cssVar] of SCALES) {
+      const el = sheet.querySelector(`#${key}`);
+      // Live preview while dragging: push the value straight onto :root so
+      // the real board/hotbar/nav resize as she moves the slider, without
+      // re-rendering this settings sheet mid-drag (that would drop the
+      // pointer's grip on the slider). The actual setting is only saved —
+      // and the sheet only redrawn — once the slider is released.
+      el.addEventListener('input', () => {
+        document.documentElement.style.setProperty(cssVar, el.value);
+      });
+      el.addEventListener('change', () => set({ [key]: Number(el.value) }));
+    }
     sheet.querySelector('#seg-tense')?.addEventListener('click', (e) => {
       const v = e.target.dataset?.v; if (v) set({ tenseMode: v });
     });

@@ -139,9 +139,11 @@ export function openEditor(sheet, scrim, ctx) {
       <div class="sheet__actions">
         <button class="btn btn--go" id="save" type="button">Save</button>
         <button class="btn btn--quiet" id="cancel" type="button">Back</button>
+        ${button.isNew ? '' : `<button class="btn" id="move" type="button">✥ Move this button</button>`}
         ${button.isNew ? '' : `<button class="btn btn--warn" id="hide" type="button">Hide this button</button>`}
       </div>
-      ${button.isNew ? '' : '<p class="hint">Hiding leaves the space empty so every other button stays exactly where she knows it.</p>'}`;
+      ${button.isNew ? '' : `<p class="hint">Moving lets you tap a new spot for it — on this page or any other.
+        Hiding leaves the space empty so every other button stays exactly where she knows it.</p>`}`;
 
     const draft = { ...button };
 
@@ -193,6 +195,14 @@ export function openEditor(sheet, scrim, ctx) {
     sheet.querySelector('#hide')?.addEventListener('click', async () => {
       await ctx.hideButton(button.id);
       back();
+    });
+    sheet.querySelector('#move')?.addEventListener('click', () => {
+      // Close the panel WITHOUT ctx.onClose() — a move stays inside edit
+      // mode; only the sheet needs to get out of the way so the real board
+      // is visible again for choosing a destination.
+      scrim.hidden = true;
+      sheet.replaceChildren();
+      ctx.beginMove(button.id);
     });
   }
 
